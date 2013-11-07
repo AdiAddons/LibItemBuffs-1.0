@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with LibItemBuffs-1.0.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-local MAJOR, MINOR = "LibItemBuffs-1.0", 1
+local MAJOR, MINOR = "LibItemBuffs-1.0", 2
 local lib = LibStub:NewLibrary(MAJOR, MINOR)
 if not lib then return end
 
@@ -61,22 +61,61 @@ lib.enchantments = {
 
 }
 
+-- Known slots
+lib.slots = {
+	INVSLOT_MAINHAND,
+	INVSLOT_HAND,
+	INVSLOT_WAIST,
+	INVSLOT_BACK,
+	INVSLOT_HEAD,
+	INVSLOT_TRINKET1,
+	INVSLOT_TRINKET2,
+}
+
 --- Tell whether a spell is a item buff or not.
 -- @param spellID number Spell identifier.
--- @param boolean True if the spell is a buff given by an item.
+-- @return boolean True if the spell is a buff given by an item.
 function lib:IsItemBuff(spellID)
 	return spellID and (lib.enchantments[spellID] or lib.trinkets[spellID]) and true
 end
 
---- Get information about the inventory item that can gives this buff.
+--- Return the inventory slot containing the item that can apply the given buff.
 -- @param spellID number Spell identifier.
--- @param (string, number) Either ("slot", inventorySlot), ("item", itemID) or nil if the spell is unknown.
-function lib:GetBuffItem(spellID)
-	if spellID then
-		if lib.enchantments[spellID] then
-			return "slot", lib.enchantments[spellID]
-		elseif lib.trinkets[spellID] then
-			return "item", lib.trinkets[spellID]
-		end
+-- @return number The inventory slot of matching item (see INVSLOT_* values).
+function lib:GetBuffInventorySlot(spellID)
+	if not spellID then return end
+
+	local invSlot = lib.enchantments[spellID]
+	if invSlot then
+		return invSlot
 	end
+
+	local itemID = lib.trinkets[spellID]
+	if not itemID then return end
+	if GetInventoryItemID("player", INVSLOT_TRINKET2) == itemID then
+		return INVSLOT_TRINKET1
+	elseif GetInventoryItemID("player", INVSLOT_TRINKET2) == itemID then
+		return INVSLOT_TRINKET2
+	end
+end
+
+--- Return the identifier of the item that can apply the given buff.
+-- @param spellID number Spell identifier.
+-- @return number The item identifier or nil.
+function lib:GetBuffItemID(spellID)
+	if not spellID then return end
+
+	local itemID = lib.trinkets[spellID]
+	if itemID then
+		return itemID
+	end
+
+	local invSlot = lib.enchantments[spellID]
+	return invSlot and GetInventoryItemID("player", invSlot)
+end
+
+--- Get the list of inventory slots for which the library has information.
+-- @return table A list of INVSLOT_* values.
+function lib:GetInventorySlotList()
+	return lib.slots
 end
