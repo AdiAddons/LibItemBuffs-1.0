@@ -65,7 +65,7 @@ lib.enchantments = {
 -- @param spellID number Spell identifier.
 -- @param boolean True if the spell is a buff given by an item.
 function lib:IsItemBuff(spellID)
-	return spellID and (lib.enchantments[spellID] or lib.trinkets[SpellID]) and true
+	return spellID and (lib.enchantments[spellID] or lib.trinkets[spellID]) and true
 end
 
 --- Get information about the inventory item that can gives this buff.
