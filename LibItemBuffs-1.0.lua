@@ -22,7 +22,7 @@ local MAJOR, MINOR = "LibItemBuffs-1.0", 1
 local lib = LibStub:NewLibrary(MAJOR, MINOR)
 if not lib then return end
 
-lib.trinkets = LibStub:NewLibrary("LibItemBuffs-Trinkets-1.0")
+lib.trinkets = LibStub("LibItemBuffs-Trinkets-1.0")
 
 lib.enchantments = {
 
