@@ -77,66 +77,14 @@ foreach($trinkets as $id) {
 }
 echo "\n";
 
-print_r($buffs);
+ksort($buffs);
 
-/*
-$data = array();
-
-echo "Fetching locations: ";
-foreach($npcIds as $npcId => $achievementId) {
-	$crawler = new Crawler();
-	$crawler->addContent(fetchPage('/npc='.$npcId));
-
-	foreach($crawler->filter('script[type="text/javascript"]')->extract('_text') as $script) {
-		if(preg_match('/g_mapperData = (\{.+?\});/is', $script, $groups)) {
-			$jsdata = preg_replace('/(\w+):/', '"$1":', $groups[1]);
-			foreach(json_decode($jsdata, true) as $whMapId => $coords) {
-				if(empty($mapMap[$whMapId])) {
-					echo "\nUnknown wowhead map id: $whMapId ";
-					continue;
-				}
-				$mapId = $mapMap[$whMapId];
-				foreach($coords as $floor => $points) {
-					$x = 0.0;
-					$y = 0.0;
-					foreach($points['coords'] as $coords) {
-						$x += $coords[0];
-						$y += $coords[1];
-					}
-					$x /= $points['count'];
-					$y /= $points['count'];
-					$data[$achievementId][$npcId][$mapId][] = array($floor, $x, $y);
-				}
-				echo '.';
-			}
-		}
-	}
+$code = array('--== CUT HERE ==--');
+foreach($buffs as $spell => $item) {
+	$code[] = sprintf("lib[%6d] = %6d", $spell, $item);
 }
-echo "done\n";
 
-echo "Writing the database: ";
+$lib = file_get_contents("../LibItemBuffs-Trinkets-1.0.lua");
+$pos = strpos($lib, '--== CUT HERE ==--');
 
-$fh = fopen("../Database.lua", "w");
-fputs($fh, "-- File generated automatically ; editing is pointless.\n");
-fputs($fh, "local _, ns = ...\n");
-fputs($fh, "ns.NPCs = {\n");
-foreach($data as $achievementId => $npcs) {
-	fprintf($fh, "\t[%d] = {\n", $achievementId);
-	foreach($npcs as $npcId => $maps) {
-		fprintf($fh, "\t\t[%d] = {\n", $npcId);
-		foreach($maps as $mapId => $allCoords) {
-			fprintf($fh, "\t\t\t[%d] = {\n", $mapId);
-			foreach($allCoords as $coords) {
-				vfprintf($fh, "\t\t\t\t{ %d, %g, %g },\n", $coords);
-				echo '.';
-			}
-			fputs($fh, "\t\t\t},\n");
-		}
-		fputs($fh, "\t\t},\n");
-	}
-	fputs($fh, "\t},\n");
-}
-fputs($fh, "}\n");
-fclose($fh);
-echo "done\n";
-*/
+file_put_contents("../LibItemBuffs-Trinkets-1.0.lua", substr($lib, 0, $pos).join("\n", $code)."\n");
