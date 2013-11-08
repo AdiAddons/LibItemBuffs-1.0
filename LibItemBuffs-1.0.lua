@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with LibItemBuffs-1.0.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-local MAJOR, MINOR = "LibItemBuffs-1.0", 2
+local MAJOR, MINOR = "LibItemBuffs-1.0", 3
 local lib = LibStub:NewLibrary(MAJOR, MINOR)
 if not lib then return end
 
@@ -50,7 +50,7 @@ lib.enchantments = {
 	-- Cloak
 	[126389] = INVSLOT_BACK, -- Engineering: Goblin Glider -- NEED CONFIRMATION
 	[125488] = INVSLOT_BACK, -- Tailoring: Darkglow Embroidery, rank 3 -- NEED CONFIRMATION
-	[125484] = INVSLOT_BACK, -- Tailoring: Lightweave Embroidery, rank 3
+	[125487] = INVSLOT_BACK, -- Tailoring: Lightweave Embroidery, rank 3
 	[125489] = INVSLOT_BACK, -- Tailoring: Swordguard  Embroidery, rank 3 -- NEED CONFIRMATION
 
 	-- Legendary meta gems
