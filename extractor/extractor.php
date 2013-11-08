@@ -41,7 +41,7 @@ function fetchPage($path) {
 
 $npcIds = array();
 
-echo "Fetching trinket list: ";
+echo "Fetching trinket list:\n";
 $crawler = new Crawler();
 $crawler->addContent(fetchPage('/items=4.-4'));
 $scripts = $crawler->filter('script[type="text/javascript"]')->extract('_text');
@@ -54,28 +54,59 @@ foreach($scripts as $script) {
 				$trinkets[] = intval($groups[1]);
 				echo '.';
 			}
+		} else {
+			echo 'x';
 		}
 	}
 }
-echo "\n".count($trinkets)." trinkets found\n\n";
+echo "\nDone\n".count($trinkets)." trinkets found\n\n";
 
+$spellsToScan = array();
 $buffs = array();
 
-echo "Fetching trinket data: ";
-foreach($trinkets as $id) {
-	$page = fetchPage("/item=".$id);
-	echo "o";
-	$crawler = new Crawler();
-	$crawler->addContent($page);
+echo "Scanning trinket tooltips:\n";
+foreach($trinkets as $itemID) {
+	$tooltip_js = fetchPage("/item=".$itemID.'&power');
 
-	foreach($crawler->filter('#main-contents table a[href]')->extract('href') as $spellURL) {
-		if(preg_match('@^/spell=(\d+)$@', $spellURL, $matches)) {
-			$buffs[intval($matches[1])] = $id;
-			echo ".";
+	if(preg_match('/tooltip_enus:\s*\'(.+)\'\s*$/m', $tooltip_js, $matches)) {
+		$tooltip = $matches[1];
+		if(preg_match_all('%(Use|Equip)\s*:\s*<a\s+href="/spell=(\d+)"%i', $tooltip, $matches, PREG_SET_ORDER)) {
+			foreach($matches as $match) {
+				list(, $type, $spellID) = $match;
+				if($type == 'Use') {
+					$buffs[$spellID] = $itemID;
+					echo '.';
+				} elseif($type == 'Equip') {
+					$spellsToScan[$spellID] = $itemID;
+					echo 'o';
+				}
+			}
 		}
+	} else {
+		echo 'x';
 	}
 }
-echo "\n";
+printf("\nDone\n%d buffs found, %d spells to scan.\n\n", count($buffs), count($spellsToScan));
+
+if(!empty($spellsToScan)) {
+	echo "Scanning spells:\n";
+	$buffCount = 0;
+	foreach($spellsToScan as $spellID => $itemID) {
+		$page = fetchPage("/spell=".$spellID);
+		if(preg_match_all('/g_spells\.createIcon\((\d+),/', $page, $matches)) {
+			foreach($matches[1] as $buffID) {
+				echo '.';
+				$buffCount++;
+				$buffs[$buffID] = $itemID;
+			}
+		} else {
+			echo 'x';
+		}
+	}
+	echo "\nDone\n$buffCount more buffs found.\n\n";
+}
+
+echo "\n".count($buffs)." total buffs.\n\n";
 
 ksort($buffs);
 
