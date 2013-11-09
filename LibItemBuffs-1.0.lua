@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with LibItemBuffs-1.0.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-local MAJOR, MINOR = "LibItemBuffs-1.0", 3
+local MAJOR, MINOR = "LibItemBuffs-1.0", 4
 local lib = LibStub:NewLibrary(MAJOR, MINOR)
 if not lib then return end
 
@@ -29,14 +29,15 @@ lib.enchantments = {
 	-- MoP enchantments
 
 	-- Weapon (we assign it to the main hand weapon though it could come from the off-hand)
-	[118334] = INVSLOT_MAINHAND, -- Dancing Steel (agility)
-	[118335] = INVSLOT_MAINHAND, -- Dancing Steel (strength)
-	[104993] = INVSLOT_MAINHAND, -- Jade Spirit
-	[116660] = INVSLOT_MAINHAND, -- River's Song -- NEED CONFIRMATION
-	[116631] = INVSLOT_MAINHAND, -- Colossus
-	[104423] = INVSLOT_MAINHAND, -- Windsong (haste)
-	[104510] = INVSLOT_MAINHAND, -- Windsong (mastery)
-	[104509] = INVSLOT_MAINHAND, -- Windsong (critical strike)
+	[109085] = INVSLOT_MAINHAND, -- Engineering: Lord Blastington's Scope of Doom
+	[118334] = INVSLOT_MAINHAND, -- Enchanting: Dancing Steel (agility)
+	[118335] = INVSLOT_MAINHAND, -- Enchanting: Dancing Steel (strength)
+	[104993] = INVSLOT_MAINHAND, -- Enchanting: Jade Spirit
+	[116660] = INVSLOT_MAINHAND, -- Enchanting: River's Song -- NEED CONFIRMATION
+	[116631] = INVSLOT_MAINHAND, -- Enchanting: Colossus
+	[104423] = INVSLOT_MAINHAND, -- Enchanting: Windsong (haste)
+	[104510] = INVSLOT_MAINHAND, -- Enchanting: Windsong (mastery)
+	[104509] = INVSLOT_MAINHAND, -- Enchanting: Windsong (critical strike)
 
 	-- Glove
 	[108788] = INVSLOT_HAND, -- Engineering: Phase Fingers -- NEED CONFIRMATION
