@@ -167,16 +167,22 @@ $files = array(
 	'trinkets' => 'LibItemBuffs-Trinkets-1.0.lua',
 );
 
-foreach($files as $cat => $filename) {
+$code = array(
+	'--== CUT HERE ==--',
+	'version = '.date("YmdHis")
+);
+
+foreach(array('trinkets', 'consumables') as $cat) {
+	$code[] = "-- ".ucfirst($cat);
 	ksort($buffs[$cat]);
-
-	$code = array('--== CUT HERE ==--');
 	foreach($buffs[$cat] as $spell => $item) {
-		$code[] = sprintf("lib[%6d] = %6d", $spell, $item);
+		$code[] = sprintf("%s[%6d] = %6d -- %s", $cat, $spell, $item, $names[$item]);
 	}
-
-	$lib = file_get_contents("../${filename}");
-	$pos = strpos($lib, '--== CUT HERE ==--');
-
-	file_put_contents("../${filename}", substr($lib, 0, $pos).join("\n", $code)."\n");
 }
+$code[] = "";
+$code[] = "LibStub('LibItemBuffs-1.0'):__UpgradeDatabase(version, trinkets, consumables)";
+
+$filename = "LibItemBuffs-Database-1.0.lua";
+$lib = file_get_contents("../$filename");
+$pos = strpos($lib, '--== CUT HERE ==--');
+file_put_contents("../$filename", substr($lib, 0, $pos).join("\n", $code)."\n");

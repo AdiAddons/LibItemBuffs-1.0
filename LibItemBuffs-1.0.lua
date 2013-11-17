@@ -18,12 +18,15 @@ You should have received a copy of the GNU General Public License
 along with LibItemBuffs-1.0.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-local MAJOR, MINOR = "LibItemBuffs-1.0", 4
+local MAJOR, MINOR = "LibItemBuffs-1.0", 5
 local lib = LibStub:NewLibrary(MAJOR, MINOR)
 if not lib then return end
 
-lib.trinkets = LibStub("LibItemBuffs-Trinkets-1.0")
-lib.consumables = LibStub("LibItemBuffs-Consumables-1.0")
+lib.__itemBuffs = lib.__itemBuffs or {}
+lib.__databaseVersion = lib.__databaseVersion or 0
+
+lib.trinkets = lib.trinkets or {}
+lib.consumables = lib.consumables or {}
 
 lib.enchantments = {
 
@@ -122,43 +125,6 @@ function lib:GetInventorySlotList()
 	return lib.slots
 end
 
--- Get the list of buffs provided by an item.
--- This is quite time-consuming as it iterates through the trinket and consumable tables
-function lib:__GetItemBuffs(itemID)
-	local buffs = {}
-	for buffID, trinketID in pairs(lib.trinkets) do
-		if trinketID == itemID then
-			tinsert(buffs, buffID)
-		end
-	end
-	for buffID, consumableID in pairs(lib.consumables) do
-		if consumableID == itemID then
-			tinsert(buffs, buffID)
-		end
-	end
-	-- Return a table only if there is more than one registered buff
-	if #buffs > 1 then
-		return buffs
-	else
-		return buffs[1]
-	end
-end
-
--- Create caching table
-if not lib.__itemBuffs then
-	lib.__itemBuffs = setmetatable({}, {
-		__index = function(t, itemID)
-			if not itemID then return end
-			local buffs = lib:__GetItemBuffs(itemID)
-			t[itemID] = buffs
-			if buffs then
-				return buffs
-			end
-		end
-	})
-else
-	wipe(lib.__itemBuffs)
-end
 
 --- Return the buffs provided by then given item, excluding any enchant.
 -- @name LibItemBuffs:GetItemBuffs
@@ -169,7 +135,35 @@ function lib:GetItemBuffs(itemID)
 	local buffs = lib.__itemBuffs[itemID]
 	if type(buffs) == "table" then
 		return unpack(buffs)
-	else
+	elseif type(buffs) == "number" then
 		return buffs
 	end
+end
+
+-- Add the content of the given table into the reverse table.
+-- Create a table when an item can provide several buffs.
+local function FeedReverseTable(reverse, data)
+	for spellID, itemID in pairs(data) do
+		local previous = reverse[itemID]
+		if not previous then
+			reverse[itemID] = spellID
+		elseif type(previous) == "table" then
+			tinsert(previous, spellID)
+		else
+			reverse[itemID] = { previous, spellID }
+		end
+	end
+end
+
+-- Upgrade the trinket and consumables database if needed
+function lib:__UpgradeDatabase(version, trinkets, consumables)
+	if version < lib.__databaseVersion then return end
+
+	-- Upgrade the tables
+	lib.__databaseVersion, lib.trinkets, lib.consumables  = version, trinkets, consumables
+
+	-- Rebuild the reverse database
+	wipe(lib.__itemBuffs)
+	FeedReverseTable(lib.__itemBuffs, trinkets)
+	FeedReverseTable(lib.__itemBuffs, consumables)
 end
