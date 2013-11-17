@@ -9,8 +9,9 @@ It has data for the following items and enchantments:
 * MoP high-level enchantments from enchanting, tailoring and engineering.
 * MoP legendary meta-gems.
 * All trinkets, both "Equip" procs and "Use" effects.
+* All consumables of the following categories: potions, elixirs, flasks, scrolls, foods & drinks and other.
 
-The first two lists are maintained by the author. The last one is automatically built using an HTML parser.
+The former two lists are maintained by the author. The latter two ones are automatically built using an HTML parser.
 
 h2. Embedding LibItemBuffs-1.0
 
@@ -33,7 +34,7 @@ bc. libs\LibItemBuffs-1.0\LibItemBuffs-1.0.xml
 
 h2. Using LibItemBuffs-1.0
 
-See the API page.
+See the API page (todo).
 
 h2. License
 
