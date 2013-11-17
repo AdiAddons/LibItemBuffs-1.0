@@ -121,3 +121,55 @@ end
 function lib:GetInventorySlotList()
 	return lib.slots
 end
+
+-- Get the list of buffs provided by an item.
+-- This is quite time-consuming as it iterates through the trinket and consumable tables
+function lib:__GetItemBuffs(itemID)
+	local buffs = {}
+	for buffID, trinketID in pairs(lib.trinkets) do
+		if trinketID == itemID then
+			tinsert(buffs, buffID)
+		end
+	end
+	for buffID, consumableID in pairs(lib.consumables) do
+		if consumableID == itemID then
+			tinsert(buffs, buffID)
+		end
+	end
+	-- Return a table only if there is more than one registered buff
+	if #buffs > 1 then
+		return buffs
+	else
+		return buffs[1]
+	end
+end
+
+-- Create caching table
+if not lib.__itemBuffs then
+	lib.__itemBuffs = setmetatable({}, {
+		__index = function(t, itemID)
+			if not itemID then return end
+			local buffs = lib:__GetItemBuffs(itemID)
+			t[itemID] = buffs
+			if buffs then
+				return buffs
+			end
+		end
+	})
+else
+	wipe(lib.__itemBuffs)
+end
+
+--- Return the buffs provided by then given item, excluding any enchant.
+-- @name LibItemBuffs:GetItemBuffs
+-- @param itemID number Item identifier.
+-- @return number, ... A list of spell identifiers.
+function lib:GetItemBuffs(itemID)
+	if not itemID then return end
+	local buffs = lib.__itemBuffs[itemID]
+	if type(buffs) == "table" then
+		return unpack(buffs)
+	else
+		return buffs
+	end
+end
