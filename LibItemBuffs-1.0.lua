@@ -78,6 +78,7 @@ lib.slots = {
 }
 
 --- Tell whether a spell is an item buff or not.
+-- @name LibItemBuffs:IsItemBuff
 -- @param spellID number Spell identifier.
 -- @return boolean True if the spell is a buff given by an item.
 function lib:IsItemBuff(spellID)
@@ -85,6 +86,7 @@ function lib:IsItemBuff(spellID)
 end
 
 --- Return the inventory slot containing the item that can apply the given buff.
+-- @name LibItemBuffs:GetBuffInventorySlot
 -- @param spellID number Spell identifier.
 -- @return number The inventory slot of matching item (see INVSLOT_* values), returns nil for items in bags.
 function lib:GetBuffInventorySlot(spellID)
@@ -105,6 +107,7 @@ function lib:GetBuffInventorySlot(spellID)
 end
 
 --- Return the identifier of the item that can apply the given buff.
+-- @name LibItemBuffs:GetBuffItemID
 -- @param spellID number Spell identifier.
 -- @return number The item identifier or nil.
 function lib:GetBuffItemID(spellID)
@@ -120,6 +123,7 @@ function lib:GetBuffItemID(spellID)
 end
 
 --- Get the list of inventory slots for which the library has information.
+-- @name LibItemBuffs:GetInventorySlotList
 -- @return table A list of INVSLOT_* values.
 function lib:GetInventorySlotList()
 	return lib.slots
