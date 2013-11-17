@@ -104,12 +104,21 @@ $buffs = array(
 	'trinkets' => array(),
 );
 
+$names = array();
+
 echo "Scanning tooltips:\n";
 foreach($allItems as $itemID => $kind) {
-	$tooltip_js = fetchPage("/item=".$itemID.'&power');
+	$data_js = fetchPage("/item=".$itemID.'&power');
 
-	if(preg_match('/tooltip_enus:\s*\'(.+)\'\s*$/m', $tooltip_js, $matches)) {
-		$tooltip = $matches[1];
+	@list(, $nameLine, , , $tooltipLine, ) = explode("\n",  str_replace('\\\'', '%%%', $data_js));
+
+	if($nameLine && $tooltipLine) {
+		@list(, $name, ) = explode("'", $nameLine);
+		@list(, $tooltip, ) = explode("'", $tooltipLine);
+
+		$names[$itemID] = str_replace('%%%', "'", $name);
+		$tooltip = str_replace('%%%', "'", $tooltip);
+
 		if(preg_match_all('%(Use|Equip)\s*:\s*<a\s+href="/spell=(\d+)"%i', $tooltip, $matches, PREG_SET_ORDER)) {
 			foreach($matches as $match) {
 				list(, $type, $spellID) = $match;
