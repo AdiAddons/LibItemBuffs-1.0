@@ -68,6 +68,7 @@ $categories = array(
 	"scroll" => '0.4', // Scrolls
 	"food & drink" => '0.5', // Foods & Drinks
 	"other" => '0.8', // Other
+	"miscellaneous" => '15?filter=cr=161:62;crs=1:1;crv=0:2'
 );
 $consumables = array();
 
