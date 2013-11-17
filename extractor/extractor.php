@@ -51,7 +51,7 @@ foreach($scripts as $script) {
 	if(strpos($script, 'new Listview') !== FALSE) {
 		if(preg_match_all('/"id":(\d+)/', $script, $matches, PREG_SET_ORDER)) {;
 			foreach($matches as $groups) {
-				$trinkets[] = intval($groups[1]);
+				$trinkets[intval($groups[1])] = 'trinkets';
 				echo '.';
 			}
 		} else {
@@ -61,11 +61,51 @@ foreach($scripts as $script) {
 }
 echo "\nDone\n".count($trinkets)." trinkets found\n\n";
 
-$spellsToScan = array();
-$buffs = array();
+$categories = array(
+	"potion" => '0.1', // Potions
+	"elixir" => '0.2', // Elixirs
+	"flask" => '0.3', // Flasks
+	"scroll" => '0.4', // Scrolls
+	"food & drink" => '0.5', // Foods & Drinks
+	"other" => '0.8', // Other
+);
+$consumables = array();
 
-echo "Scanning trinket tooltips:\n";
-foreach($trinkets as $itemID) {
+foreach($categories as $cat => $param) {
+	echo "Fetching $cat list:\n";
+	$crawler = new Crawler();
+	$crawler->addContent(fetchPage('/items='.$param));
+	$scripts = $crawler->filter('script[type="text/javascript"]')->extract('_text');
+	$n = 0;
+	foreach($scripts as $script) {
+		if(strpos($script, 'new Listview') !== FALSE) {
+			if(preg_match_all('/"id":(\d+)/', $script, $matches, PREG_SET_ORDER)) {;
+				foreach($matches as $groups) {
+					$consumables[intval($groups[1])] = 'consumables';
+					echo '.';
+					$n++;
+				}
+			} else {
+				echo 'x';
+			}
+		}
+	}
+	echo "\nDone\n$n ${cat}s found\n\n";
+}
+
+$allItems = $trinkets;
+foreach($consumables as $id => $kind) {
+	$allItems[$id] = $kind;
+}
+
+$spellsToScan = array();
+$buffs = array(
+	'consumables' => array(),
+	'trinkets' => array(),
+);
+
+echo "Scanning tooltips:\n";
+foreach($allItems as $itemID => $kind) {
 	$tooltip_js = fetchPage("/item=".$itemID.'&power');
 
 	if(preg_match('/tooltip_enus:\s*\'(.+)\'\s*$/m', $tooltip_js, $matches)) {
@@ -74,7 +114,7 @@ foreach($trinkets as $itemID) {
 			foreach($matches as $match) {
 				list(, $type, $spellID) = $match;
 				if($type == 'Use') {
-					$buffs[$spellID] = $itemID;
+					$buffs[$kind][$spellID] = $itemID;
 					echo '.';
 				} elseif($type == 'Equip') {
 					$spellsToScan[$spellID] = $itemID;
@@ -86,7 +126,9 @@ foreach($trinkets as $itemID) {
 		echo 'x';
 	}
 }
-printf("\nDone\n%d buffs found, %d spells to scan.\n\n", count($buffs), count($spellsToScan));
+
+$allCount = count($buffs['consumables']) + count($buffs['trinkets']);
+printf("\nDone\n%d buffs found, %d spells to scan.\n\n", $allCount, count($spellsToScan));
 
 if(!empty($spellsToScan)) {
 	echo "Scanning spells:\n";
@@ -94,10 +136,11 @@ if(!empty($spellsToScan)) {
 	foreach($spellsToScan as $spellID => $itemID) {
 		$page = fetchPage("/spell=".$spellID);
 		if(preg_match_all('/g_spells\.createIcon\((\d+),/', $page, $matches)) {
+			$kind = $allItems[$itemID];
 			foreach($matches[1] as $buffID) {
 				echo '.';
 				$buffCount++;
-				$buffs[$buffID] = $itemID;
+				$buffs[$kind][$buffID] = $itemID;
 			}
 		} else {
 			echo 'x';
@@ -106,16 +149,25 @@ if(!empty($spellsToScan)) {
 	echo "\nDone\n$buffCount more buffs found.\n\n";
 }
 
-echo "\n".count($buffs)." total buffs.\n\n";
+$allCount = count($buffs['consumables']) + count($buffs['trinkets']);
 
-ksort($buffs);
+echo "\n".$allCount." total buffs.\n\n";
 
-$code = array('--== CUT HERE ==--');
-foreach($buffs as $spell => $item) {
-	$code[] = sprintf("lib[%6d] = %6d", $spell, $item);
+$files = array(
+	'consumables' => 'LibItemBuffs-Consumables-1.0.lua',
+	'trinkets' => 'LibItemBuffs-Trinkets-1.0.lua',
+);
+
+foreach($files as $cat => $filename) {
+	ksort($buffs[$cat]);
+
+	$code = array('--== CUT HERE ==--');
+	foreach($buffs[$cat] as $spell => $item) {
+		$code[] = sprintf("lib[%6d] = %6d", $spell, $item);
+	}
+
+	$lib = file_get_contents("../${filename}");
+	$pos = strpos($lib, '--== CUT HERE ==--');
+
+	file_put_contents("../${filename}", substr($lib, 0, $pos).join("\n", $code)."\n");
 }
-
-$lib = file_get_contents("../LibItemBuffs-Trinkets-1.0.lua");
-$pos = strpos($lib, '--== CUT HERE ==--');
-
-file_put_contents("../LibItemBuffs-Trinkets-1.0.lua", substr($lib, 0, $pos).join("\n", $code)."\n");
