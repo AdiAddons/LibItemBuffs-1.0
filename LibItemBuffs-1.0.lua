@@ -23,6 +23,7 @@ local lib = LibStub:NewLibrary(MAJOR, MINOR)
 if not lib then return end
 
 lib.trinkets = LibStub("LibItemBuffs-Trinkets-1.0")
+lib.consumables = LibStub("LibItemBuffs-Consumables-1.0")
 
 lib.enchantments = {
 
@@ -73,16 +74,16 @@ lib.slots = {
 	INVSLOT_TRINKET2,
 }
 
---- Tell whether a spell is a item buff or not.
+--- Tell whether a spell is an item buff or not.
 -- @param spellID number Spell identifier.
 -- @return boolean True if the spell is a buff given by an item.
 function lib:IsItemBuff(spellID)
-	return spellID and (lib.enchantments[spellID] or lib.trinkets[spellID]) and true
+	return spellID and (lib.enchantments[spellID] or lib.trinkets[spellID] or lib.consumables[spellID]) and true
 end
 
 --- Return the inventory slot containing the item that can apply the given buff.
 -- @param spellID number Spell identifier.
--- @return number The inventory slot of matching item (see INVSLOT_* values).
+-- @return number The inventory slot of matching item (see INVSLOT_* values), returns nil for items in bags.
 function lib:GetBuffInventorySlot(spellID)
 	if not spellID then return end
 
@@ -106,7 +107,7 @@ end
 function lib:GetBuffItemID(spellID)
 	if not spellID then return end
 
-	local itemID = lib.trinkets[spellID]
+	local itemID = lib.trinkets[spellID] or lib.consumables[spellID]
 	if itemID then
 		return itemID
 	end
