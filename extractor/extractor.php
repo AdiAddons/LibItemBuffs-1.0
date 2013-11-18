@@ -39,14 +39,24 @@ function fetchPage($path) {
 	}
 }
 
-$npcIds = array();
+function fetchTooltip($uri) {
+	$js = fetchPage($uri.'&power');
+	$escapedJs = str_replace('\\\'', '%QUOTE%', $js);
+	$values = array();
+	if(preg_match_all('/(\w+):\s*\'(.+)\'/', $escapedJs, $matches, PREG_SET_ORDER)) {
+		foreach($matches as $groups) {
+			$values[$groups[1]] = str_replace('%QUOTE%', '\'', $groups[2]);
+		}
+	}
+	return $values;
+}
+
 
 echo "Fetching trinket list:\n";
 $crawler = new Crawler();
 $crawler->addContent(fetchPage('/items=4.-4'));
 $scripts = $crawler->filter('script[type="text/javascript"]')->extract('_text');
 $trinkets = array();
-$n = 0;
 foreach($scripts as $script) {
 	if(strpos($script, 'new Listview') !== FALSE) {
 		if(preg_match_all('/"id":(\d+)/', $script, $matches, PREG_SET_ORDER)) {;
@@ -62,13 +72,13 @@ foreach($scripts as $script) {
 echo "\nDone\n".count($trinkets)." trinkets found\n\n";
 
 $categories = array(
-	"potion" => '0.1', // Potions
-	"elixir" => '0.2', // Elixirs
-	"flask" => '0.3', // Flasks
-	"scroll" => '0.4', // Scrolls
-	"food & drink" => '0.5', // Foods & Drinks
-	"other" => '0.8', // Other
-	"miscellaneous" => '15?filter=cr=161:62;crs=1:1;crv=0:2'
+	"potion" => '0.1',
+	"elixirs" => '0.2',
+	"flask" => '0.3',
+	"scroll" => '0.4',
+	"food & drink" => '0.5',
+	"other item" => '0.8',
+	"miscellaneous item" => '15?filter=cr=161:62;crs=1:1;crv=0:2' // Filter out items without cooldown
 );
 $consumables = array();
 
@@ -99,69 +109,86 @@ foreach($consumables as $id => $kind) {
 	$allItems[$id] = $kind;
 }
 
-$spellsToScan = array();
-$buffs = array(
-	'consumables' => array(),
-	'trinkets' => array(),
-);
+$equipSpells = array();
+$spells = array();
+$itemNames = array();
 
-$names = array();
-
-echo "Scanning tooltips:\n";
+echo "Scanning ".count($allItems)." item tooltips:\n";
 foreach($allItems as $itemID => $kind) {
-	$data_js = fetchPage("/item=".$itemID.'&power');
-
-	@list(, $nameLine, , , $tooltipLine, ) = explode("\n",  str_replace('\\\'', '%%%', $data_js));
-
-	if($nameLine && $tooltipLine) {
-		@list(, $name, ) = explode("'", $nameLine);
-		@list(, $tooltip, ) = explode("'", $tooltipLine);
-
-		$names[$itemID] = str_replace('%%%', "'", $name);
-		$tooltip = str_replace('%%%', "'", $tooltip);
-
-		if(preg_match_all('%(Use|Equip)\s*:\s*<a\s+href="/spell=(\d+)"%i', $tooltip, $matches, PREG_SET_ORDER)) {
+	$attrs = fetchTooltip("/item=$itemID");
+	if(!empty($attrs['name_enus']) && !empty($attrs['tooltip_enus'])) {
+		$name =  $attrs['name_enus'];
+		if(preg_match('/\bCommendation\b/i', $name)) {
+			echo 'x';
+			continue;
+		}
+		$itemNames[$itemID] = $name;
+		if(preg_match_all('%(Use|Equip)\s*:\s*<a\s+href="/spell=(\d+)"%i', $attrs['tooltip_enus'], $matches, PREG_SET_ORDER)) {
 			foreach($matches as $match) {
 				list(, $type, $spellID) = $match;
-				if($type == 'Use') {
-					$buffs[$kind][$spellID] = $itemID;
-					echo '.';
-				} elseif($type == 'Equip') {
-					$spellsToScan[$spellID] = $itemID;
-					echo 'o';
+				$spellID = intval($match[2]);
+				if($match[1] == 'Use') {
+					$spells[$spellID] = $itemID;
+				} else {
+					$equipSpells[$spellID] = $itemID;
 				}
+				echo '.';
 			}
+		} else {
+			echo 'x';
+		}
+	} else {
+		echo 'E';
+	}
+}
+printf("\nDone\nFound %d equip effects and %d use effects.\n\n", count($equipSpells),  count($spells));
+
+echo "Scanning ".count($equipSpells)." equip effects:\n";
+$numBuffs = 0;
+foreach($equipSpells as $spellID => $itemID) {
+	$page = fetchPage("/spell=".$spellID);
+	if(preg_match_all('/g_spells\.createIcon\((\d+),/', $page, $matches)) {
+		$kind = $allItems[$itemID];
+		foreach($matches[1] as $buffID) {
+			echo '.';
+			$spells[$buffID] = $itemID;
+			$numBuffs++;
 		}
 	} else {
 		echo 'x';
 	}
 }
+echo "\nDone\n$numBuffs more spells found.\n\n";
 
-$allCount = count($buffs['consumables']) + count($buffs['trinkets']);
-printf("\nDone\n%d buffs found, %d spells to scan.\n\n", $allCount, count($spellsToScan));
+$buffs = array(
+	'consumables' => array(),
+	'trinkets' => array(),
+);
+$spellNames = array();
 
-if(!empty($spellsToScan)) {
-	echo "Scanning spells:\n";
-	$buffCount = 0;
-	foreach($spellsToScan as $spellID => $itemID) {
-		$page = fetchPage("/spell=".$spellID);
-		if(preg_match_all('/g_spells\.createIcon\((\d+),/', $page, $matches)) {
-			$kind = $allItems[$itemID];
-			foreach($matches[1] as $buffID) {
-				echo '.';
-				$buffCount++;
-				$buffs[$kind][$buffID] = $itemID;
+echo "Scanning ".count($spells)." spell tooltips:\n";
+foreach($spells as $spellID => $itemID) {
+	$tooltip = fetchTooltip("/spell=$spellID");
+	if(!empty($tooltip)) {
+		if(!empty($tooltip['buff_enus'])) {
+			$name = $tooltip['name_enus'];
+			// Ignore food and drink buffs
+			if(!preg_match('/^((Bountiful )?Food|Refresh|(Holiday )?Drink)/i', $name)) {
+				$spellNames[$spellID] = $name;
+				$buffs[$allItems[$itemID]][$spellID] = $itemID;
+			} else {
+				echo '-';
 			}
+			echo '.';
 		} else {
-			echo 'x';
+			echo '-';
 		}
+	} else {
+		echo 'x';
 	}
-	echo "\nDone\n$buffCount more buffs found.\n\n";
 }
-
 $allCount = count($buffs['consumables']) + count($buffs['trinkets']);
-
-echo "\n".$allCount." total buffs.\n\n";
+echo "\n".$allCount." buffs found.\n\n";
 
 $files = array(
 	'consumables' => 'LibItemBuffs-Consumables-1.0.lua',
@@ -177,7 +204,11 @@ foreach(array('trinkets', 'consumables') as $cat) {
 	$code[] = "-- ".ucfirst($cat);
 	ksort($buffs[$cat]);
 	foreach($buffs[$cat] as $spell => $item) {
-		$code[] = sprintf("%s[%6d] = %6d -- %s", $cat, $spell, $item, $names[$item]);
+		$name = $spellNames[$spell];
+		if($itemNames[$item] != $name) {
+			$name .= " (".$itemNames[$item].")";
+		}
+		$code[] = sprintf("%s[%6d] = %6d -- %s", $cat, $spell, $item, $name);
 	}
 }
 $code[] = "";
