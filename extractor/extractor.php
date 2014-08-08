@@ -22,7 +22,7 @@ require_once('vendor/autoload.php');
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\CssSelector\CssSelector;
 
-define('SITE_ROOT', 'http://www.wowhead.com');
+define('SITE_ROOT', 'http://beta.wowhead.com');
 
 function fetchPage($path) {
 	$path = ltrim($path, '/');
