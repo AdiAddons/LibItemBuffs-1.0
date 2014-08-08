@@ -9,6 +9,7 @@
     ],
     "require": {
         "symfony/dom-crawler": "2.4.*@dev",
-        "symfony/css-selector": "2.4.*@dev"
+        "symfony/css-selector": "2.4.*@dev",
+        "guzzlehttp/guzzle": "4.*@dev"
     }
 }

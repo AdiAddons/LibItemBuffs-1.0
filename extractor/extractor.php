@@ -21,6 +21,9 @@ require_once('vendor/autoload.php');
 
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\CssSelector\CssSelector;
+use GuzzleHttp\Client;
+
+$client = new Client(['defaults' => ['exceptions' => true]]);
 
 define('SITE_ROOT', 'http://beta.wowhead.com');
 define('CLIENT_LOCALE', 'beta');
@@ -30,14 +33,13 @@ function fetchPage($path) {
 	$cacheFile = "cache/".preg_replace('/\W/', '_', $path);
 	if(file_exists($cacheFile)) {
 		return file_get_contents($cacheFile);
-	} else {
-		$content = file_get_contents(SITE_ROOT.'/'.$path);
-		if($content !== FALSE) {
-			if(!is_dir("cache")) mkdir("cache");
-			file_put_contents($cacheFile, $content);
-		}
-		return $content;
 	}
+	global $client;
+	$response = $client->get(SITE_ROOT.'/'.$path);
+	$content = $response->getBody();
+	if(!is_dir("cache")) mkdir("cache");
+	file_put_contents($cacheFile, $content);
+	return $content;
 }
 
 function fetchTooltip($uri) {
