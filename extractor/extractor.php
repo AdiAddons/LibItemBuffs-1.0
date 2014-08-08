@@ -23,6 +23,7 @@ use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\CssSelector\CssSelector;
 
 define('SITE_ROOT', 'http://beta.wowhead.com');
+define('CLIENT_LOCALE', 'beta');
 
 function fetchPage($path) {
 	$path = ltrim($path, '/');
@@ -116,14 +117,14 @@ $itemNames = array();
 echo "Scanning ".count($allItems)." item tooltips:\n";
 foreach($allItems as $itemID => $kind) {
 	$attrs = fetchTooltip("/item=$itemID");
-	if(!empty($attrs['name_enus']) && !empty($attrs['tooltip_enus'])) {
-		$name =  $attrs['name_enus'];
+	if(!empty($attrs['name_'.CLIENT_LOCALE]) && !empty($attrs['tooltip_'.CLIENT_LOCALE])) {
+		$name =  $attrs['name_'.CLIENT_LOCALE];
 		if(preg_match('/\bCommendation\b/i', $name)) {
 			echo 'x';
 			continue;
 		}
 		$itemNames[$itemID] = $name;
-		if(preg_match_all('%(Use|Equip)\s*:\s*<a\s+href="/spell=(\d+)"%i', $attrs['tooltip_enus'], $matches, PREG_SET_ORDER)) {
+		if(preg_match_all('%(Use|Equip)\s*:\s*<a\s+href="/spell=(\d+)"%i', $attrs['tooltip_'.CLIENT_LOCALE], $matches, PREG_SET_ORDER)) {
 			foreach($matches as $match) {
 				list(, $type, $spellID) = $match;
 				$spellID = intval($match[2]);
@@ -170,8 +171,8 @@ echo "Scanning ".count($spells)." spell tooltips:\n";
 foreach($spells as $spellID => $itemID) {
 	$tooltip = fetchTooltip("/spell=$spellID");
 	if(!empty($tooltip)) {
-		if(!empty($tooltip['buff_enus'])) {
-			$name = $tooltip['name_enus'];
+		if(!empty($tooltip['buff_'.CLIENT_LOCALE])) {
+			$name = $tooltip['name_'.CLIENT_LOCALE];
 			// Ignore food and drink buffs
 			if(!preg_match('/^((Bountiful )?Food|Refresh|(Holiday )?Drink)/i', $name)) {
 				$spellNames[$spellID] = $name;
