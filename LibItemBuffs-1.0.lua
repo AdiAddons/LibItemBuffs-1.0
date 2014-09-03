@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with LibItemBuffs-1.0.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-local MAJOR, MINOR = "LibItemBuffs-1.0", 5
+local MAJOR, MINOR = "LibItemBuffs-1.0", 6
 local lib = LibStub:NewLibrary(MAJOR, MINOR)
 if not lib then return end
 
@@ -115,7 +115,11 @@ function lib:GetBuffItemID(spellID)
 
 	local itemID = lib.trinkets[spellID] or lib.consumables[spellID]
 	if itemID then
-		return itemID
+		if type(itemID) == "table" then
+			return unpack(itemID)
+		else
+			return itemID
+		end
 	end
 
 	local invSlot = lib.enchantments[spellID]
@@ -144,18 +148,28 @@ function lib:GetItemBuffs(itemID)
 	end
 end
 
+local function AddReverseEntry(reverse, spellID, itemID)
+	if type(itemID) == "table" then
+		for i, value in ipairs(itemID) do
+			AddReverseEntry(reverse, spellID, value)
+		end
+		return
+	end
+	local previous = reverse[itemID]
+	if not previous then
+		reverse[itemID] = spellID
+	elseif type(previous) == "table" then
+		tinsert(previous, spellID)
+	else
+		reverse[itemID] = { previous, spellID }
+	end
+end
+
 -- Add the content of the given table into the reverse table.
 -- Create a table when an item can provide several buffs.
 local function FeedReverseTable(reverse, data)
 	for spellID, itemID in pairs(data) do
-		local previous = reverse[itemID]
-		if not previous then
-			reverse[itemID] = spellID
-		elseif type(previous) == "table" then
-			tinsert(previous, spellID)
-		else
-			reverse[itemID] = { previous, spellID }
-		end
+		AddReverseEntry(reverse, spellID, itemID)
 	end
 end
 
@@ -164,7 +178,7 @@ function lib:__UpgradeDatabase(version, trinkets, consumables)
 	if version < lib.__databaseVersion then return end
 
 	-- Upgrade the tables
-	lib.__databaseVersion, lib.trinkets, lib.consumables  = version, trinkets, consumables
+	lib.__databaseVersion, lib.trinkets, lib.consumables = version, trinkets, consumables
 
 	-- Rebuild the reverse database
 	wipe(lib.__itemBuffs)
