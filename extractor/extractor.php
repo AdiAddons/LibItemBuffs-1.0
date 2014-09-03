@@ -148,7 +148,6 @@ $numBuffs = 0;
 foreach($equipSpells as $spellID => $itemIDs) {
 	$page = fetchPage("/spell=".$spellID);
 	if(preg_match_all('/g_spells\.createIcon\((\d+),/', $page, $matches)) {
-		$kind = $allItems[$itemID];
 		foreach($matches[1] as $buffID) {
 			echo '.';
 			$spells[$buffID] = $itemIDs;
@@ -190,11 +189,6 @@ foreach($spells as $spellID => $itemIDs) {
 }
 $allCount = count($buffs['consumables']) + count($buffs['trinkets']);
 echo "\n".$allCount." buffs found.\n\n";
-
-$files = array(
-	'consumables' => 'LibItemBuffs-Consumables-1.0.lua',
-	'trinkets' => 'LibItemBuffs-Trinkets-1.0.lua',
-);
 
 $code = array(
 	'--== CUT HERE ==--',
