@@ -128,9 +128,9 @@ foreach($allItems as $itemID => $kind) {
 				list(, $type, $spellID) = $match;
 				$spellID = intval($match[2]);
 				if($match[1] == 'Use') {
-					$spells[$spellID] = $itemID;
+					$spells[$spellID][] = $itemID;
 				} else {
-					$equipSpells[$spellID] = $itemID;
+					$equipSpells[$spellID][] = $itemID;
 				}
 				echo '.';
 			}
@@ -145,13 +145,13 @@ printf("\nDone\nFound %d equip effects and %d use effects.\n\n", count($equipSpe
 
 echo "Scanning ".count($equipSpells)." equip effects:\n";
 $numBuffs = 0;
-foreach($equipSpells as $spellID => $itemID) {
+foreach($equipSpells as $spellID => $itemIDs) {
 	$page = fetchPage("/spell=".$spellID);
 	if(preg_match_all('/g_spells\.createIcon\((\d+),/', $page, $matches)) {
 		$kind = $allItems[$itemID];
 		foreach($matches[1] as $buffID) {
 			echo '.';
-			$spells[$buffID] = $itemID;
+			$spells[$buffID] = $itemIDs;
 			$numBuffs++;
 		}
 	} else {
@@ -167,7 +167,7 @@ $buffs = array(
 $spellNames = array();
 
 echo "Scanning ".count($spells)." spell tooltips:\n";
-foreach($spells as $spellID => $itemID) {
+foreach($spells as $spellID => $itemIDs) {
 	$tooltip = fetchTooltip("/spell=$spellID");
 	if(!empty($tooltip)) {
 		if(!empty($tooltip['buff_enus'])) {
@@ -175,7 +175,8 @@ foreach($spells as $spellID => $itemID) {
 			// Ignore food and drink buffs
 			if(!preg_match('/^((Bountiful )?Food|Refresh|(Holiday )?Drink)/i', $name)) {
 				$spellNames[$spellID] = $name;
-				$buffs[$allItems[$itemID]][$spellID] = $itemID;
+				$kind = $allItems[$itemIDs[0]];
+				$buffs[$kind][$spellID] = $itemIDs;
 			} else {
 				echo '-';
 			}
@@ -203,12 +204,21 @@ $code = array(
 foreach(array('trinkets', 'consumables') as $cat) {
 	$code[] = "-- ".ucfirst($cat);
 	ksort($buffs[$cat]);
-	foreach($buffs[$cat] as $spell => $item) {
-		$name = $spellNames[$spell];
-		if($itemNames[$item] != $name) {
-			$name .= " (".$itemNames[$item].")";
+	foreach($buffs[$cat] as $spell => $items) {
+		if(count($items) == 1) {
+			$item = $items[0];
+			$name = $spellNames[$spell];
+			if($itemNames[$item] != $name) {
+				$name .= " (".$itemNames[$item].")";
+			}
+			$code[] = sprintf("%s[%6d] = %6d -- %s", $cat, $spell, $item, $name);
+		} else {
+			$code[] = sprintf("%s[%6d] = { -- %s", $cat, $spell, $spellNames[$spell]);
+			foreach($items as $item) {
+				$code[] = sprintf("\t%6d, -- %s", $item, $itemNames[$item]);
+			}
+			$code[] = '}';
 		}
-		$code[] = sprintf("%s[%6d] = %6d -- %s", $cat, $spell, $item, $name);
 	}
 }
 $code[] = "";
