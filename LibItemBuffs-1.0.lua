@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with LibItemBuffs-1.0.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-local MAJOR, MINOR = "LibItemBuffs-1.0", 6
+local MAJOR, MINOR = "LibItemBuffs-1.0", 7
 local lib = LibStub:NewLibrary(MAJOR, MINOR)
 if not lib then return end
 
@@ -99,9 +99,23 @@ function lib:GetBuffInventorySlot(spellID)
 
 	local itemID = lib.trinkets[spellID]
 	if not itemID then return end
-	if GetInventoryItemID("player", INVSLOT_TRINKET2) == itemID then
+
+	local trinket1 = GetInventoryItemID("player", INVSLOT_TRINKET1)
+	local trinket2 = GetInventoryItemID("player", INVSLOT_TRINKET2)
+	if type(itemID) == "table" then
+		for i, realID in ipairs(itemID) do
+			if realID == trinket1 then
+				return INVSLOT_TRINKET1
+			end
+			if realID == trinket2 then
+				return INVSLOT_TRINKET2
+			end
+		end
+	end
+	if itemID == trinket1 then
 		return INVSLOT_TRINKET1
-	elseif GetInventoryItemID("player", INVSLOT_TRINKET2) == itemID then
+	end
+	if itemID == trinket2 then
 		return INVSLOT_TRINKET2
 	end
 end
@@ -109,17 +123,15 @@ end
 --- Return the identifier of the item that can apply the given buff.
 -- @name LibItemBuffs:GetBuffItemID
 -- @param spellID number Spell identifier.
--- @return number The item identifier or nil.
+-- @return number The item identifier(s) or nil.
 function lib:GetBuffItemID(spellID)
 	if not spellID then return end
 
 	local itemID = lib.trinkets[spellID] or lib.consumables[spellID]
-	if itemID then
-		if type(itemID) == "table" then
-			return unpack(itemID)
-		else
-			return itemID
-		end
+	if type(itemID) == "table" then
+		return unpack(itemID)
+	elseif itemID then
+		return itemID
 	end
 
 	local invSlot = lib.enchantments[spellID]
@@ -133,7 +145,6 @@ function lib:GetInventorySlotList()
 	return lib.slots
 end
 
-
 --- Return the buffs provided by then given item, excluding any enchant.
 -- @name LibItemBuffs:GetItemBuffs
 -- @param itemID number Item identifier.
@@ -143,9 +154,8 @@ function lib:GetItemBuffs(itemID)
 	local buffs = lib.__itemBuffs[itemID]
 	if type(buffs) == "table" then
 		return unpack(buffs)
-	elseif type(buffs) == "number" then
-		return buffs
 	end
+	return buffs
 end
 
 local function AddReverseEntry(reverse, spellID, itemID)
@@ -160,9 +170,8 @@ local function AddReverseEntry(reverse, spellID, itemID)
 		reverse[itemID] = spellID
 	elseif type(previous) == "table" then
 		tinsert(previous, spellID)
-	else
-		reverse[itemID] = { previous, spellID }
 	end
+	reverse[itemID] = { previous, spellID }
 end
 
 -- Add the content of the given table into the reverse table.
@@ -175,7 +184,7 @@ end
 
 -- Upgrade the trinket and consumables database if needed
 function lib:__UpgradeDatabase(version, trinkets, consumables)
-	if version < lib.__databaseVersion then return end
+	if version <= lib.__databaseVersion then return end
 
 	-- Upgrade the tables
 	lib.__databaseVersion, lib.trinkets, lib.consumables = version, trinkets, consumables
