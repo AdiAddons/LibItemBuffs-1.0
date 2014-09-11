@@ -18,9 +18,13 @@ You should have received a copy of the GNU General Public License
 along with LibItemBuffs-1.0.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-local MAJOR, MINOR = "LibItemBuffs-1.0", 7
-local lib = LibStub:NewLibrary(MAJOR, MINOR)
-if not lib then return end
+local MAJOR, MINOR, lib = "LibItemBuffs-1.0", 7
+if LibStub then
+	lib = LibStub:NewLibrary(MAJOR, MINOR)
+	if not lib then return end
+else
+	lib = {}
+end
 
 lib.__itemBuffs = lib.__itemBuffs or {}
 lib.__databaseVersion = lib.__databaseVersion or 0
@@ -35,7 +39,7 @@ lib.slots = lib.slots or {}
 -- @param spellID number Spell identifier.
 -- @return boolean True if the spell is a buff given by an item.
 function lib:IsItemBuff(spellID)
-	return spellID and (lib.enchantments[spellID] or lib.trinkets[spellID] or lib.consumables[spellID]) and true
+	return not not (spellID and (lib.enchantments[spellID] or lib.trinkets[spellID] or lib.consumables[spellID]))
 end
 
 --- Return the inventory slot containing the item that can apply the given buff.
@@ -155,3 +159,5 @@ function lib:__UpgradeDatabase(version, trinkets, consumables, enchantments)
 		tinsert(lib.slots, slot)
 	end
 end
+
+return lib
