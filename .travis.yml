@@ -1,7 +1,7 @@
 language: erlang
 
 env:
-  - LUA="lua5.1"
+  - LUA="lua5.1" LUAC="luac5.1"
 
 branches:
   only:
@@ -10,9 +10,11 @@ branches:
 install:
   - sudo apt-get install $LUA luarocks
   - sudo luarocks install luaunit
+  - sudo luarocks install mockagne
   - sudo luarocks install luabitop
 
 script:
+  - $LUAC -p $(find . -name "*.lua")
   - cd tests
   - $LUA tests.lua
 
