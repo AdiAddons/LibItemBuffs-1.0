@@ -125,8 +125,13 @@ local function FeedReverseTable(reverse, data)
 	end
 end
 
+function lib:GetDatabaseVersion()
+	return floor(lib.__databaseVersion/10)
+end
+
 -- Upgrade the trinket and consumables database if needed
 function lib:__UpgradeDatabase(version, trinkets, consumables, enchantments)
+	version = version*10 + MINOR -- Factor in the library revision
 	if version <= lib.__databaseVersion then return end
 
 	-- Upgrade the tables
