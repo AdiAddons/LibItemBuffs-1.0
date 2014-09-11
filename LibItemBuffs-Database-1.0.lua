@@ -1,6 +1,6 @@
 --[[
 LibItemBuffs-1.0 - buff-to-item database.
-(c) 2013 Adirelle (adirelle@gmail.com)
+(c) 2013-2014 Adirelle (adirelle@gmail.com)
 
 This file is part of LibItemBuffs-1.0.
 
