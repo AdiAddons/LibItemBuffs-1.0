@@ -23,11 +23,16 @@ local LuaUnit = require('luaunit')
 local mockagne = require('mockagne')
 local wowmock = require('wowmock')
 
+local when, verify = mockagne.when, mockagne.verify
+
 local lib, G
+
+LibStub = false
+INVSLOT_TRINKET1 = 13
+INVSLOT_TRINKET2 = 14
 
 local function setup()
 	G = mockagne:getMock()
-	G.LibStub = false
 	lib = wowmock("../LibItemBuffs-1.0.lua", G)
 end
 
@@ -75,6 +80,124 @@ end
 function testIsItemBuff:test_unknown()
 	lib:__UpgradeDatabase(10, {}, {}, {})
 	assertEquals(lib:IsItemBuff(20), false)
+end
+
+testGetBuffInventorySlot = { setup = setup, dataprovider = dataprovider }
+
+function testGetBuffInventorySlot:test_no_spell()
+	assertEquals(lib:GetBuffInventorySlot(), nil)
+end
+
+function testGetBuffInventorySlot:test_enchantments()
+	lib:__UpgradeDatabase(10, {}, {}, {[10] = "a"})
+	assertEquals(lib:GetBuffInventorySlot(10), "a")
+end
+
+function testGetBuffInventorySlot:test_trinket1()
+	when(G.GetInventoryItemID("player", INVSLOT_TRINKET1)).thenAnswer(500)
+	when(G.GetInventoryItemID("player", INVSLOT_TRINKET2)).thenAnswer(200)
+
+	lib:__UpgradeDatabase(10, {[10] = 500}, {}, {})
+	assertEquals(lib:GetBuffInventorySlot(10), INVSLOT_TRINKET1)
+end
+
+function testGetBuffInventorySlot:test_trinket2()
+	when(G.GetInventoryItemID("player", INVSLOT_TRINKET1)).thenAnswer(200)
+	when(G.GetInventoryItemID("player", INVSLOT_TRINKET2)).thenAnswer(500)
+
+	lib:__UpgradeDatabase(10, {[10] = 500}, {}, {})
+	assertEquals(lib:GetBuffInventorySlot(10), INVSLOT_TRINKET2)
+end
+
+function testGetBuffInventorySlot:test_multiple_trinkets()
+	when(G.GetInventoryItemID("player", INVSLOT_TRINKET1)).thenAnswer(500)
+	when(G.GetInventoryItemID("player", INVSLOT_TRINKET2)).thenAnswer(200)
+
+	lib:__UpgradeDatabase(10, {[10] = 500, [12] = 500}, {}, {})
+	assertEquals(lib:GetBuffInventorySlot(10), INVSLOT_TRINKET1)
+	assertEquals(lib:GetBuffInventorySlot(12), INVSLOT_TRINKET1)
+end
+
+testGetBuffItemID = { setup = setup, dataprovider = dataprovider }
+
+function testGetBuffItemID:test_no_spell()
+	assertEquals(lib:GetBuffItemID(), nil)
+end
+
+function testGetBuffItemID:test_trinket()
+	lib:__UpgradeDatabase(10, {[10] = 500}, {}, {})
+	assertEquals(lib:GetBuffItemID(10), 500)
+end
+
+function testGetBuffItemID:test_consumable()
+	lib:__UpgradeDatabase(10, {}, {[10] = 500}, {})
+	assertEquals(lib:GetBuffItemID(10), 500)
+end
+
+function testGetBuffItemID:test_enchantement()
+	when(G.GetInventoryItemID("player", INVSLOT_TRINKET1)).thenAnswer(500)
+
+	lib:__UpgradeDatabase(10, {}, {}, {[10] = INVSLOT_TRINKET1})
+	assertEquals(lib:GetBuffItemID(10), 500)
+end
+
+function testGetBuffItemID:test_multiple_trinkets()
+	lib:__UpgradeDatabase(10, {[10] = { 200, 500 }}, {}, {})
+	assertEquals({lib:GetBuffItemID(10)}, {200, 500})
+end
+
+function testGetBuffItemID:test_multiple_consumables()
+	lib:__UpgradeDatabase(10, {}, {[10] = { 200, 500 }}, {})
+	assertEquals({lib:GetBuffItemID(10)}, {200, 500})
+end
+
+testGetInventorySlotList = { setup = setup, dataprovider = dataprovider }
+
+function testGetInventorySlotList:test_two()
+	lib:__UpgradeDatabase(10, {}, {}, {[10] = INVSLOT_TRINKET1, [12] = INVSLOT_TRINKET2})
+	assertEquals(lib:GetInventorySlotList(10), {INVSLOT_TRINKET1, INVSLOT_TRINKET2})
+end
+
+function testGetInventorySlotList:test_duplicate()
+	lib:__UpgradeDatabase(10, {}, {}, {[10] = INVSLOT_TRINKET1, [12] = INVSLOT_TRINKET1})
+	assertEquals(lib:GetInventorySlotList(10), {INVSLOT_TRINKET1})
+end
+
+testGetItemBuffs = { setup = setup }
+
+function testGetItemBuffs:test_on_spell()
+	assertEquals(lib:GetItemBuffs(), nil)
+end
+
+function testGetItemBuffs:test_trinkets()
+	lib:__UpgradeDatabase(10, {[10] = 500}, {}, {})
+	assertEquals(lib:GetItemBuffs(500), 10)
+end
+
+function testGetItemBuffs:test_consumables()
+	lib:__UpgradeDatabase(10, {}, {[10] = 500}, {})
+	assertEquals(lib:GetItemBuffs(500), 10)
+end
+
+function testGetItemBuffs:test_multiple_trinkets()
+	lib:__UpgradeDatabase(10, {}, {[10] = 500, [12] = 500}, {})
+	assertEquals({lib:GetItemBuffs(500)}, {10, 12})
+end
+
+function testGetItemBuffs:test_multiple_consumables()
+	lib:__UpgradeDatabase(10, {}, {[10] = 500, [12] = 500}, {})
+	assertEquals({lib:GetItemBuffs(500)}, {10, 12})
+end
+
+function testGetItemBuffs:test_multiple_mixed()
+	lib:__UpgradeDatabase(10, {[10] = 500}, {[12] = 500}, {})
+	assertEquals({lib:GetItemBuffs(500)}, {10, 12})
+end
+
+function testGetItemBuffs:test_complex()
+	lib:__UpgradeDatabase(10, {[10] = {500, 502}}, {[12] = 500, [14] = 502}, {})
+	assertEquals({lib:GetItemBuffs(500)}, {10, 12})
+	assertEquals({lib:GetItemBuffs(502)}, {10, 14})
 end
 
 os.exit(LuaUnit:Run())

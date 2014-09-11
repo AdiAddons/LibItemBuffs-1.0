@@ -127,8 +127,9 @@ local function AddReverseEntry(reverse, spellID, itemID)
 		reverse[itemID] = spellID
 	elseif type(previous) == "table" then
 		tinsert(previous, spellID)
+	else
+		reverse[itemID] = { previous, spellID }
 	end
-	reverse[itemID] = { previous, spellID }
 end
 
 -- Add the content of the given table into the reverse table.
