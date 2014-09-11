@@ -27,6 +27,42 @@ local consumables = {
 	[79640] = 75525,
 }
 
+local enchantments = {
+	-- MoP enchantments
+
+	-- Weapon (we assign it to the main hand weapon though it could come from the off-hand)
+	[109085] = INVSLOT_MAINHAND, -- Engineering: Lord Blastington's Scope of Doom
+	[118334] = INVSLOT_MAINHAND, -- Enchanting: Dancing Steel (agility)
+	[118335] = INVSLOT_MAINHAND, -- Enchanting: Dancing Steel (strength)
+	[104993] = INVSLOT_MAINHAND, -- Enchanting: Jade Spirit
+	[116660] = INVSLOT_MAINHAND, -- Enchanting: River's Song -- NEED CONFIRMATION
+	[116631] = INVSLOT_MAINHAND, -- Enchanting: Colossus
+	[104423] = INVSLOT_MAINHAND, -- Enchanting: Windsong (haste)
+	[104510] = INVSLOT_MAINHAND, -- Enchanting: Windsong (mastery)
+	[104509] = INVSLOT_MAINHAND, -- Enchanting: Windsong (critical strike)
+
+	-- Glove
+	[108788] = INVSLOT_HAND, -- Engineering: Phase Fingers -- NEED CONFIRMATION
+	[ 96228] = INVSLOT_HAND, -- Engineering: Synapse Springs, Mark II (agility)
+	[ 96229] = INVSLOT_HAND, -- Engineering: Synapse Springs, Mark II (strength)
+	[ 96230] = INVSLOT_HAND, -- Engineering: Synapse Springs, Mark II (intellect)
+
+	-- Belt
+	[131459] = INVSLOT_WAIST, -- Engineering: Watergliding Jets
+
+	-- Cloak
+	[126389] = INVSLOT_BACK, -- Engineering: Goblin Glider -- NEED CONFIRMATION
+	[125488] = INVSLOT_BACK, -- Tailoring: Darkglow Embroidery, rank 3 -- NEED CONFIRMATION
+	[125487] = INVSLOT_BACK, -- Tailoring: Lightweave Embroidery, rank 3
+	[125489] = INVSLOT_BACK, -- Tailoring: Swordguard  Embroidery, rank 3 -- NEED CONFIRMATION
+
+	-- Legendary meta gems
+	[137593] = INVSLOT_HEAD, -- Indomitable Primal Diamond
+	[137288] = INVSLOT_HEAD, -- Courageous Primal Diamond
+	[137596] = INVSLOT_HEAD, -- Capacitive Primal Diamond
+	[137590] = INVSLOT_HEAD, -- Sinister Primal Diamond
+}
+
 -- Anything below this line is generated with the extractor. Editing it is useless.
 --== CUT HERE ==--
 version = 20140903175145
@@ -2020,4 +2056,4 @@ consumables[148623] = 104328 -- Cauterizing Core
 consumables[148626] = 104329 -- Furious Ashhide Mushan (Ash-Covered Horn)
 consumables[148773] = 104346 -- Golden Glider
 
-LibStub('LibItemBuffs-1.0'):__UpgradeDatabase(version, trinkets, consumables)
+LibStub('LibItemBuffs-1.0'):__UpgradeDatabase(version, trinkets, consumables, enchantments)

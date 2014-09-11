@@ -216,7 +216,7 @@ foreach(array('trinkets', 'consumables') as $cat) {
 	}
 }
 $code[] = "";
-$code[] = "LibStub('LibItemBuffs-1.0'):__UpgradeDatabase(version, trinkets, consumables)";
+$code[] = "LibStub('LibItemBuffs-1.0'):__UpgradeDatabase(version, trinkets, consumables, enchantments)";
 
 $filename = "LibItemBuffs-Database-1.0.lua";
 $lib = file_get_contents("../$filename");
