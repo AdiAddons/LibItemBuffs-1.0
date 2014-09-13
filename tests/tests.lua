@@ -36,18 +36,7 @@ local function setup()
 	lib = wowmock("../LibItemBuffs-1.0.lua", G)
 end
 
-local function dataprovider(self, name, ...)
-	local method = self[name]
-	self[name] = nil
-	for i = 1, select('#', ...) do
-		local args = select(i, ...)
-		self[name.."_"..i] = function()
-			return method(self, unpack(args))
-		end
-	end
-end
-
-testUpgradeDatabase = { setup = setup, dataprovider = dataprovider }
+testUpgradeDatabase = { setup = setup }
 
 function testUpgradeDatabase:test_update()
 	lib:__UpgradeDatabase(10, {}, {}, {})
@@ -60,7 +49,7 @@ function testUpgradeDatabase:test_no_update()
 	assertEquals(lib:GetDatabaseVersion(), 10)
 end
 
-testIsItemBuff = { setup = setup, dataprovider = dataprovider }
+testIsItemBuff = { setup = setup }
 
 function testIsItemBuff:test_trinkets()
 	lib:__UpgradeDatabase(10, {[20] = 10}, {}, {})
@@ -82,7 +71,7 @@ function testIsItemBuff:test_unknown()
 	assertEquals(lib:IsItemBuff(20), false)
 end
 
-testGetBuffInventorySlot = { setup = setup, dataprovider = dataprovider }
+testGetBuffInventorySlot = { setup = setup }
 
 function testGetBuffInventorySlot:test_no_spell()
 	assertEquals(lib:GetBuffInventorySlot(), nil)
@@ -118,7 +107,7 @@ function testGetBuffInventorySlot:test_multiple_trinkets()
 	assertEquals(lib:GetBuffInventorySlot(12), INVSLOT_TRINKET1)
 end
 
-testGetBuffItemID = { setup = setup, dataprovider = dataprovider }
+testGetBuffItemID = { setup = setup }
 
 function testGetBuffItemID:test_no_spell()
 	assertEquals(lib:GetBuffItemID(), nil)
@@ -151,7 +140,7 @@ function testGetBuffItemID:test_multiple_consumables()
 	assertEquals({lib:GetBuffItemID(10)}, {200, 500})
 end
 
-testGetInventorySlotList = { setup = setup, dataprovider = dataprovider }
+testGetInventorySlotList = { setup = setup }
 
 function testGetInventorySlotList:test_two()
 	lib:__UpgradeDatabase(10, {}, {}, {[10] = INVSLOT_TRINKET1, [12] = INVSLOT_TRINKET2})
