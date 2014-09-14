@@ -220,4 +220,23 @@ function testGetItemBuffs:test_complex()
 	assertEquals({lib:GetItemBuffs(502)}, {10, 14})
 end
 
+function testGetItemBuffs:test_GH_37()
+	lib:__UpgradeDatabase(10, {
+		[146046] = { -- Expanded Mind
+			105422, -- Purified Bindings of Immerseus
+			104426, -- Purified Bindings of Immerseus
+			105173, -- Purified Bindings of Immerseus
+			102293, -- Purified Bindings of Immerseus
+			104675, -- Purified Bindings of Immerseus
+			104924, -- Purified Bindings of Immerseus
+		}
+	}, {}, {})
+	assertEquals(lib:GetItemBuffs(105422), 146046)
+	assertEquals(lib:GetItemBuffs(104426), 146046)
+	assertEquals(lib:GetItemBuffs(105173), 146046)
+	assertEquals(lib:GetItemBuffs(102293), 146046)
+	assertEquals(lib:GetItemBuffs(104675), 146046)
+	assertEquals(lib:GetItemBuffs(104924), 146046)
+end
+
 os.exit(LuaUnit:Run())
