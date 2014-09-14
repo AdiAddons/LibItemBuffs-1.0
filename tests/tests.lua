@@ -25,11 +25,12 @@ local wowmock = require('wowmock')
 
 local when, verify = mockagne.when, mockagne.verify
 
-local lib, G
+local lib
+
+INVSLOT_TRINKET1 = "INVSLOT_TRINKET1"
+INVSLOT_TRINKET2 = "INVSLOT_TRINKET2"
 
 LibStub = false
-INVSLOT_TRINKET1 = 13
-INVSLOT_TRINKET2 = 14
 
 local function setup()
 	G = mockagne:getMock()
@@ -38,12 +39,18 @@ end
 
 testUpgradeDatabase = { setup = setup }
 
-function testUpgradeDatabase:test_update()
+function testUpgradeDatabase:test_first_data()
 	lib:__UpgradeDatabase(10, {}, {}, {})
 	assertEquals(lib:GetDatabaseVersion(), 10)
 end
 
-function testUpgradeDatabase:test_no_update()
+function testUpgradeDatabase:test_newer_data()
+	lib:__UpgradeDatabase(10, {}, {}, {})
+	lib:__UpgradeDatabase(15, {}, {}, {})
+	assertEquals(lib:GetDatabaseVersion(), 15)
+end
+
+function testUpgradeDatabase:test_older_data()
 	lib:__UpgradeDatabase(10, {}, {}, {})
 	lib:__UpgradeDatabase(5, {}, {}, {})
 	assertEquals(lib:GetDatabaseVersion(), 10)
@@ -78,8 +85,8 @@ function testGetBuffInventorySlot:test_no_spell()
 end
 
 function testGetBuffInventorySlot:test_enchantments()
-	lib:__UpgradeDatabase(10, {}, {}, {[10] = "a"})
-	assertEquals(lib:GetBuffInventorySlot(10), "a")
+	lib:__UpgradeDatabase(10, {}, {}, {[10] = INVSLOT_TRINKET1})
+	assertEquals(lib:GetBuffInventorySlot(10), INVSLOT_TRINKET1)
 end
 
 function testGetBuffInventorySlot:test_trinket1()
@@ -87,7 +94,13 @@ function testGetBuffInventorySlot:test_trinket1()
 	when(G.GetInventoryItemID("player", INVSLOT_TRINKET2)).thenAnswer(200)
 
 	lib:__UpgradeDatabase(10, {[10] = 500}, {}, {})
-	assertEquals(lib:GetBuffInventorySlot(10), INVSLOT_TRINKET1)
+
+	local slot = lib:GetBuffInventorySlot(10)
+
+	verify(G.GetInventoryItemID("player", INVSLOT_TRINKET1))
+	verify(G.GetInventoryItemID("player", INVSLOT_TRINKET2))
+
+	assertEquals(slot, INVSLOT_TRINKET1)
 end
 
 function testGetBuffInventorySlot:test_trinket2()
@@ -95,7 +108,13 @@ function testGetBuffInventorySlot:test_trinket2()
 	when(G.GetInventoryItemID("player", INVSLOT_TRINKET2)).thenAnswer(500)
 
 	lib:__UpgradeDatabase(10, {[10] = 500}, {}, {})
-	assertEquals(lib:GetBuffInventorySlot(10), INVSLOT_TRINKET2)
+
+	local slot = lib:GetBuffInventorySlot(10)
+
+	verify(G.GetInventoryItemID("player", INVSLOT_TRINKET1))
+	verify(G.GetInventoryItemID("player", INVSLOT_TRINKET2))
+
+	assertEquals(slot, INVSLOT_TRINKET2)
 end
 
 function testGetBuffInventorySlot:test_multiple_trinkets()
@@ -103,8 +122,15 @@ function testGetBuffInventorySlot:test_multiple_trinkets()
 	when(G.GetInventoryItemID("player", INVSLOT_TRINKET2)).thenAnswer(200)
 
 	lib:__UpgradeDatabase(10, {[10] = 500, [12] = 500}, {}, {})
-	assertEquals(lib:GetBuffInventorySlot(10), INVSLOT_TRINKET1)
-	assertEquals(lib:GetBuffInventorySlot(12), INVSLOT_TRINKET1)
+
+	local slot10 = lib:GetBuffInventorySlot(10)
+	local slot12 = lib:GetBuffInventorySlot(12)
+
+	verify(G.GetInventoryItemID("player", INVSLOT_TRINKET1))
+	verify(G.GetInventoryItemID("player", INVSLOT_TRINKET2))
+
+	assertEquals(slot10, INVSLOT_TRINKET1)
+	assertEquals(slot12, INVSLOT_TRINKET1)
 end
 
 testGetBuffItemID = { setup = setup }
@@ -127,7 +153,12 @@ function testGetBuffItemID:test_enchantement()
 	when(G.GetInventoryItemID("player", INVSLOT_TRINKET1)).thenAnswer(500)
 
 	lib:__UpgradeDatabase(10, {}, {}, {[10] = INVSLOT_TRINKET1})
-	assertEquals(lib:GetBuffItemID(10), 500)
+
+	local itemID = lib:GetBuffItemID(10)
+
+	verify(G.GetInventoryItemID("player", INVSLOT_TRINKET1))
+
+	assertEquals(itemID, 500)
 end
 
 function testGetBuffItemID:test_multiple_trinkets()
@@ -142,12 +173,12 @@ end
 
 testGetInventorySlotList = { setup = setup }
 
-function testGetInventorySlotList:test_two()
+function testGetInventorySlotList:test_different_slots()
 	lib:__UpgradeDatabase(10, {}, {}, {[10] = INVSLOT_TRINKET1, [12] = INVSLOT_TRINKET2})
-	assertEquals(lib:GetInventorySlotList(10), {INVSLOT_TRINKET1, INVSLOT_TRINKET2})
+	assertEquals(lib:GetInventorySlotList(10), {INVSLOT_TRINKET2, INVSLOT_TRINKET1})
 end
 
-function testGetInventorySlotList:test_duplicate()
+function testGetInventorySlotList:test_same_slot()
 	lib:__UpgradeDatabase(10, {}, {}, {[10] = INVSLOT_TRINKET1, [12] = INVSLOT_TRINKET1})
 	assertEquals(lib:GetInventorySlotList(10), {INVSLOT_TRINKET1})
 end
