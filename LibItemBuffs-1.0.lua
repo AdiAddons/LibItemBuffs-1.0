@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with LibItemBuffs-1.0.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-local MAJOR, MINOR, lib = "LibItemBuffs-1.0", 8
+local MAJOR, MINOR, lib = "LibItemBuffs-1.0", 9
 if LibStub then
 	lib = LibStub:NewLibrary(MAJOR, MINOR)
 	if not lib then return end
@@ -146,6 +146,11 @@ end
 
 -- Upgrade the trinket and consumables database if needed
 function lib:__UpgradeDatabase(version, trinkets, consumables, enchantments)
+	assert(
+		type(version) == "number" and type(trinkets) == "table" and
+		type(consumables) == "table" and type(enchantments) == "table",
+		format('Usage: LibStub("%s"):__UpgradeDatabase(version, trinkets, consumables, enchantments)', MAJOR)
+	)
 	version = version*10 + MINOR -- Factor in the library revision
 	if version <= lib.__databaseVersion then return end
 

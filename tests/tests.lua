@@ -56,6 +56,30 @@ function testUpgradeDatabase:test_older_data()
 	assertEquals(lib:GetDatabaseVersion(), 10)
 end
 
+function testUpgradeDatabase:test_invalid_version()
+	local success, msg = pcall(lib.__UpgradeDatabase, lib, "bla")
+	assertEquals(success, false)
+	assertEquals(msg:match('Usage:'), 'Usage:')
+end
+
+function testUpgradeDatabase:test_invalid_trinkets()
+	local success, msg = pcall(lib.__UpgradeDatabase, lib, 10, "bla")
+	assertEquals(success, false)
+	assertEquals(msg:match('Usage:'), 'Usage:')
+end
+
+function testUpgradeDatabase:test_invalid_consumables()
+	local success, msg = pcall(lib.__UpgradeDatabase, lib, 10, {}, "bla")
+	assertEquals(success, false)
+	assertEquals(msg:match('Usage:'), 'Usage:')
+end
+
+function testUpgradeDatabase:test_invalid_enchantments()
+	local success, msg = pcall(lib.__UpgradeDatabase, lib, 10, {}, {}, "bla")
+	assertEquals(success, false)
+	assertEquals(msg:match('Usage:'), 'Usage:')
+end
+
 testIsItemBuff = { setup = setup }
 
 function testIsItemBuff:test_trinkets()
