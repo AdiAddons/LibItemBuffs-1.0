@@ -30,7 +30,10 @@ function fetchPage($path) {
 	if(file_exists($cacheFile)) {
 		return file_get_contents($cacheFile);
 	} else {
-		$content = file_get_contents(SITE_ROOT.'/'.$path);
+		$ctx = stream_context_create(
+			['http' => ['header'=> "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0\r\n" ]]
+		);
+		$content = file_get_contents(SITE_ROOT.'/'.$path, false, $ctx);
 		if($content !== FALSE) {
 			if(!is_dir("cache")) mkdir("cache");
 			file_put_contents($cacheFile, $content);
