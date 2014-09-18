@@ -199,9 +199,13 @@ $code = array(
 	'version = '.date("YmdHis")
 );
 
+function sortInts($a, $b) {
+	return intval($a) - intval($b);
+}
+
 foreach(array('trinkets', 'consumables') as $cat) {
 	$code[] = "-- ".ucfirst($cat);
-	ksort($buffs[$cat]);
+	uksort($buffs[$cat], "sortInts");
 	foreach($buffs[$cat] as $spell => $items) {
 		if(count($items) == 1) {
 			$item = $items[0];
@@ -212,6 +216,7 @@ foreach(array('trinkets', 'consumables') as $cat) {
 			$code[] = sprintf("%s[%6d] = %6d -- %s", $cat, $spell, $item, $name);
 		} else {
 			$code[] = sprintf("%s[%6d] = { -- %s", $cat, $spell, $spellNames[$spell]);
+			usort($items, "sortInts");
 			foreach($items as $item) {
 				$code[] = sprintf("\t%6d, -- %s", $item, $itemNames[$item]);
 			}
