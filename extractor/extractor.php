@@ -61,7 +61,7 @@ $crawler->addContent(fetchPage('/items=4.-4'));
 $scripts = $crawler->filter('script[type="text/javascript"]')->extract('_text');
 $trinkets = array();
 foreach($scripts as $script) {
-	if(strpos($script, 'new Listview') !== FALSE) {
+	if(strpos($script, 'listviewitems') !== FALSE) {
 		if(preg_match_all('/"id":(\d+)/', $script, $matches, PREG_SET_ORDER)) {;
 			foreach($matches as $groups) {
 				$trinkets[intval($groups[1])] = 'trinkets';
@@ -92,7 +92,7 @@ foreach($categories as $cat => $param) {
 	$scripts = $crawler->filter('script[type="text/javascript"]')->extract('_text');
 	$n = 0;
 	foreach($scripts as $script) {
-		if(strpos($script, 'new Listview') !== FALSE) {
+		if(strpos($script, 'listviewitems ') !== FALSE) {
 			if(preg_match_all('/"id":(\d+)/', $script, $matches, PREG_SET_ORDER)) {;
 				foreach($matches as $groups) {
 					$consumables[intval($groups[1])] = 'consumables';
