@@ -75,20 +75,21 @@ foreach($scripts as $script) {
 echo "\nDone\n".count($trinkets)." trinkets found\n\n";
 
 $categories = array(
-	"potion" => '0.1',
-	"elixirs" => '0.2',
-	"flask" => '0.3',
-	"scroll" => '0.4',
-	"food & drink" => '0.5',
-	"other item" => '0.8',
-	"miscellaneous item" => '15?filter=cr=161:62;crs=1:1;crv=0:2' // Filter out items without cooldown
+	"potion" => '=0.1',
+	"elixirs" => '=0.2',
+	"flask" => '=0.3',
+	"scroll" => '=0.4',
+	"food & drink" => '=0.5',
+	"other item" => '=0.8',
+	"first aid" => '?filter=na=bandage;cr=86;crs=6;crv=0',
+	"miscellaneous item" => '=15?filter=cr=161:62;crs=1:1;crv=0:2' // Filter out items without cooldown
 );
 $consumables = array();
 
 foreach($categories as $cat => $param) {
 	echo "Fetching $cat list:\n";
 	$crawler = new Crawler();
-	$crawler->addContent(fetchPage('/items='.$param));
+	$crawler->addContent(fetchPage('/items'.$param));
 	$scripts = $crawler->filter('script[type="text/javascript"]')->extract('_text');
 	$n = 0;
 	foreach($scripts as $script) {
