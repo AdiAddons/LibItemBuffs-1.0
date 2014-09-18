@@ -65,7 +65,7 @@ local enchantments = {
 
 -- Anything below this line is generated with the extractor. Editing it is useless.
 --== CUT HERE ==--
-version = 20140903175145
+version = 20140918191625
 -- Trinkets
 trinkets[   835] =   1404 -- Tidal Charm
 trinkets[  1139] =   5079 -- Cold Eye (Cold Basilisk Eye)
@@ -136,9 +136,9 @@ trinkets[ 25747] = { -- Damage Absorb
 	 21118, -- Talisman of Arathor
 }
 trinkets[ 25750] = { -- Damage Absorb
-	 65286, -- Ancient Seed Casing
 	 21119, -- Talisman of Arathor
 	 21120, -- Defiler's Talisman
+	 65286, -- Ancient Seed Casing
 }
 trinkets[ 25891] =  21180 -- Earthstrike
 trinkets[ 26166] =  21473 -- Obsidian Insight (Eye of Moam)
@@ -342,10 +342,7 @@ trinkets[ 59657] = { -- Argent Valor
 }
 trinkets[ 59658] =  44014 -- Argent Heroism (Fezzik's Pocketwatch)
 trinkets[ 59757] =  44063 -- Figurine - Monarch Crab
-trinkets[ 59789] = { -- Oracle Ablutions
-	 44074, -- Oracle Talisman of Ablution
-	 44870, -- Oracle Talisman of Ablution
-}
+trinkets[ 59789] =  44074 -- Oracle Ablutions (Oracle Talisman of Ablution)
 trinkets[ 59821] =  44073 -- Frenzyheart Fury (Frenzyheart Insignia of Fury)
 trinkets[ 60054] =  40683 -- Valor Medal of the First War
 trinkets[ 60062] = { -- Essence of Life
@@ -355,8 +352,8 @@ trinkets[ 60062] = { -- Essence of Life
 trinkets[ 60064] =  44912 -- Now is the time! (Flow of Knowledge)
 trinkets[ 60065] =  44914 -- Reflection of Torment (Anvil of Titans)
 trinkets[ 60180] = { -- Resolute
-	 39292, -- Repelling Charge
 	 37638, -- Offering of Sacrifice
+	 39292, -- Repelling Charge
 }
 trinkets[ 60196] =  42989 -- Berserker! (Darkmoon Card: Berserker!)
 trinkets[ 60214] =  36993 -- Seal of the Pantheon
@@ -512,7 +509,6 @@ trinkets[ 75495] =  54589 -- Eyes of Twilight (Glowing Twilight Scale)
 trinkets[ 78830] =  56847 -- Projectile Vomit (Chelsea's Nightmare)
 trinkets[ 84212] =  23040 -- Glyph of Deflection
 trinkets[ 84213] =  29387 -- Gnome Ingenuity (Gnomeregan Auto-Dodger 600)
-trinkets[ 84343] =  60856 -- Relationship Ray (Metro-Gnome Relationship Ray (NYI))
 trinkets[ 84960] = { -- Tremendous Fortitude
 	 61026, -- Vicious Gladiator's Emblem of Cruelty
 	 61030, -- Vicious Gladiator's Emblem of Proficiency
@@ -565,7 +561,6 @@ trinkets[ 91136] =  56290 -- Leviathan (Sea Star)
 trinkets[ 91138] =  55819 -- Cleansing Tears (Tear of Blood)
 trinkets[ 91139] =  56351 -- Cleansing Tears (Tear of Blood)
 trinkets[ 91141] =  55854 -- Anthem (Rainsong)
-trinkets[ 91143] =  56377 -- Anthem (Rainsong)
 trinkets[ 91147] =  55995 -- Blessing of Isiset (Blood of Isiset)
 trinkets[ 91149] =  56414 -- Blessing of Isiset (Blood of Isiset)
 trinkets[ 91155] =  58184 -- Expansive Soul (Core of Ripeness)
@@ -650,7 +645,6 @@ trinkets[ 92188] = { -- Master Tactician
 	 63745, -- Za'brox's Lucky Tooth
 }
 trinkets[ 92199] =  55881 -- Blademaster (Impetuous Query)
-trinkets[ 92200] =  56406 -- Blademaster (Impetuous Query)
 trinkets[ 92205] =  56449 -- Duelist (Throngus's Finger)
 trinkets[ 92208] =  56121 -- Duelist (Throngus's Finger)
 trinkets[ 92213] =  59515 -- Memory of Invincibility (Vial of Stolen Memories)
@@ -703,8 +697,8 @@ trinkets[ 95882] =  62995 -- Underlord's Mandible
 trinkets[ 96908] =  68926 -- Victory (Jaws of Defeat)
 trinkets[ 96911] =  68927 -- Devour (The Hungerer)
 trinkets[ 96923] = { -- Titanic Power
-	 69113, -- Apparatus of Khaz'goroth
 	 68972, -- Apparatus of Khaz'goroth
+	 69113, -- Apparatus of Khaz'goroth
 }
 trinkets[ 96945] =  68981 -- Loom of Fate (Spidersilk Spindle)
 trinkets[ 96962] =  68982 -- Soul Fragment (Necromantic Focus)
@@ -934,9 +928,35 @@ trinkets[122695] =  84079 -- Badge of Kypari Zar
 trinkets[126236] = { -- Slippery
 	 81243, -- Iron Protector Talisman
 	 85181, -- Iron Protector Talisman
+	100999, -- Heart-Lesion Defender Idol
+	101089, -- Mistdancer Defender Idol
+	101160, -- Sunsoul Defender Idol
+	101303, -- Oathsworn Defender Idol
+	117042, -- Heart-Lesion Defender Idol
+	117132, -- Mistdancer Defender Idol
+	117203, -- Sunsoul Defender Idol
+	117346, -- Oathsworn Defender Idol
 }
 trinkets[126260] =  81181 -- Heart of Fire
-trinkets[126266] =  81133 -- Enlightenment (Empty Fruit Barrel)
+trinkets[126266] = { -- Enlightenment
+	 81133, -- Empty Fruit Barrel
+	101041, -- Springrain Stone of Wisdom
+	101107, -- Mistdancer Stone of Wisdom
+	101138, -- Sunsoul Stone of Wisdom
+	101183, -- Communal Stone of Wisdom
+	101250, -- Streamtalker Stone of Wisdom
+	113022, -- 6.0 QRP Template PH Int Trinket #1
+	114888, -- Excavated Highmaul Thingamabob
+	114961, -- Thornmother Eye
+	116077, -- Pulsating Brain of No'losh
+	116823, -- Katealystic Konverter
+	117084, -- Springrain Stone of Wisdom
+	117150, -- Mistdancer Stone of Wisdom
+	117181, -- Sunsoul Stone of Wisdom
+	117226, -- Communal Stone of Wisdom
+	117293, -- Streamtalker Stone of Wisdom
+	118202, -- Fungus-Infected Hydra Lung
+}
 trinkets[126270] = { -- Vial of Ichorous Blood
 	 81264, -- Vial of Ichorous Blood
 	100963, -- Vial of Ichorous Blood
@@ -946,7 +966,12 @@ trinkets[126478] = { -- Flashfreeze
 	 81263, -- Flashfrozen Resin Globule
 	100951, -- Flashfrozen Resin Globule
 }
-trinkets[126483] =  81125 -- Windswept Pages
+trinkets[126483] = { -- Windswept Pages
+	 81125, -- Windswept Pages
+	112887, -- Goc's Trophy
+	113162, -- Kral'za's Resolve
+	118020, -- Goc's Trophy
+}
 trinkets[126484] = { -- Flashing Steel
 	 81265, -- Flashing Steel Talisman
 	 88294, -- Flashing Steel Talisman
@@ -954,193 +979,333 @@ trinkets[126484] = { -- Flashing Steel
 trinkets[126489] = { -- Relentlessness
 	 81267, -- Searing Words
 	 88355, -- Searing Words
+	112886, -- Ferocity of Kor'gall
+	113163, -- Kliaa's Venomclaws
+	118017, -- Blistered Ancient Bark
 }
-trinkets[126513] =  81138 -- Poised to Strike (Carbonic Carbuncle)
+trinkets[126513] = { -- Poised to Strike
+	 81138, -- Carbonic Carbuncle
+	112884, -- Might of Kor'gall
+	113159, -- Probiscus of the Swampfly Queen
+	118016, -- Smoldering Ancient's Bark
+}
 trinkets[126519] = { -- Lessons of the Darkmaster
 	 81268, -- Lessons of the Darkmaster
 	 88358, -- Lessons of the Darkmaster
 }
 trinkets[126533] = { -- Elusive
-	 87063, -- Vial of Dragon's Blood
 	 86131, -- Vial of Dragon's Blood
 	 86790, -- Vial of Dragon's Blood
+	 87063, -- Vial of Dragon's Blood
+	116127, -- Bright Coin
 }
 trinkets[126554] = { -- Agile
-	 87057, -- Bottle of Infinite Stars
 	 86132, -- Bottle of Infinite Stars
 	 86791, -- Bottle of Infinite Stars
+	 87057, -- Bottle of Infinite Stars
+	101009, -- Springrain Idol of Rage
+	101054, -- Trailseeker Idol of Rage
+	101113, -- Mistdancer Idol of Rage
+	101200, -- Lightdrinker Idol of Rage
+	101217, -- Streamtalker Idol of Rage
+	108878, -- Warlords Intro Zone PH Agi Trinket #1
+	111530, -- Giantstalker's Guile
+	111546, -- Grondo's Eyepatch
+	113020, -- 6.0 QRP Template PH Agi Trinket #1
+	114887, -- Excavated Highmaul Knicknack
+	114959, -- Prickly Shadeback Thorn
+	116824, -- Rabid Talbuk Horn
+	117052, -- Springrain Idol of Rage
+	117097, -- Trailseeker Idol of Rage
+	117156, -- Mistdancer Idol of Rage
+	117243, -- Lightdrinker Idol of Rage
+	117260, -- Streamtalker Idol of Rage
+	117537, -- Springrain Idol of Durability
 }
 trinkets[126577] = { -- Inner Brilliance
-	 87065, -- Light of the Cosmos
 	 86133, -- Light of the Cosmos
 	 86792, -- Light of the Cosmos
+	 87065, -- Light of the Cosmos
 }
 trinkets[126582] = { -- Unwavering Might
-	 87072, -- Lei Shen's Final Orders
 	 86144, -- Lei Shen's Final Orders
 	 86802, -- Lei Shen's Final Orders
+	 87072, -- Lei Shen's Final Orders
+	100991, -- Heart-Lesion Idol of Battle
+	101152, -- Sunsoul Idol of Battle
+	101295, -- Oathsworn Idol of Battle
+	108877, -- Warlords Intro Zone PH Str Trinket #2
+	112885, -- Commander Gar's Iron Insignia
+	113019, -- 6.0 QRP Template PH Str Trinket #2
+	113158, -- Dol'mak's Lucky Charm
+	113253, -- Karg's Hunting Horn
+	114890, -- Excavated Highmaul Doohickey
+	117034, -- Heart-Lesion Idol of Battle
+	117195, -- Sunsoul Idol of Battle
+	117338, -- Oathsworn Idol of Battle
+	118019, -- Might of the Magnaron
 }
 trinkets[126588] = { -- Arcane Secrets
-	 87075, -- Qin-xi's Polarizing Seal
 	 86147, -- Qin-xi's Polarizing Seal
 	 86805, -- Qin-xi's Polarizing Seal
+	 87075, -- Qin-xi's Polarizing Seal
 }
 trinkets[126597] = { -- Jade Warlord Figurine
 	 86046, -- Jade Warlord Figurine
-	 89079, -- Lao-Chin's Liquid Courage
 	 86775, -- Jade Warlord Figurine
+	 89079, -- Lao-Chin's Liquid Courage
 }
 trinkets[126599] = { -- Velocity
 	 86042, -- Jade Charioteer Figurine
 	 86043, -- Jade Bandit Figurine
-	 89082, -- Hawkmaster's Talon
 	 86771, -- Jade Charioteer Figurine
 	 86772, -- Jade Bandit Figurine
+	 89082, -- Hawkmaster's Talon
 }
 trinkets[126605] = { -- Blossom
 	 86044, -- Jade Magistrate Figurine
-	 89081, -- Blossom of Pure Snow
 	 86773, -- Jade Magistrate Figurine
+	 89081, -- Blossom of Pure Snow
 }
 trinkets[126606] = { -- Scroll of Revered Ancestors
 	 86045, -- Jade Courtesan Figurine
-	 89080, -- Scroll of Revered Ancestors
 	 86774, -- Jade Courtesan Figurine
+	 89080, -- Scroll of Revered Ancestors
 }
 trinkets[126640] = { -- Radiance
-	 87163, -- Spirits of the Sun
 	 86327, -- Spirits of the Sun
 	 86885, -- Spirits of the Sun
+	 87163, -- Spirits of the Sun
 }
 trinkets[126646] = { -- Untouchable
-	 87160, -- Stuff of Nightmares
 	 86323, -- Stuff of Nightmares
 	 86881, -- Stuff of Nightmares
+	 87160, -- Stuff of Nightmares
 }
-trinkets[126649] = { -- Unrelenting Attacks
-	 87167, -- Terror in the Mists
-	 86332, -- Terror in the Mists
-	 86890, -- Terror in the Mists
-}
+trinkets[126649] = 111948 -- Unrelenting Attacks (Gruuk's Evil Eye)
 trinkets[126657] = { -- Alacrity
-	 87172, -- Darkmist Vortex
 	 86336, -- Darkmist Vortex
 	 86894, -- Darkmist Vortex
+	 87172, -- Darkmist Vortex
 }
 trinkets[126659] = { -- Quickened Tongues
-	 87175, -- Essence of Terror
 	 86388, -- Essence of Terror
 	 86907, -- Essence of Terror
+	 87175, -- Essence of Terror
+	101023, -- Springrain Idol of Destruction
+	101069, -- Mountainsage Idol of Destruction
+	101168, -- Communal Idol of Destruction
+	101222, -- Streamtalker Idol of Destruction
+	101263, -- Felsoul Idol of Destruction
+	108880, -- Warlords Intro Zone PH Int Trinket #1
+	117066, -- Springrain Idol of Destruction
+	117112, -- Mountainsage Idol of Destruction
+	117211, -- Communal Idol of Destruction
+	117265, -- Streamtalker Idol of Destruction
+	117306, -- Felsoul Idol of Destruction
 }
 trinkets[126679] = { -- Call of Victory
-	100500, -- Grievous Gladiator's Badge of Victory
-	100579, -- Grievous Gladiator's Badge of Victory
+	 84490, -- Dreadful Gladiator's Badge of Victory
+	 84942, -- Malevolent Gladiator's Badge of Victory
 	 91410, -- Tyrannical Gladiator's Badge of Victory
+	 91763, -- Malevolent Gladiator's Badge of Victory
 	 94349, -- Tyrannical Gladiator's Badge of Victory
 	 99943, -- Tyrannical Gladiator's Badge of Victory
 	100019, -- Tyrannical Gladiator's Badge of Victory
-	 84942, -- Malevolent Gladiator's Badge of Victory
-	 91763, -- Malevolent Gladiator's Badge of Victory
-	 84490, -- Dreadful Gladiator's Badge of Victory
+	100500, -- Grievous Gladiator's Badge of Victory
+	100579, -- Grievous Gladiator's Badge of Victory
+	102636, -- Prideful Gladiator's Badge of Victory
+	102833, -- Grievous Gladiator's Badge of Victory
+	103314, -- Grievous Gladiator's Badge of Victory
+	103511, -- Prideful Gladiator's Badge of Victory
+	111232, -- Primal Gladiator's Badge of Victory
+	115159, -- Primal Combatant's Badge of Victory
+	115759, -- Primal Gladiator's Badge of Victory
+	117739, -- Tournament Gladiator's Badge of Victory
+	117940, -- Tournament Gladiator's Badge of Victory
 }
 trinkets[126683] = { -- Call of Dominance
-	100490, -- Grievous Gladiator's Badge of Dominance
-	100576, -- Grievous Gladiator's Badge of Dominance
+	 84488, -- Dreadful Gladiator's Badge of Dominance
+	 84940, -- Malevolent Gladiator's Badge of Dominance
 	 91400, -- Tyrannical Gladiator's Badge of Dominance
+	 91753, -- Malevolent Gladiator's Badge of Dominance
 	 94346, -- Tyrannical Gladiator's Badge of Dominance
 	 99937, -- Tyrannical Gladiator's Badge of Dominance
 	100016, -- Tyrannical Gladiator's Badge of Dominance
-	 84940, -- Malevolent Gladiator's Badge of Dominance
-	 91753, -- Malevolent Gladiator's Badge of Dominance
-	 84488, -- Dreadful Gladiator's Badge of Dominance
+	100490, -- Grievous Gladiator's Badge of Dominance
+	100576, -- Grievous Gladiator's Badge of Dominance
+	102633, -- Prideful Gladiator's Badge of Dominance
+	102830, -- Grievous Gladiator's Badge of Dominance
+	103308, -- Grievous Gladiator's Badge of Dominance
+	103505, -- Prideful Gladiator's Badge of Dominance
+	111227, -- Primal Gladiator's Badge of Dominance
+	115154, -- Primal Combatant's Badge of Dominance
+	115754, -- Primal Gladiator's Badge of Dominance
+	117734, -- Tournament Gladiator's Badge of Dominance
+	117935, -- Tournament Gladiator's Badge of Dominance
 }
 trinkets[126690] = { -- Call of Conquest
-	100195, -- Grievous Gladiator's Badge of Conquest
-	100603, -- Grievous Gladiator's Badge of Conquest
+	 84344, -- Dreadful Gladiator's Badge of Conquest
+	 84934, -- Malevolent Gladiator's Badge of Conquest
 	 91099, -- Tyrannical Gladiator's Badge of Conquest
+	 91452, -- Malevolent Gladiator's Badge of Conquest
 	 94373, -- Tyrannical Gladiator's Badge of Conquest
 	 99772, -- Tyrannical Gladiator's Badge of Conquest
 	100043, -- Tyrannical Gladiator's Badge of Conquest
-	 84934, -- Malevolent Gladiator's Badge of Conquest
-	 91452, -- Malevolent Gladiator's Badge of Conquest
-	 84344, -- Dreadful Gladiator's Badge of Conquest
+	100195, -- Grievous Gladiator's Badge of Conquest
+	100603, -- Grievous Gladiator's Badge of Conquest
+	102659, -- Prideful Gladiator's Badge of Conquest
+	102856, -- Grievous Gladiator's Badge of Conquest
+	103145, -- Grievous Gladiator's Badge of Conquest
+	103342, -- Prideful Gladiator's Badge of Conquest
+	111222, -- Primal Gladiator's Badge of Conquest
+	115149, -- Primal Combatant's Badge of Conquest
+	115749, -- Primal Gladiator's Badge of Conquest
+	117729, -- Tournament Gladiator's Badge of Conquest
+	117930, -- Tournament Gladiator's Badge of Conquest
 }
 trinkets[126697] = { -- Tremendous Fortitude
-	 96793, -- Fortitude of the Zandalari
-	 96421, -- Fortitude of the Zandalari
-	 96049, -- Fortitude of the Zandalari
-	 94516, -- Fortitude of the Zandalari
-	100305, -- Grievous Gladiator's Emblem of Cruelty
-	100306, -- Grievous Gladiator's Emblem of Tenacity
-	100307, -- Grievous Gladiator's Emblem of Meditation
-	100559, -- Grievous Gladiator's Emblem of Meditation
-	100626, -- Grievous Gladiator's Emblem of Cruelty
-	100652, -- Grievous Gladiator's Emblem of Tenacity
-	 95677, -- Fortitude of the Zandalari
+	 84399, -- Dreadful Gladiator's Emblem of Cruelty
+	 84400, -- Dreadful Gladiator's Emblem of Tenacity
+	 84401, -- Dreadful Gladiator's Emblem of Meditation
+	 84936, -- Malevolent Gladiator's Emblem of Cruelty
+	 84938, -- Malevolent Gladiator's Emblem of Tenacity
+	 84939, -- Malevolent Gladiator's Emblem of Meditation
 	 91209, -- Tyrannical Gladiator's Emblem of Cruelty
 	 91210, -- Tyrannical Gladiator's Emblem of Tenacity
 	 91211, -- Tyrannical Gladiator's Emblem of Meditation
+	 91562, -- Malevolent Gladiator's Emblem of Cruelty
+	 91563, -- Malevolent Gladiator's Emblem of Tenacity
+	 91564, -- Malevolent Gladiator's Emblem of Meditation
 	 94329, -- Tyrannical Gladiator's Emblem of Meditation
 	 94396, -- Tyrannical Gladiator's Emblem of Cruelty
 	 94422, -- Tyrannical Gladiator's Emblem of Tenacity
+	 94516, -- Fortitude of the Zandalari
+	 95677, -- Fortitude of the Zandalari
+	 96049, -- Fortitude of the Zandalari
+	 96421, -- Fortitude of the Zandalari
+	 96793, -- Fortitude of the Zandalari
 	 99838, -- Tyrannical Gladiator's Emblem of Cruelty
 	 99839, -- Tyrannical Gladiator's Emblem of Tenacity
 	 99840, -- Tyrannical Gladiator's Emblem of Meditation
 	 99990, -- Tyrannical Gladiator's Emblem of Meditation
 	100066, -- Tyrannical Gladiator's Emblem of Cruelty
 	100092, -- Tyrannical Gladiator's Emblem of Tenacity
-	 84936, -- Malevolent Gladiator's Emblem of Cruelty
-	 84938, -- Malevolent Gladiator's Emblem of Tenacity
-	 84939, -- Malevolent Gladiator's Emblem of Meditation
-	 91562, -- Malevolent Gladiator's Emblem of Cruelty
-	 91563, -- Malevolent Gladiator's Emblem of Tenacity
-	 91564, -- Malevolent Gladiator's Emblem of Meditation
-	 84399, -- Dreadful Gladiator's Emblem of Cruelty
-	 84400, -- Dreadful Gladiator's Emblem of Tenacity
-	 84401, -- Dreadful Gladiator's Emblem of Meditation
+	100305, -- Grievous Gladiator's Emblem of Cruelty
+	100306, -- Grievous Gladiator's Emblem of Tenacity
+	100307, -- Grievous Gladiator's Emblem of Meditation
+	100559, -- Grievous Gladiator's Emblem of Meditation
+	100626, -- Grievous Gladiator's Emblem of Cruelty
+	100652, -- Grievous Gladiator's Emblem of Tenacity
+	102616, -- Prideful Gladiator's Emblem of Meditation
+	102680, -- Prideful Gladiator's Emblem of Cruelty
+	102706, -- Prideful Gladiator's Emblem of Tenacity
+	102813, -- Grievous Gladiator's Emblem of Meditation
+	102877, -- Grievous Gladiator's Emblem of Cruelty
+	102903, -- Grievous Gladiator's Emblem of Tenacity
+	103210, -- Grievous Gladiator's Emblem of Cruelty
+	103211, -- Grievous Gladiator's Emblem of Tenacity
+	103212, -- Grievous Gladiator's Emblem of Meditation
+	103407, -- Prideful Gladiator's Emblem of Cruelty
+	103408, -- Prideful Gladiator's Emblem of Tenacity
+	103409, -- Prideful Gladiator's Emblem of Meditation
+	111224, -- Primal Gladiator's Emblem of Cruelty
+	111225, -- Primal Gladiator's Emblem of Tenacity
+	111226, -- Primal Gladiator's Emblem of Meditation
+	115151, -- Primal Combatant's Emblem of Cruelty
+	115152, -- Primal Combatant's Emblem of Tenacity
+	115153, -- Primal Combatant's Emblem of Meditation
+	115751, -- Primal Gladiator's Emblem of Cruelty
+	115752, -- Primal Gladiator's Emblem of Tenacity
+	115753, -- Primal Gladiator's Emblem of Meditation
+	117731, -- Tournament Gladiator's Emblem of Cruelty
+	117732, -- Tournament Gladiator's Emblem of Tenacity
+	117733, -- Tournament Gladiator's Emblem of Meditation
+	117932, -- Tournament Gladiator's Emblem of Cruelty
+	117933, -- Tournament Gladiator's Emblem of Tenacity
+	117934, -- Tournament Gladiator's Emblem of Meditation
 }
 trinkets[126700] = { -- Surge of Victory
-	100505, -- Grievous Gladiator's Insignia of Victory
-	100645, -- Grievous Gladiator's Insignia of Victory
+	 84495, -- Dreadful Gladiator's Insignia of Victory
+	 84937, -- Malevolent Gladiator's Insignia of Victory
 	 91415, -- Tyrannical Gladiator's Insignia of Victory
+	 91768, -- Malevolent Gladiator's Insignia of Victory
 	 94415, -- Tyrannical Gladiator's Insignia of Victory
 	 99948, -- Tyrannical Gladiator's Insignia of Victory
 	100085, -- Tyrannical Gladiator's Insignia of Victory
-	 84937, -- Malevolent Gladiator's Insignia of Victory
-	 91768, -- Malevolent Gladiator's Insignia of Victory
-	 84495, -- Dreadful Gladiator's Insignia of Victory
+	100505, -- Grievous Gladiator's Insignia of Victory
+	100645, -- Grievous Gladiator's Insignia of Victory
+	102699, -- Prideful Gladiator's Insignia of Victory
+	102896, -- Grievous Gladiator's Insignia of Victory
+	103319, -- Grievous Gladiator's Insignia of Victory
+	103516, -- Prideful Gladiator's Insignia of Victory
+	111233, -- Primal Gladiator's Insignia of Victory
+	115160, -- Primal Combatant's Insignia of Victory
+	115760, -- Primal Gladiator's Insignia of Victory
+	117740, -- Tournament Gladiator's Insignia of Victory
+	117941, -- Tournament Gladiator's Insignia of Victory
 }
 trinkets[126705] = { -- Surge of Dominance
-	100491, -- Grievous Gladiator's Insignia of Dominance
-	100712, -- Grievous Gladiator's Insignia of Dominance
+	 84489, -- Dreadful Gladiator's Insignia of Dominance
+	 84941, -- Malevolent Gladiator's Insignia of Dominance
 	 91401, -- Tyrannical Gladiator's Insignia of Dominance
+	 91754, -- Malevolent Gladiator's Insignia of Dominance
 	 94482, -- Tyrannical Gladiator's Insignia of Dominance
 	 99938, -- Tyrannical Gladiator's Insignia of Dominance
 	100152, -- Tyrannical Gladiator's Insignia of Dominance
-	 84941, -- Malevolent Gladiator's Insignia of Dominance
-	 91754, -- Malevolent Gladiator's Insignia of Dominance
-	 84489, -- Dreadful Gladiator's Insignia of Dominance
+	100491, -- Grievous Gladiator's Insignia of Dominance
+	100712, -- Grievous Gladiator's Insignia of Dominance
+	102766, -- Prideful Gladiator's Insignia of Dominance
+	102963, -- Grievous Gladiator's Insignia of Dominance
+	103309, -- Grievous Gladiator's Insignia of Dominance
+	103506, -- Prideful Gladiator's Insignia of Dominance
+	111228, -- Primal Gladiator's Insignia of Dominance
+	115155, -- Primal Combatant's Insignia of Dominance
+	115755, -- Primal Gladiator's Insignia of Dominance
+	117735, -- Tournament Gladiator's Insignia of Dominance
+	117936, -- Tournament Gladiator's Insignia of Dominance
 }
 trinkets[126707] = { -- Surge of Conquest
-	100200, -- Grievous Gladiator's Insignia of Conquest
-	100586, -- Grievous Gladiator's Insignia of Conquest
+	 84349, -- Dreadful Gladiator's Insignia of Conquest
+	 84935, -- Malevolent Gladiator's Insignia of Conquest
 	 91104, -- Tyrannical Gladiator's Insignia of Conquest
+	 91457, -- Malevolent Gladiator's Insignia of Conquest
 	 94356, -- Tyrannical Gladiator's Insignia of Conquest
 	 99777, -- Tyrannical Gladiator's Insignia of Conquest
 	100026, -- Tyrannical Gladiator's Insignia of Conquest
-	 84935, -- Malevolent Gladiator's Insignia of Conquest
-	 91457, -- Malevolent Gladiator's Insignia of Conquest
-	 84349, -- Dreadful Gladiator's Insignia of Conquest
+	100200, -- Grievous Gladiator's Insignia of Conquest
+	100586, -- Grievous Gladiator's Insignia of Conquest
+	102643, -- Prideful Gladiator's Insignia of Conquest
+	102840, -- Grievous Gladiator's Insignia of Conquest
+	103150, -- Grievous Gladiator's Insignia of Conquest
+	103347, -- Prideful Gladiator's Insignia of Conquest
+	111223, -- Primal Gladiator's Insignia of Conquest
+	115150, -- Primal Combatant's Insignia of Conquest
+	115750, -- Primal Gladiator's Insignia of Conquest
+	117730, -- Tournament Gladiator's Insignia of Conquest
+	117931, -- Tournament Gladiator's Insignia of Conquest
 }
 trinkets[127549] =  87500 -- Munificence (Brooch of Munificent Deeds)
 trinkets[127569] =  87499 -- Gleaming (Grakl's Gleaming Talisman)
 trinkets[127572] =  87497 -- Karma (Core of Decency)
 trinkets[127575] =  87495 -- Perfection (Gerp's Perfect Arrow)
 trinkets[127577] =  87496 -- Final Word (Daelo's Final Words)
-trinkets[127915] =  87573 -- Essence of Life (Thousand-Year Pickled Egg)
-trinkets[127923] =  87572 -- Now is the time! (Mithril Wristwatch)
-trinkets[127928] =  87574 -- Reflection of Torment (Coren's Cold Chromium Coaster)
-trinkets[127967] =  87571 -- Drunken Evasiveness (Brawler's Statue)
+trinkets[127915] = { -- Essence of Life
+	 87573, -- Thousand-Year Pickled Egg
+	117359, -- Thousand-Year Pickled Egg
+}
+trinkets[127923] = { -- Now is the time!
+	 87572, -- Mithril Wristwatch
+	117358, -- Mithril Wristwatch
+}
+trinkets[127928] = { -- Reflection of Torment
+	 87574, -- Coren's Cold Chromium Coaster
+	117360, -- Coren's Cold Chromium Coaster
+}
+trinkets[127967] = { -- Drunken Evasiveness
+	 87571, -- Brawler's Statue
+	117357, -- Brawler's Statue
+}
 trinkets[128386] =  88585 -- Mantid Poison (Dislodged Stinger)
 trinkets[128519] =  88371 -- Watermelon Bomb
 trinkets[128521] =  88376 -- Painted Turnip (Orange Painted Turnip)
@@ -1150,6 +1315,60 @@ trinkets[128986] =  79327 -- Blessing of the Celestials (Relic of Xuen)
 trinkets[128987] =  79330 -- Blessing of the Celestials (Relic of Chi-Ji)
 trinkets[128988] =  79329 -- Protection of the Celestials (Relic of Niuzao)
 trinkets[129812] =  89083 -- Hunger (Iron Belly Wok)
+trinkets[133630] = { -- Exquisite Proficiency
+	100990, -- Heart-Lesion Stone of Battle
+	101002, -- Heart-Lesion Defender Stone
+	101012, -- Springrain Stone of Rage
+	101026, -- Springrain Stone of Destruction
+	101057, -- Trailseeker Stone of Rage
+	101072, -- Mountainsage Stone of Destruction
+	101087, -- Mistdancer Defender Stone
+	101117, -- Mistdancer Stone of Rage
+	101151, -- Sunsoul Stone of Battle
+	101163, -- Sunsoul Defender Stone
+	101171, -- Communal Stone of Destruction
+	101203, -- Lightdrinker Stone of Rage
+	101220, -- Streamtalker Stone of Rage
+	101225, -- Streamtalker Stone of Destruction
+	101266, -- Felsoul Stone of Destruction
+	101294, -- Oathsworn Stone of Battle
+	101306, -- Oathsworn Defender Stone
+	108876, -- Warlords Intro Zone PH Str Trinket #1
+	108879, -- Warlords Intro Zone PH Agi Trinket #2
+	108881, -- Warlords Intro Zone PH Int Trinket #2
+	113017, -- 6.0 QRP Template PH Int Trinket #2
+	113018, -- 6.0 QRP Template PH Str Trinket #1
+	113021, -- 6.0 QRP Template PH Agi Trinket #2
+	113254, -- Lokra's Fury
+	113255, -- Asha's Fang
+	113527, -- Legacy of Om'ra
+	114886, -- Twisted Elemental Focus
+	114889, -- Kuhlrath's Cursed Totem
+	114891, -- Void-Touched Totem
+	114956, -- unused
+	114957, -- Overized Shadeback Talon
+	114960, -- Spires  unused
+	116075, -- Scales of Gennadian
+	116799, -- Smoldering Heart of Hyperious
+	117033, -- Heart-Lesion Stone of Battle
+	117045, -- Heart-Lesion Defender Stone
+	117055, -- Springrain Stone of Rage
+	117069, -- Springrain Stone of Destruction
+	117100, -- Trailseeker Stone of Rage
+	117115, -- Mountainsage Stone of Destruction
+	117130, -- Mistdancer Defender Stone
+	117160, -- Mistdancer Stone of Rage
+	117194, -- Sunsoul Stone of Battle
+	117206, -- Sunsoul Defender Stone
+	117214, -- Communal Stone of Destruction
+	117246, -- Lightdrinker Stone of Rage
+	117263, -- Streamtalker Stone of Rage
+	117268, -- Streamtalker Stone of Destruction
+	117309, -- Felsoul Stone of Destruction
+	117337, -- Oathsworn Stone of Battle
+	117349, -- Oathsworn Defender Stone
+	117540, -- Springrain Stone of Durability
+}
 trinkets[134944] =  92782 -- Footman's Resolve (Steadfast Footman's Medallion)
 trinkets[134945] =  92784 -- SI:7 Training (SI:7 Operative's Manual)
 trinkets[134953] =  92783 -- Grunt's Tenacity (Mark of the Hardened Grunt)
@@ -1198,116 +1417,120 @@ trinkets[138702] =  94508 -- Surge of Strength (Brutal Talisman of the Shado-Pan
 trinkets[138703] =  94510 -- Acceleration (Volatile Talisman of the Shado-Pan Assault)
 trinkets[138728] =  94507 -- Change of Tactics (Steadfast Talisman of the Shado-Pan Assault)
 trinkets[138756] = { -- Blades of Renataki
-	 96741, -- Renataki's Soul Charm
-	 96369, -- Renataki's Soul Charm
-	 95997, -- Renataki's Soul Charm
 	 94512, -- Renataki's Soul Charm
 	 95625, -- Renataki's Soul Charm
+	 95997, -- Renataki's Soul Charm
+	 96369, -- Renataki's Soul Charm
+	 96741, -- Renataki's Soul Charm
 }
 trinkets[138759] = { -- Feathers of Fury
-	 96842, -- Fabled Feather of Ji-Kun
-	 96470, -- Fabled Feather of Ji-Kun
-	 96098, -- Fabled Feather of Ji-Kun
 	 94515, -- Fabled Feather of Ji-Kun
 	 95726, -- Fabled Feather of Ji-Kun
+	 96098, -- Fabled Feather of Ji-Kun
+	 96470, -- Fabled Feather of Ji-Kun
+	 96842, -- Fabled Feather of Ji-Kun
 }
 trinkets[138786] = { -- Wushoolay's Lightning
-	 96785, -- Wushoolay's Final Choice
-	 96413, -- Wushoolay's Final Choice
-	 96041, -- Wushoolay's Final Choice
 	 94513, -- Wushoolay's Final Choice
 	 95669, -- Wushoolay's Final Choice
+	 96041, -- Wushoolay's Final Choice
+	 96413, -- Wushoolay's Final Choice
+	 96785, -- Wushoolay's Final Choice
 }
 trinkets[138856] = { -- Cloudburst
-	 96757, -- Horridon's Last Gasp
-	 96385, -- Horridon's Last Gasp
-	 96013, -- Horridon's Last Gasp
 	 94514, -- Horridon's Last Gasp
 	 95641, -- Horridon's Last Gasp
+	 96013, -- Horridon's Last Gasp
+	 96385, -- Horridon's Last Gasp
+	 96757, -- Horridon's Last Gasp
 }
 trinkets[138864] = { -- Blood of Power
-	 96895, -- Delicate Vial of the Sanguinaire
-	 96523, -- Delicate Vial of the Sanguinaire
-	 96151, -- Delicate Vial of the Sanguinaire
 	 94518, -- Delicate Vial of the Sanguinaire
 	 95779, -- Delicate Vial of the Sanguinaire
+	 96151, -- Delicate Vial of the Sanguinaire
+	 96523, -- Delicate Vial of the Sanguinaire
+	 96895, -- Delicate Vial of the Sanguinaire
 }
 trinkets[138870] = { -- Rampage
-	 96873, -- Primordius' Talisman of Rage
-	 96501, -- Primordius' Talisman of Rage
-	 96129, -- Primordius' Talisman of Rage
 	 94519, -- Primordius' Talisman of Rage
 	 95757, -- Primordius' Talisman of Rage
+	 96129, -- Primordius' Talisman of Rage
+	 96501, -- Primordius' Talisman of Rage
+	 96873, -- Primordius' Talisman of Rage
 }
 trinkets[138895] = { -- Frenzy
-	 96864, -- Talisman of Bloodlust
-	 96492, -- Talisman of Bloodlust
-	 96120, -- Talisman of Bloodlust
 	 94522, -- Talisman of Bloodlust
 	 95748, -- Talisman of Bloodlust
+	 96120, -- Talisman of Bloodlust
+	 96492, -- Talisman of Bloodlust
+	 96864, -- Talisman of Bloodlust
 }
 trinkets[138898] = { -- Breath of Many Minds
-	 96827, -- Breath of the Hydra
-	 96455, -- Breath of the Hydra
-	 96083, -- Breath of the Hydra
 	 94521, -- Breath of the Hydra
 	 95711, -- Breath of the Hydra
+	 96083, -- Breath of the Hydra
+	 96455, -- Breath of the Hydra
+	 96827, -- Breath of the Hydra
 }
 trinkets[138925] = { -- Zandalari Warding
-	 96879, -- Stolen Relic of Zuldazar
-	 96507, -- Stolen Relic of Zuldazar
-	 96135, -- Stolen Relic of Zuldazar
 	 94525, -- Stolen Relic of Zuldazar
 	 95763, -- Stolen Relic of Zuldazar
+	 96135, -- Stolen Relic of Zuldazar
+	 96507, -- Stolen Relic of Zuldazar
+	 96879, -- Stolen Relic of Zuldazar
 }
 trinkets[138938] = { -- Juju Madness
-	 96781, -- Bad Juju
-	 96409, -- Bad Juju
-	 96037, -- Bad Juju
 	 94523, -- Bad Juju
 	 95665, -- Bad Juju
+	 96037, -- Bad Juju
+	 96409, -- Bad Juju
+	 96781, -- Bad Juju
 }
 trinkets[138963] = { -- Perfect Aim
-	 96930, -- Unerring Vision of Lei Shen
-	 96558, -- Unerring Vision of Lei Shen
-	 96186, -- Unerring Vision of Lei Shen
 	 94524, -- Unerring Vision of Lei Shen
 	 95814, -- Unerring Vision of Lei Shen
+	 96186, -- Unerring Vision of Lei Shen
+	 96558, -- Unerring Vision of Lei Shen
+	 96930, -- Unerring Vision of Lei Shen
 }
 trinkets[138967] = { -- Blessing of Zuldazar
-	 96879, -- Stolen Relic of Zuldazar
-	 96507, -- Stolen Relic of Zuldazar
-	 96135, -- Stolen Relic of Zuldazar
 	 94525, -- Stolen Relic of Zuldazar
 	 95763, -- Stolen Relic of Zuldazar
+	 96135, -- Stolen Relic of Zuldazar
+	 96507, -- Stolen Relic of Zuldazar
+	 96879, -- Stolen Relic of Zuldazar
 }
 trinkets[138979] = { -- Soul Barrier
-	 96927, -- Soul Barrier
-	 96555, -- Soul Barrier
-	 96183, -- Soul Barrier
 	 94528, -- Soul Barrier
 	 95811, -- Soul Barrier
+	 96183, -- Soul Barrier
+	 96555, -- Soul Barrier
+	 96927, -- Soul Barrier
 }
 trinkets[139133] = { -- Mastermind
-	 96888, -- Cha-Ye's Essence of Brilliance
-	 96516, -- Cha-Ye's Essence of Brilliance
-	 96144, -- Cha-Ye's Essence of Brilliance
 	 94531, -- Cha-Ye's Essence of Brilliance
 	 95772, -- Cha-Ye's Essence of Brilliance
+	 96144, -- Cha-Ye's Essence of Brilliance
+	 96516, -- Cha-Ye's Essence of Brilliance
+	 96888, -- Cha-Ye's Essence of Brilliance
+	111548, -- Grondo's To-Do List
+	112888, -- Anger of Kor'gall
+	113161, -- Throbbing Swampfly Venom Sac
+	118018, -- Charred Ancient's Ember
 }
 trinkets[139170] = { -- Eye of Brutality
-	 96915, -- Gaze of the Twins
-	 96543, -- Gaze of the Twins
-	 96171, -- Gaze of the Twins
 	 94529, -- Gaze of the Twins
 	 95799, -- Gaze of the Twins
+	 96171, -- Gaze of the Twins
+	 96543, -- Gaze of the Twins
+	 96915, -- Gaze of the Twins
 }
 trinkets[140380] = { -- Shield of Hydra Sputum
-	 96828, -- Inscribed Bag of Hydra-Spawn
-	 96456, -- Inscribed Bag of Hydra-Spawn
-	 96084, -- Inscribed Bag of Hydra-Spawn
 	 94520, -- Inscribed Bag of Hydra-Spawn
 	 95712, -- Inscribed Bag of Hydra-Spawn
+	 96084, -- Inscribed Bag of Hydra-Spawn
+	 96456, -- Inscribed Bag of Hydra-Spawn
+	 96828, -- Inscribed Bag of Hydra-Spawn
 }
 trinkets[144073] =  31615 -- Arcane Energy (Ancient Draenei Arcane Relic)
 trinkets[144074] =  31617 -- Ferocity (Ancient Draenei War Talisman)
@@ -1323,175 +1546,306 @@ trinkets[144201] =  55266 -- Herald of Doom (Grace of the Herald)
 trinkets[144203] =  55237 -- Hardened Shell (Porcelain Crab)
 trinkets[144205] =  55251 -- Typhoon (Might of the Ocean)
 trinkets[146046] = { -- Expanded Mind
-	105422, -- Purified Bindings of Immerseus
-	104426, -- Purified Bindings of Immerseus
-	105173, -- Purified Bindings of Immerseus
 	102293, -- Purified Bindings of Immerseus
+	104426, -- Purified Bindings of Immerseus
 	104675, -- Purified Bindings of Immerseus
 	104924, -- Purified Bindings of Immerseus
+	105173, -- Purified Bindings of Immerseus
+	105422, -- Purified Bindings of Immerseus
+	112426, -- Purified Bindings of Immerseus
+	112889, -- Genesaur's Greatness
+	113160, -- Moonstone Luck Token
+	118021, -- Goc's Eye
 }
 trinkets[146184] = { -- Wrath of the Darkspear
-	105648, -- Black Blood of Y'Shaarj
-	104652, -- Black Blood of Y'Shaarj
-	105399, -- Black Blood of Y'Shaarj
 	102310, -- Black Blood of Y'Shaarj
+	104652, -- Black Blood of Y'Shaarj
 	104901, -- Black Blood of Y'Shaarj
 	105150, -- Black Blood of Y'Shaarj
+	105399, -- Black Blood of Y'Shaarj
+	105648, -- Black Blood of Y'Shaarj
+	112938, -- Black Blood of Y'Shaarj
 }
 trinkets[146218] = { -- Yu'lon's Bite
-	103987, -- Yu'lon's Bite
 	103687, -- Yu'lon's Bite
+	103987, -- Yu'lon's Bite
 }
 trinkets[146245] = { -- Outrage
-	105491, -- Evil Eye of Galakras
-	104495, -- Evil Eye of Galakras
-	105242, -- Evil Eye of Galakras
 	102298, -- Evil Eye of Galakras
+	104495, -- Evil Eye of Galakras
 	104744, -- Evil Eye of Galakras
 	104993, -- Evil Eye of Galakras
+	105242, -- Evil Eye of Galakras
+	105491, -- Evil Eye of Galakras
+	112703, -- Evil Eye of Galakras
 }
 trinkets[146250] = { -- Determination
-	105609, -- Thok's Tail Tip
-	104613, -- Thok's Tail Tip
-	105360, -- Thok's Tail Tip
 	102305, -- Thok's Tail Tip
+	104613, -- Thok's Tail Tip
 	104862, -- Thok's Tail Tip
 	105111, -- Thok's Tail Tip
+	105360, -- Thok's Tail Tip
+	105609, -- Thok's Tail Tip
+	112850, -- Thok's Tail Tip
+	113408, -- Greka's Dentures
 }
 trinkets[146285] = { -- Cruelty
-	105632, -- Skeer's Bloodsoaked Talisman
-	104636, -- Skeer's Bloodsoaked Talisman
-	105383, -- Skeer's Bloodsoaked Talisman
 	102308, -- Skeer's Bloodsoaked Talisman
+	104636, -- Skeer's Bloodsoaked Talisman
 	104885, -- Skeer's Bloodsoaked Talisman
 	105134, -- Skeer's Bloodsoaked Talisman
+	105383, -- Skeer's Bloodsoaked Talisman
+	105632, -- Skeer's Bloodsoaked Talisman
+	112913, -- Skeer's Bloodsoaked Talisman
 }
 trinkets[146296] = { -- Celestial Celerity
-	103989, -- Alacrity of Xuen
 	103689, -- Alacrity of Xuen
+	103989, -- Alacrity of Xuen
 }
 trinkets[146308] = { -- Dextrous
-	105472, -- Assurance of Consequence
-	104476, -- Assurance of Consequence
-	105223, -- Assurance of Consequence
 	102292, -- Assurance of Consequence
+	104476, -- Assurance of Consequence
 	104725, -- Assurance of Consequence
 	104974, -- Assurance of Consequence
+	105223, -- Assurance of Consequence
+	105472, -- Assurance of Consequence
+	112947, -- Assurance of Consequence
+	113024, -- "Reliable" Threat Assessor
 }
 trinkets[146310] = { -- Restless Agility
-	105612, -- Ticking Ebon Detonator
-	104616, -- Ticking Ebon Detonator
-	105363, -- Ticking Ebon Detonator
 	102311, -- Ticking Ebon Detonator
+	104616, -- Ticking Ebon Detonator
 	104865, -- Ticking Ebon Detonator
 	105114, -- Ticking Ebon Detonator
+	105363, -- Ticking Ebon Detonator
+	105612, -- Ticking Ebon Detonator
+	112879, -- Ticking Ebon Detonator
 }
 trinkets[146312] = { -- Celestial Master
-	103986, -- Discipline of Xuen
 	103686, -- Discipline of Xuen
+	103986, -- Discipline of Xuen
 }
 trinkets[146314] = { -- Titanic Restoration
-	105474, -- Prismatic Prison of Pride
-	104478, -- Prismatic Prison of Pride
-	105225, -- Prismatic Prison of Pride
 	102299, -- Prismatic Prison of Pride
+	104478, -- Prismatic Prison of Pride
 	104727, -- Prismatic Prison of Pride
 	104976, -- Prismatic Prison of Pride
+	105225, -- Prismatic Prison of Pride
+	105474, -- Prismatic Prison of Pride
+	112948, -- Prismatic Prison of Pride
 }
 trinkets[146317] = { -- Restless Spirit
-	105615, -- Dysmorphic Samophlange of Discontinuity
-	104619, -- Dysmorphic Samophlange of Discontinuity
-	105366, -- Dysmorphic Samophlange of Discontinuity
 	102309, -- Dysmorphic Samophlange of Discontinuity
+	104619, -- Dysmorphic Samophlange of Discontinuity
 	104868, -- Dysmorphic Samophlange of Discontinuity
 	105117, -- Dysmorphic Samophlange of Discontinuity
+	105366, -- Dysmorphic Samophlange of Discontinuity
+	105615, -- Dysmorphic Samophlange of Discontinuity
+	112877, -- Dysmorphic Samophlange of Discontinuity
 }
 trinkets[146323] = { -- Inward Contemplation
-	103988, -- Contemplation of Chi-Ji
 	103688, -- Contemplation of Chi-Ji
+	103988, -- Contemplation of Chi-Ji
 }
 trinkets[146343] = { -- Avoidance
-	105438, -- Rook's Unlucky Talisman
-	104442, -- Rook's Unlucky Talisman
-	105189, -- Rook's Unlucky Talisman
 	102296, -- Rook's Unlucky Talisman
+	104442, -- Rook's Unlucky Talisman
 	104691, -- Rook's Unlucky Talisman
 	104940, -- Rook's Unlucky Talisman
+	105189, -- Rook's Unlucky Talisman
+	105438, -- Rook's Unlucky Talisman
+	112476, -- Rook's Unlucky Talisman
 }
 trinkets[146344] = { -- Defensive Maneuvers
-	103990, -- Resolve of Niuzao
 	103690, -- Resolve of Niuzao
+	103990, -- Resolve of Niuzao
 }
 trinkets[146395] = { -- Tactician
-	105645, -- Curse of Hubris
-	104649, -- Curse of Hubris
-	105396, -- Curse of Hubris
 	102307, -- Curse of Hubris
+	104649, -- Curse of Hubris
 	104898, -- Curse of Hubris
 	105147, -- Curse of Hubris
+	105396, -- Curse of Hubris
+	105645, -- Curse of Hubris
+	112924, -- Curse of Hubris
 }
 trinkets[148388] = 103639 -- White Ash (Pouch of White Ash)
 trinkets[148447] = 103678 -- Winds of Time (Time-Lost Artifact)
 trinkets[148896] = { -- Ferocity
-	105580, -- Sigil of Rampage
-	104584, -- Sigil of Rampage
-	105331, -- Sigil of Rampage
 	102302, -- Sigil of Rampage
+	104584, -- Sigil of Rampage
 	104833, -- Sigil of Rampage
 	105082, -- Sigil of Rampage
+	105331, -- Sigil of Rampage
+	105580, -- Sigil of Rampage
+	112825, -- Sigil of Rampage
 }
 trinkets[148897] = { -- Extravagant Visions
-	105572, -- Frenzied Crystal of Rage
-	104576, -- Frenzied Crystal of Rage
-	105323, -- Frenzied Crystal of Rage
 	102303, -- Frenzied Crystal of Rage
+	104576, -- Frenzied Crystal of Rage
 	104825, -- Frenzied Crystal of Rage
 	105074, -- Frenzied Crystal of Rage
+	105323, -- Frenzied Crystal of Rage
+	105572, -- Frenzied Crystal of Rage
+	112815, -- Frenzied Crystal of Rage
 }
 trinkets[148899] = { -- Tenacious
-	105459, -- Fusion-Fire Core
-	104463, -- Fusion-Fire Core
-	105210, -- Fusion-Fire Core
 	102295, -- Fusion-Fire Core
+	104463, -- Fusion-Fire Core
 	104712, -- Fusion-Fire Core
 	104961, -- Fusion-Fire Core
+	105210, -- Fusion-Fire Core
+	105459, -- Fusion-Fire Core
+	111547, -- Grondo's Spare Eye
+	112503, -- Fusion-Fire Core
+	113025, -- External Combustion Engine
 }
 trinkets[148903] = { -- Vicious
-	105527, -- Haromm's Talisman
-	104531, -- Haromm's Talisman
-	105278, -- Haromm's Talisman
 	102301, -- Haromm's Talisman
+	104531, -- Haromm's Talisman
 	104780, -- Haromm's Talisman
 	105029, -- Haromm's Talisman
+	105278, -- Haromm's Talisman
+	105527, -- Haromm's Talisman
+	112754, -- Haromm's Talisman
 }
 trinkets[148906] = { -- Toxic Power
-	105540, -- Kardris' Toxic Totem
-	104544, -- Kardris' Toxic Totem
-	105291, -- Kardris' Toxic Totem
 	102300, -- Kardris' Toxic Totem
+	104544, -- Kardris' Toxic Totem
 	104793, -- Kardris' Toxic Totem
 	105042, -- Kardris' Toxic Totem
+	105291, -- Kardris' Toxic Totem
+	105540, -- Kardris' Toxic Totem
+	112768, -- Kardris' Toxic Totem
+	113023, -- Foolproof Targeting Mechanism
+	118230, -- Smoldering Cerulean Stone
 }
 trinkets[148908] = { -- Mark of Salvation
-	105549, -- Nazgrim's Burnished Insignia
-	104553, -- Nazgrim's Burnished Insignia
-	105300, -- Nazgrim's Burnished Insignia
 	102294, -- Nazgrim's Burnished Insignia
+	104553, -- Nazgrim's Burnished Insignia
 	104802, -- Nazgrim's Burnished Insignia
 	105051, -- Nazgrim's Burnished Insignia
+	105300, -- Nazgrim's Burnished Insignia
+	105549, -- Nazgrim's Burnished Insignia
+	112778, -- Nazgrim's Burnished Insignia
 }
 trinkets[148911] = { -- Soothing Power
-	105607, -- Thok's Acid-Grooved Tooth
-	104611, -- Thok's Acid-Grooved Tooth
-	105358, -- Thok's Acid-Grooved Tooth
 	102304, -- Thok's Acid-Grooved Tooth
+	104611, -- Thok's Acid-Grooved Tooth
 	104860, -- Thok's Acid-Grooved Tooth
 	105109, -- Thok's Acid-Grooved Tooth
+	105358, -- Thok's Acid-Grooved Tooth
+	105607, -- Thok's Acid-Grooved Tooth
+	112849, -- Thok's Acid-Grooved Tooth
 }
+trinkets[155447] = 108902 -- Armored Elekk Tusk
+trinkets[160818] = { -- Rapid Corrosion
+	111533, -- Corrosive Tongue of Reeg'ak
+	118229, -- Resonant Hidecrystal of the Gorger
+}
+trinkets[162913] = 112317 -- Visions of the Future (Winged Hourglass)
+trinkets[162915] = 112318 -- Spirit of the Warlords (Skull of War)
+trinkets[162917] = 112319 -- Strength of Steel (Knight's Badge)
+trinkets[162919] = 112320 -- Nightmare Fire (Sandman's Pouch)
+trinkets[165485] = { -- Mastery
+	109997, -- Kihra's Adrenaline Injector
+	114369, -- Tormented Fang of Gore
+}
+trinkets[165531] = { -- Haste
+	110002, -- Fleshrender's Meathook
+	114366, -- Tormented Tooth of Ferocity
+}
+trinkets[165532] = { -- Critical Strike
+	110007, -- Voidmender's Shadowgem
+	110012, -- Bonemaw's Big Toe
+}
+trinkets[165535] = { -- Mastery
+	110008, -- Tharbek's Lucky Pebble
+	110018, -- Kyrak's Vileblood Serum
+}
+trinkets[165540] = 114367 -- Critical Strike (Tormented Emblem of Flame)
+trinkets[165542] = 109998 -- Multi-Strike (Gor'ashan's Lodestone Spike)
+trinkets[165543] = { -- Versatility
+	110003, -- Ragewing's Firefang
+	110013, -- Emberscale Talisman
+	114370, -- Tormented Seal of Fortitude
+}
+trinkets[165822] = { -- Haste
+	109999, -- Witherbark's Branch
+	110014, -- Spores of Alacrity
+	114430, -- Munificent Bonds of Fury
+	118779, -- Bladespike Charm
+}
+trinkets[165824] = { -- Mastery
+	110019, -- Xeri'tac's Unhatched Egg Sac
+	114429, -- Munificent Censer of Tranquility
+	118776, -- Talisman of the Invader
+	118778, -- Ironmender's Totem
+	118780, -- Bloodburn Protector
+}
+trinkets[165830] = { -- Critical Strike
+	114427, -- Munificent Emblem of Terror
+	118777, -- Bloodcaster's Charm
+}
+trinkets[165832] = 110004 -- Multistrike (Coagulated Genesaur Blood)
+trinkets[165833] = { -- Versatility
+	110009, -- Leaf of the Ancient Protectors
+	114428, -- Munificent Orb of Ice
+	114431, -- Munificent Soul of Compassion
+}
+trinkets[170397] = { -- Rapid Adaptation
+	115496, -- Primal Gladiator's Badge of Adaptation
+	115521, -- Primal Combatant's Badge of Adaptation
+	117773, -- Tournament Gladiator's Badge of Adaptation
+	117774, -- Tournament Gladiator's Badge of Adaptation
+}
+trinkets[172691] = 117402 -- Shadow Reflector (Ultra-Electrified Reflector)
+trinkets[172693] = 117403 -- Frostfire Reflector (Gyro-Radiant Reflector)
+trinkets[173834] = 118211 -- ROLKOR SMASH (Rolkor's Rage)
+trinkets[176460] = 118884 -- Kyb's Foolish Perseverance
+trinkets[176873] = 113905 -- Turnbuckle Terror (Tablet of Turnbuckle Teamwork)
+trinkets[176874] = 113969 -- Convulsive Shadows (Vial of Convulsive Shadows)
+trinkets[176875] = 113835 -- Void Shards (Shards of Nothing)
+trinkets[176876] = 113834 -- Vision of the Cyclops (Pol's Blinded Eye)
+trinkets[176878] = 113931 -- Lub-Dub (Beating Heart of the Mountain)
+trinkets[176879] = 113842 -- Caustic Healing (Emblem of Caustic Healing)
+trinkets[176881] = 114491 -- Turbulent Emblem
+trinkets[176882] = 114489 -- Turbulent Focusing Crystal
+trinkets[176883] = 114488 -- Turbulent Vial of Toxin
+trinkets[176884] = 114490 -- Turbulent Relic of Mendacity
+trinkets[176885] = 114492 -- Turbulent Seal of Defiance
+trinkets[176903] = 118877 -- Fizzlebang's Folly
+trinkets[176917] = 118875 -- Pajeet-Nov's Perpetual Puzzle
+trinkets[176928] = 118883 -- Bronzed Elekk Statue
+trinkets[176935] = 114613 -- Formidable Fang
+trinkets[176937] = 114614 -- Formidable Relic of Blood
+trinkets[176939] = 114610 -- Formidable Jar of Doom
+trinkets[176941] = 114611 -- Formidable Orb of Putrescence
+trinkets[176943] = 114612 -- Formidable Censer of Faith
+trinkets[177035] = 118114 -- Meaty Dragonspine Trophy
+trinkets[177038] = 113612 -- Balanced Fate (Scales of Doom)
+trinkets[177040] = 113645 -- Tectus' Heartbeat (Tectus' Beating Heart)
+trinkets[177042] = 119193 -- Screaming Spirits (Horn of Screaming Spirits)
+trinkets[177046] = 119194 -- Howling Soul (Goren Soul Repository)
+trinkets[177051] = 113948 -- Instability (Darmac's Unstable Talisman)
+trinkets[177053] = 113861 -- Gazing Eye (Evergaze Arcane Eidolon)
+trinkets[177056] = 113893 -- Blast Furnace (Blast Furnace Door)
+trinkets[177060] = 119192 -- Squeak Squeak (Ironspike Chew Toy)
+trinkets[177063] = 113889 -- Elemental Shield (Elementalist's Shielding Talisman)
+trinkets[177067] = 113985 -- Detonation (Humming Blackiron Trigger)
+trinkets[177081] = 113984 -- Molten Metal (Blackiron Micro Crucible)
+trinkets[177086] = 113986 -- Sanitizing (Auto-Repairing Autoclave)
+trinkets[177096] = 113983 -- Forgemaster's Vigor (Forgemaster's Insignia)
+trinkets[177102] = 113987 -- Battering (Battering Talisman)
+trinkets[177189] = 118882 -- Sword Technique (Scabbard of Kyanos)
+trinkets[177594] = 118878 -- Sudden Clarity (Copeland's Clarity)
+trinkets[177597] = 118876 -- "Lucky" Flip (Lucky Double-Sided Coin)
 -- Consumables
 consumables[   673] =   5997 -- Minor Defense (Elixir of Minor Defense)
+consumables[   746] =   1251 -- First Aid (Linen Bandage)
 consumables[   833] =   1401 -- Green Tea (Riverpaw Tea Leaf)
 consumables[  1090] =   2091 -- Sleep (Magic Dust)
+consumables[  1159] =   2581 -- First Aid (Heavy Linen Bandage)
 consumables[  2367] =   2454 -- Lion's Strength (Elixir of Lion's Strength)
 consumables[  2374] =   2457 -- Minor Agility (Elixir of Minor Agility)
 consumables[  2378] =   2458 -- Minor Fortitude (Elixir of Minor Fortitude)
@@ -1501,8 +1855,8 @@ consumables[  2379] = { -- Speed
 }
 consumables[  2380] =   3384 -- Resistance (Minor Magic Resistance Potion)
 consumables[  2823] = { -- Deadly Poison
-	 43232, -- Deadly Poison
 	 22053, -- Deadly Poison
+	 43232, -- Deadly Poison
 }
 consumables[  3160] =   3390 -- Lesser Agility (Elixir of Lesser Agility)
 consumables[  3164] =   3391 -- Ogre's Strength (Elixir of Ogre's Strength)
@@ -1512,6 +1866,8 @@ consumables[  3219] =   3382 -- Weak Troll's Blood (Weak Troll's Blood Elixir)
 consumables[  3220] =   3389 -- Defense (Elixir of Defense)
 consumables[  3222] =   3388 -- Strong Troll's Blood Elixir
 consumables[  3223] =   3826 -- Major Troll's Blood Elixir
+consumables[  3267] =   3530 -- First Aid (Wool Bandage)
+consumables[  3268] =   3531 -- First Aid (Heavy Wool Bandage)
 consumables[  3593] =   3825 -- Elixir of Fortitude
 consumables[  3680] =   3823 -- Lesser Invisibility (Lesser Invisibility Potion)
 consumables[  4941] =   4623 -- Stoneshield (Lesser Stoneshield Potion)
@@ -1520,8 +1876,14 @@ consumables[  6114] =   5342 -- Raptor Punch
 consumables[  6196] =  83795 -- Far Sight (Scrying Roguestone)
 consumables[  6262] =   5512 -- Healthstone
 consumables[  6405] =  66888 -- Furbolg Form (Stave of Fur and Claw)
-consumables[  6512] =   3828 -- Detect Lesser Invisibility (Elixir of Detect Lesser Invisibility)
-consumables[  6615] =   5634 -- Free Action (Free Action Potion)
+consumables[  6512] = { -- Detect Lesser Invisibility
+	  3828, -- Elixir of Detect Lesser Invisibility
+	116269, -- Elixir of Detect Lesser Invisibility
+}
+consumables[  6615] = { -- Free Action
+	  5634, -- Free Action Potion
+	116267, -- Free Action Potion
+}
 consumables[  6724] =   5816 -- Light of Elune
 consumables[  7178] =   5996 -- Water Breathing (Elixir of Water Breathing)
 consumables[  7233] =   6049 -- Fire Protection (Fire Protection Potion)
@@ -1531,6 +1893,8 @@ consumables[  7245] =   6051 -- Holy Protection (Holy Protection Potion)
 consumables[  7254] =   6052 -- Nature Protection (Nature Protection Potion)
 consumables[  7840] =   6372 -- Swim Speed (Swim Speed Potion)
 consumables[  7844] =   6373 -- Fire Power (Elixir of Firepower)
+consumables[  7926] =   6450 -- First Aid (Silk Bandage)
+consumables[  7927] =   6451 -- First Aid (Heavy Silk Bandage)
 consumables[  8063] =   6522 -- Deviate Fish
 consumables[  8091] =   3013 -- Armor (Scroll of Protection)
 consumables[  8094] =   1478 -- Armor (Scroll of Protection II)
@@ -1558,101 +1922,125 @@ consumables[ 10668] =   8411 -- Spirit of Boar (Lung Juice Cocktail)
 consumables[ 10669] =   8412 -- Strike of the Scorpok (Ground Scorpok Assay)
 consumables[ 10692] =   8423 -- Infallible Mind (Cerebral Cortex Compound)
 consumables[ 10693] =   8424 -- Spiritual Domination (Gizzard Gum)
+consumables[ 10838] =   8544 -- First Aid (Mageweave Bandage)
+consumables[ 10839] =   8545 -- First Aid (Heavy Mageweave Bandage)
 consumables[ 11007] = { -- Weak Alcohol
-	 83095, -- Lagrave Stout
-	 82343, -- Lordaeron Lambic
-	 81407, -- Four Wind Soju
-	 44616, -- Glass of Dalaran White
-	 44570, -- Glass of Eversong Wine
-	 40035, -- Northrend Honey Mead
-	 98157, -- Big Blossom Brew
-	 61982, -- Fizzy Fruit Wine
 	  2686, -- Thunder Ale
 	  2723, -- Bottle of Dalaran Noir
 	  2894, -- Rhapsody Malt
-	 19222, -- Cheap Beer
 	 17196, -- Holiday Spirits
+	 19222, -- Cheap Beer
+	 40035, -- Northrend Honey Mead
+	 44570, -- Glass of Eversong Wine
+	 44616, -- Glass of Dalaran White
+	 61982, -- Fizzy Fruit Wine
+	 81407, -- Four Wind Soju
+	 82343, -- Lordaeron Lambic
+	 83095, -- Lagrave Stout
+	 98157, -- Big Blossom Brew
+	117437, -- Skyreach Sunrise
+	117441, -- Elekk's Neck
+	117453, -- "Da Bruisery" OPA
 }
 consumables[ 11008] = { -- Standard Alcohol
-	 44618, -- Glass of Aged Dalaran Red
-	 44619, -- Glass of Peaked Dalaran Red
-	 40036, -- Snowplum Brandy
-	 17403, -- Steamwheedle Fizzy Spirits
+	  2593, -- Flask of Stormwind Tawny
+	  2596, -- Skin of Dwarven Stout
+	  3703, -- Southshore Stout
 	 11846, -- Wizbang's Special Brew
+	 17403, -- Steamwheedle Fizzy Spirits
+	 18287, -- Evermurky
+	 40036, -- Snowplum Brandy
 	 44571, -- Bottle of Silvermoon Port
 	 44575, -- Flask of Bitter Cactus Cider
-	 62908, -- Hair of the Dog
-	 61984, -- Potent Pineapple Punch
-	 61983, -- Imported E.K. Ale
-	  2596, -- Skin of Dwarven Stout
-	  2593, -- Flask of Stormwind Tawny
 	 44617, -- Glass of Dalaran Red
+	 44618, -- Glass of Aged Dalaran Red
+	 44619, -- Glass of Peaked Dalaran Red
+	 57543, -- Stormhammer Stout
+	 61983, -- Imported E.K. Ale
+	 61984, -- Potent Pineapple Punch
+	 62908, -- Hair of the Dog
+	 63275, -- Gilnean Fortified Brandy
+	 63291, -- Blood Red Ale
 	 63292, -- Disgusting Rotgut
 	 63293, -- Blackheart Grog
 	 63296, -- Embalming Fluid
 	 63299, -- Sunkissed Wine
-	 63291, -- Blood Red Ale
-	 63275, -- Gilnean Fortified Brandy
-	 57543, -- Stormhammer Stout
-	  3703, -- Southshore Stout
-	 18287, -- Evermurky
 }
 consumables[ 11009] = { -- Strong Alcohol
-	 88531, -- Lao Chin's Last Mug
-	 81415, -- Pandaren Plum Wine
-	 83094, -- Foote Tripel
-	 82344, -- Hearthglen Ambrosia
-	 89683, -- Hozen Cuervo
-	 32667, -- Bash Ale
-	 17402, -- Greatfather's Winter Ale
-	 64639, -- Silversnap Ice
-	 61986, -- Tol Barad Coconut Rum
-	 44574, -- Skin of Mulgore Firewater
-	  2595, -- Jug of Badlands Bourbon
-	 38432, -- Plugger's Blackrock Ale
-	 40042, -- Caraway Burnwine
-	 44573, -- Cup of Frog Venom Brew
-	 61985, -- Banana Cocktail
 	  2594, -- Flagon of Dwarven Mead
-	  4600, -- Cherry Grog
-	 43696, -- Half Empty Bottle of Prison Moonshine
-	 28284, -- Don Carlos Tequila
-	 29112, -- Cenarion Spirits
-	 38350, -- Winterfin "Depth Charge"
-	 43695, -- Half Full Bottle of Prison Moonshine
-	 93208, -- Darkmoon P.I.E.
-	 62790, -- Darkbrew Lager
-	 62674, -- Highland Spirits
+	  2595, -- Jug of Badlands Bourbon
 	  4595, -- Junglevine Wine
-	 18288, -- Molasses Firewater
+	  4600, -- Cherry Grog
 	  9260, -- Volatile Rum
 	  9360, -- Cuergo's Gold
+	 17402, -- Greatfather's Winter Ale
+	 18288, -- Molasses Firewater
+	 28284, -- Don Carlos Tequila
+	 29112, -- Cenarion Spirits
+	 32667, -- Bash Ale
+	 38350, -- Winterfin "Depth Charge"
+	 38432, -- Plugger's Blackrock Ale
+	 40042, -- Caraway Burnwine
+	 43695, -- Half Full Bottle of Prison Moonshine
+	 43696, -- Half Empty Bottle of Prison Moonshine
+	 44573, -- Cup of Frog Venom Brew
+	 44574, -- Skin of Mulgore Firewater
+	 61985, -- Banana Cocktail
+	 61986, -- Tol Barad Coconut Rum
+	 62674, -- Highland Spirits
+	 62790, -- Darkbrew Lager
+	 64639, -- Silversnap Ice
+	 81415, -- Pandaren Plum Wine
+	 82344, -- Hearthglen Ambrosia
+	 83094, -- Foote Tripel
+	 88531, -- Lao Chin's Last Mug
+	 89683, -- Hozen Cuervo
+	 93208, -- Darkmoon P.I.E.
+	117439, -- "Da Bruisery" Hot & Wroth
+	117440, -- Peglegger's Porter
+	117442, -- Thunderbelly Mead
+	117568, -- Jug of Ironwine
+	119022, -- Shadowmoon Sugar Pear Cider
 }
 consumables[ 11319] =   8827 -- Water Walking (Elixir of Water Walking)
 consumables[ 11328] =   8949 -- Agility (Elixir of Agility)
 consumables[ 11334] =   9187 -- Greater Agility (Elixir of Greater Agility)
 consumables[ 11348] =  13445 -- Greater Armor (Elixir of Superior Defense)
 consumables[ 11349] =   8951 -- Armor (Elixir of Greater Defense)
-consumables[ 11350] =   8956 -- Fire Shield (Oil of Immolation)
+consumables[ 11350] = { -- Fire Shield
+	  8956, -- Oil of Immolation
+	118699, -- Oil of Immolation
+}
 consumables[ 11359] =   9030 -- Restoration (Restorative Potion)
 consumables[ 11364] =   9036 -- Resistance (Magic Resistance Potion)
 consumables[ 11371] =   9088 -- Gift of Arthas
-consumables[ 11389] =   9154 -- Detect Undead (Elixir of Detect Undead)
+consumables[ 11389] = { -- Detect Undead
+	  9154, -- Elixir of Detect Undead
+	116272, -- Elixir of Detect Undead
+}
 consumables[ 11390] =   9155 -- Arcane Elixir
 consumables[ 11392] =   9172 -- Invisibility (Invisibility Potion)
 consumables[ 11396] =   9179 -- Greater Intellect (Elixir of Greater Intellect)
-consumables[ 11403] =   9197 -- Dream Vision (Elixir of Dream Vision)
+consumables[ 11403] = { -- Dream Vision
+	  9197, -- Elixir of Dream Vision
+	116273, -- Elixir of Dream Vision
+}
 consumables[ 11405] =   9206 -- Elixir of the Giants (Elixir of Giants)
 consumables[ 11406] =   9224 -- Elixir of Demonslaying
-consumables[ 11407] =   9233 -- Detect Demon (Elixir of Detect Demon)
+consumables[ 11407] = { -- Detect Demon
+	  9233, -- Elixir of Detect Demon
+	116274, -- Elixir of Detect Demon
+}
 consumables[ 11474] =   9264 -- Shadow Power (Elixir of Shadow Power)
 consumables[ 11629] = { -- Potent Alcohol
+	  9361, -- Cuergo's Gold with Worm
 	 12003, -- Dark Dwarven Lager
+	 19221, -- Darkmoon Special Reserve
 	 23848, -- Nethergarde Bitter
 	 44716, -- Mysterious Fermented Liquid
 	 61384, -- Doublerum
-	 19221, -- Darkmoon Special Reserve
-	  9361, -- Cuergo's Gold with Worm
+	113108, -- Ogre Moonshine
+	116917, -- Sailor Zazzuk's 180-Proof Rum
 }
 consumables[ 12174] =  10309 -- Agility (Scroll of Agility IV)
 consumables[ 12175] =  10305 -- Armor (Scroll of Protection IV)
@@ -1660,11 +2048,17 @@ consumables[ 12176] =  10308 -- Intellect (Scroll of Intellect IV)
 consumables[ 12177] =  10306 -- Spirit (Scroll of Spirit IV)
 consumables[ 12178] =  10307 -- Stamina (Scroll of Stamina IV)
 consumables[ 12179] =  10310 -- Strength (Scroll of Strength IV)
-consumables[ 12608] =  10592 -- Catseye Elixir
+consumables[ 12608] = { -- Catseye Elixir
+	 10592, -- Catseye Elixir
+	116270, -- Catseye Elixir
+}
 consumables[ 15822] =  12190 -- Dreamless Sleep (Dreamless Sleep Potion)
 consumables[ 15852] =  12217 -- Dragonbreath Chili
 consumables[ 17038] =  12820 -- Winterfall Firewater
-consumables[ 17528] =  13442 -- Mighty Rage (Mighty Rage Potion)
+consumables[ 17528] = { -- Mighty Rage
+	 13442, -- Mighty Rage Potion
+	116275, -- Mighty Rage Potion
+}
 consumables[ 17535] =  13447 -- Elixir of the Sages
 consumables[ 17537] =  13453 -- Elixir of Brute Force
 consumables[ 17538] =  13452 -- Elixir of the Mongoose
@@ -1672,23 +2066,27 @@ consumables[ 17539] =  13454 -- Greater Arcane Elixir
 consumables[ 17540] =  13455 -- Greater Stoneshield (Greater Stoneshield Potion)
 consumables[ 17543] =  13457 -- Fire Protection (Greater Fire Protection Potion)
 consumables[ 17544] =  13456 -- Frost Protection (Greater Frost Protection Potion)
-consumables[ 17545] =  13460 -- Holy Protection (Greater Holy Protection Potion)
 consumables[ 17546] =  13458 -- Nature Protection (Greater Nature Protection Potion)
 consumables[ 17548] =  13459 -- Shadow Protection (Greater Shadow Protection Potion)
 consumables[ 17549] =  13461 -- Arcane Protection (Greater Arcane Protection Potion)
-consumables[ 17624] =  13506 -- Petrification (Potion of Petrification)
+consumables[ 17624] = { -- Petrification
+	 13506, -- Potion of Petrification
+	116277, -- Potion of Petrification
+}
 consumables[ 17626] =  13510 -- Flask of the Titans
 consumables[ 17627] =  13511 -- Distilled Wisdom (Flask of Distilled Wisdom)
 consumables[ 17628] =  13512 -- Supreme Power (Flask of Supreme Power)
 consumables[ 17629] =  13513 -- Chromatic Resistance (Flask of Chromatic Resistance)
 consumables[ 18071] =  13724 -- Enriched Manna Biscuit
 consumables[ 18124] =  13810 -- Blessed Sunfruit
+consumables[ 18608] =  14529 -- First Aid (Runecloth Bandage)
+consumables[ 18610] =  14530 -- First Aid (Heavy Runecloth Bandage)
 consumables[ 21149] =  17198 -- Egg Nog (Winter Veil Egg Nog)
 consumables[ 21920] =  17708 -- Frost Power (Elixir of Frost Power)
 consumables[ 21955] =  17747 -- Razorlash Root
 consumables[ 22807] = { -- Greater Water Breathing
-	 25539, -- Potion of Water Breathing
 	 18294, -- Elixir of Greater Water Breathing
+	 25539, -- Potion of Water Breathing
 }
 consumables[ 23692] =  19301 -- Alterac Manna Biscuit
 consumables[ 24360] =  20002 -- Greater Dreamless Sleep (Greater Dreamless Sleep Potion)
@@ -1707,6 +2105,8 @@ consumables[ 25990] =  21215 -- Graccu's Mince Meat Fruitcake
 consumables[ 26030] =  11950 -- Windblossom Berries
 consumables[ 26276] =  21546 -- Greater Firepower (Elixir of Greater Firepower)
 consumables[ 26389] =  21721 -- Moonglow Alcohol (Moonglow)
+consumables[ 27030] =  21990 -- First Aid (Netherweave Bandage)
+consumables[ 27031] =  21991 -- First Aid (Heavy Netherweave Bandage)
 consumables[ 27571] =  22218 -- Cascade of Roses (Handful of Rose Petals)
 consumables[ 28489] =  22823 -- Camouflage (Elixir of Camouflage)
 consumables[ 28490] =  22824 -- Major Strength (Elixir of Major Strength)
@@ -1725,16 +2125,16 @@ consumables[ 28507] =  22838 -- Haste (Haste Potion)
 consumables[ 28508] =  22839 -- Destruction (Destruction Potion)
 consumables[ 28509] =  22840 -- Greater Mana Regeneration (Elixir of Major Mageblood)
 consumables[ 28511] = { -- Fire Protection
-	 32846, -- Major Fire Protection Potion
 	 22841, -- Major Fire Protection Potion
+	 32846, -- Major Fire Protection Potion
 }
 consumables[ 28512] = { -- Frost Protection
-	 32847, -- Major Frost Protection Potion
 	 22842, -- Major Frost Protection Potion
+	 32847, -- Major Frost Protection Potion
 }
 consumables[ 28513] = { -- Nature Protection
-	 32844, -- Major Nature Protection Potion
 	 22844, -- Major Nature Protection Potion
+	 32844, -- Major Nature Protection Potion
 }
 consumables[ 28515] =  22849 -- Ironshield (Ironshield Potion)
 consumables[ 28518] =  22851 -- Flask of Fortification
@@ -1742,12 +2142,12 @@ consumables[ 28519] =  22853 -- Flask of Mighty Restoration
 consumables[ 28520] =  22854 -- Flask of Relentless Assault
 consumables[ 28521] =  22861 -- Flask of Blinding Light
 consumables[ 28536] = { -- Arcane Protection
-	 32840, -- Major Arcane Protection Potion
 	 22845, -- Major Arcane Protection Potion
+	 32840, -- Major Arcane Protection Potion
 }
 consumables[ 28537] = { -- Shadow Protection
-	 32845, -- Major Shadow Protection Potion
 	 22846, -- Major Shadow Protection Potion
+	 32845, -- Major Shadow Protection Potion
 }
 consumables[ 28538] =  22847 -- Holy Protection (Major Holy Protection Potion)
 consumables[ 28540] =  22866 -- Flask of Pure Death
@@ -1812,6 +2212,8 @@ consumables[ 43822] =  33933 -- Charm of the Raging Defender (Amani Charm of the
 consumables[ 44467] =  34130 -- Recovery Diver's Potion
 consumables[ 44755] =  34191 -- Snowflakes (Handful of Snowflakes)
 consumables[ 45373] =  34537 -- Bloodberry (Bloodberry Elixir)
+consumables[ 45543] =  34721 -- First Aid (Frostweave Bandage)
+consumables[ 45544] =  34722 -- First Aid (Heavy Frostweave Bandage)
 consumables[ 45694] =  34832 -- Captain Rumsey's Lager
 consumables[ 46837] =  35716 -- Pure Death of Shattrath (Shattrath Flask of Pure Death)
 consumables[ 46839] =  35717 -- Blinding Light of Shattrath (Shattrath Flask of Blinding Light)
@@ -1852,6 +2254,7 @@ consumables[ 54212] =  46378 -- Flask of Pure Mojo
 consumables[ 54452] =  28103 -- Adept's Elixir
 consumables[ 54494] =  22831 -- Major Agility (Elixir of Major Agility)
 consumables[ 54497] =   1177 -- Lesser Armor (Oil of Olaf)
+consumables[ 55001] = 107640 -- Parachute (Potion of Slow Fall)
 consumables[ 55346] =  41367 -- Dark Jade Beam (Dark Jade Focusing Lens)
 consumables[ 55536] =  41509 -- Frostweave Net
 consumables[ 56190] =  42420 -- Shadow Crystal Focusing Lens
@@ -1875,6 +2278,7 @@ consumables[ 60343] =  44328 -- Mighty Defense (Elixir of Mighty Defense)
 consumables[ 60344] =  44329 -- Expertise (Elixir of Expertise)
 consumables[ 60346] =  44331 -- Lightning Speed (Elixir of Lightning Speed)
 consumables[ 60347] =  44332 -- Mighty Thoughts (Elixir of Mighty Thoughts)
+consumables[ 61781] = 116400 -- Turkey Feathers (Silver-Plated Turkey Shooter)
 consumables[ 62061] =  21213 -- Festive Holiday Mount (Preserved Holly)
 consumables[ 62062] =  37816 -- Brewfestive Holiday Mount (Preserved Brewfest Hops)
 consumables[ 62380] =  44939 -- Lesser Flask of Resistance
@@ -1882,15 +2286,18 @@ consumables[ 63729] =  45621 -- Minor Accuracy (Elixir of Minor Accuracy)
 consumables[ 65247] =  33874 -- Really Well Fed (Kibler's Bits)
 consumables[ 65451] =  46709 -- Using MiniZep Controller (MiniZep Controller)
 consumables[ 68417] = { -- Wrapping Paper - Dummy Spell
+	  5042, -- Red Ribboned Wrapping Paper
 	  5048, -- Blue Ribboned Wrapping Paper
 	 17303, -- Blue Ribboned Wrapping Paper
 	 17304, -- Green Ribboned Wrapping Paper
 	 17307, -- Purple Ribboned Wrapping Paper
-	  5042, -- Red Ribboned Wrapping Paper
 }
 consumables[ 69377] =  49632 -- Fortitude (Runescroll of Fortitude)
 consumables[ 73320] =  52201 -- Frostborn Illusion (Muradin's Favor)
 consumables[ 73619] =  52490 -- Stardust
+consumables[ 74553] =  53049 -- First Aid (Embersilk Bandage)
+consumables[ 74554] =  53050 -- First Aid (Heavy Embersilk Bandage)
+consumables[ 74555] =  53051 -- First Aid (Dense Embersilk Bandage)
 consumables[ 75148] =  54442 -- Embersilk Net
 consumables[ 78164] =  49634 -- Drums of the Wild
 consumables[ 78993] =  57194 -- Concentration (Potion of Concentration)
@@ -1934,6 +2341,8 @@ consumables[ 97020] =  69027 -- Eat Cone of Cold (Cone of Cold)
 consumables[ 97602] =  69233 -- Eat Cone of Cold (Cone of Cold)
 consumables[102362] =  72159 -- Red Ogre Mage Costume (Magical Ogre Idol)
 consumables[102365] =  72161 -- Spurious Sarcophagus
+consumables[102694] =  72985 -- First Aid (Windwool Bandage)
+consumables[102695] =  72986 -- First Aid (Heavy Windwool Bandage)
 consumables[105681] =  76075 -- Mantid Elixir
 consumables[105682] =  76076 -- Mad Hozen Elixir
 consumables[105683] =  76077 -- Elixir of Weaponry
@@ -1963,6 +2372,7 @@ consumables[125686] =  86432 -- Banana Infused Rum
 consumables[125879] =  86508 -- Fresh Bread
 consumables[126144] =  87264 -- Four Senses Brew
 consumables[126294] =  86607 -- Goblin Dragon Gun, Mark II
+consumables[126389] = 109076 -- Goblin Glider (Goblin Glider Kit)
 consumables[127145] =  87528 -- Honorary Brewmaster Keg
 consumables[127207] =  86568 -- Memory of Mr. Smite (Mr. Smite's Brass Compass)
 consumables[127230] =  86569 -- Visions of Insanity (Crystal of Insanity)
@@ -2009,8 +2419,8 @@ consumables[131510] = { -- Uncontrolled Banish
 consumables[134870] =  22848 -- Empowerment (Elixir of Empowerment)
 consumables[134873] =  58143 -- Prismatic Elixir
 consumables[134986] = { -- Potion of Brawler's Might
-	 98063, -- Bottomless Potion of Brawler's Might
 	 92941, -- Potion of Brawler's Might
+	 98063, -- Bottomless Potion of Brawler's Might
 }
 consumables[134987] = { -- Potion of Brawler's Cunning
 	 92942, -- Potion of Brawler's Cunning
@@ -2028,8 +2438,8 @@ consumables[139490] = { -- Frost Rune Trap
 	 97156, -- Frost Rune Trap
 }
 consumables[139492] = { -- Potion of Light Steps
-	 97157, -- Potion of Light Steps
 	 95054, -- Potion of Light Steps
+	 97157, -- Potion of Light Steps
 }
 consumables[142325] =  98132 -- Shado-Pan Geyser Gun
 consumables[142372] =  98136 -- Control Jerry (Gastropod Shell)
@@ -2040,6 +2450,7 @@ consumables[147226] = 103642 -- Book of the Ages
 consumables[147412] = 104111 -- Elixir of Wandering Spirits
 consumables[147476] = 103643 -- Dew of Eternal Morning
 consumables[147643] = 104038 -- Cursed Swabby Helmet
+consumables[148238] = 104196 -- Consume Ogre Queasine (Delectable Ogre Queasine)
 consumables[148361] = 103683 -- Mask of Anger
 consumables[148365] = 103681 -- Mask of Doubt
 consumables[148366] = 103679 -- Mask of Fear
@@ -2055,5 +2466,139 @@ consumables[148577] = 104318 -- Using Flyer Controller (Crashin' Thrashin' Flyer
 consumables[148623] = 104328 -- Cauterizing Core
 consumables[148626] = 104329 -- Furious Ashhide Mushan (Ash-Covered Horn)
 consumables[148773] = 104346 -- Golden Glider
+consumables[154694] = 108631 -- Inferno Tonk Controller
+consumables[154696] = 108635 -- Driller Tonk Controller
+consumables[154697] = 108633 -- Doomshredder Tonk Controller
+consumables[154698] = 108634 -- Exterminator Tonk Controller
+consumables[154699] = 108632 -- Painbringer Tonk Controller
+consumables[156064] = 109153 -- Greater Draenic Agility Flask
+consumables[156069] = 109146 -- Draenor Haste Flask (UNUSED)
+consumables[156070] = 109147 -- Draenic Intellect Flask
+consumables[156071] = 109148 -- Draenic Strength Flask
+consumables[156073] = 109145 -- Draenic Agility Flask
+consumables[156074] = 109151 -- Draenor Armor Flask
+consumables[156077] = 109152 -- Draenic Stamina Flask
+consumables[156078] = 109154 -- Greater Draenor Haste Flask (UNUSED)
+consumables[156079] = 109155 -- Greater Draenic Intellect Flask
+consumables[156080] = 109156 -- Greater Draenic Strength Flask
+consumables[156082] = 109158 -- Greater Draenor Spirit Flask (UNUSED)
+consumables[156083] = 109159 -- UNUSED
+consumables[156084] = 109160 -- Greater Draenic Stamina Flask
+consumables[156136] = 109184 -- Stealth Field (Stealthman 54)
+consumables[156426] = 109218 -- Draenic Intellect Potion
+consumables[156428] = 109219 -- Draenic Strength Potion
+consumables[156430] = 109220 -- Draenic Armor Potion
+consumables[156432] = { -- Draenic Channeled Mana Potion
+	109221, -- Draenic Channeled Mana Potion
+	118262, -- Brilliant Dreampetal
+}
+consumables[156481] = 109227 -- UNUSED
+consumables[156779] = 109599 -- Neural Silencer
+consumables[158031] = 110274 -- Jawless Skulker Bait
+consumables[158034] = 110289 -- Fat Sleeper Bait
+consumables[158035] = 110290 -- Blind Lake Sturgeon Bait
+consumables[158036] = 110291 -- Fire Ammonite Bait
+consumables[158037] = 110292 -- Sea Scorpion Bait
+consumables[158038] = 110293 -- Abyssal Gulper Eel Bait
+consumables[158039] = 110294 -- Blackwater Whiptail Bait
+consumables[160093] = 110586 -- Mysterious Flowers (Mysterious Flower)
+consumables[160688] = 108743 -- Smoldering Boots (Deceptia's Smoldering Boots)
+consumables[160748] = 111522 -- Exceptional Alcohol (Tikari & K.A.Y.T.)
+consumables[161255] = 111603 -- First Aid (Antiseptic Bandage)
+consumables[161495] = 111842 -- Star Root Tuber
+consumables[162402] = 108739 -- Shiny Pearl (Pretty Draenor Pearl)
+consumables[163199] = 112338 -- Fortitude (Runescroll of Fortitude IV)
+consumables[165185] = 113096 -- Bloodclaw Charm (Bloodmane Charm)
+consumables[166592] = 113375 -- Vindicator's Armor Polish Kit
+consumables[167268] = 113540 -- Ba'ruun's Bountiful Bloom
+consumables[167273] = 113542 -- Whispers of Rai'Vosh
+consumables[167839] = 113631 -- Hypnotize Critter (Hypnosis Goggles)
+consumables[168223] = 114124 -- Invisibility (Phantom Potion)
+consumables[168224] = 114125 -- Preserved Discombobulator Ray
+consumables[168657] = 114227 -- Bubble Wand
+consumables[169291] = 111476 -- Stolen Breath
+consumables[169356] = 114982 -- Pure Songflower Serenade (Song Flower)
+consumables[170221] = 115466 -- Elemental Fragment
+consumables[170293] = 115468 -- Frosty (Permanent Frost Essence)
+consumables[170398] = 115501 -- Kowalski's Music Box
+consumables[170425] = 115506 -- Treessassin's Guise
+consumables[170788] = 116067 -- Ring of Broken Promises
+consumables[170839] = 116114 -- Magma Crawler Illusion (Prestige Card: The Turn)
+consumables[170869] = 116115 -- Blazing Wings
+consumables[170895] = 116119 -- Ango'rosh Sorcerer Stone
+consumables[170908] = 116120 -- Tasty Talador Lunch
+consumables[170937] = 119157 -- Saberon Cat-Sip
+consumables[170950] = 116139 -- Haunted (Haunting Memento)
+consumables[171234] = 116456 -- Scroll of Storytelling
+consumables[171245] = 116412 -- Scroll of Invisibility (Scroll of Mass Invisibility)
+consumables[171247] = 116413 -- Scroll of Town Portal
+consumables[171249] = 116411 -- Scroll of Protection
+consumables[171250] = 116410 -- Scroll of Speed
+consumables[171352] = 115503 -- Molten Path (Blazing Diamond Pendant)
+consumables[171554] = 116440 -- Burning Defender (Burning Defender's Medallion)
+consumables[171567] = 116442 -- Spirit of Vengeance (Vengeful Spiritshard)
+consumables[171573] = 116444 -- Spirit of Sorrow (Forlorn Spiritshard)
+consumables[171574] = 116443 -- Spirit of Peace (Peaceful Spiritshard)
+consumables[171575] = 116445 -- Spirit of Anxiety (Anxious Spiritshard)
+consumables[171607] = { -- Love Ray
+	116648, -- Manufactured Love Prism
+	116651, -- True Love Prism
+}
+consumables[171725] = 117013 -- Wand of Lightning Shield
+consumables[171761] = 116758 -- Brewfest Banner
+consumables[171782] = 116763 -- Crashin' Thrashin' Shredder Controller
+consumables[171958] = 116828 -- Exquisite Lich King Costume (Exquisite Costume Set: "The Lich King")
+consumables[172027] = 116856 -- Blooming Rose ("Blooming Rose" Contender's Costume)
+consumables[172047] = 116889 -- Purple Phantom ("Purple Phantom" Contender's Costume)
+consumables[172049] = 116890 -- Santo's Sun ("Santo's Sun" Contender's Costume)
+consumables[172052] = 116888 -- Night Demon ("Night Demon" Contender's Costume)
+consumables[172053] = 116891 -- Snowy Owl ("Snowy Owl" Contender's Costume)
+consumables[172160] = 116925 -- Free Action (Vintage Free Action Potion)
+consumables[172368] = 116979 -- Blackwater Anti-Venom
+consumables[172548] = 116999 -- Scroll of Replenishment
+consumables[173102] = 117550 -- Bees! BEES! BEEEEEEEEEEES! (Angry Beehive)
+consumables[173125] = 117569 -- AUGH (Giant Deathweb Egg)
+consumables[173260] = 118006 -- Shieldtronic Shield
+consumables[173893] = 118221 -- Petrify Critter (Petrification Stone)
+consumables[174004] = 113543 -- Spirit of Shinri
+consumables[174018] = 118278 -- Pale Vision Potion
+consumables[174062] = 118275 -- Well Fed (Perfect Nagrand Cherry)
+consumables[174077] = 118274 -- Well Fed (Perfect Fuzzy Pear)
+consumables[174078] = 118277 -- Well Fed (Perfect Ironpeel Plantain)
+consumables[174079] = 118273 -- Well Fed (Perfect O'ruk Orange)
+consumables[174080] = 118276 -- Well Fed (Perfect Greenskin Apple)
+consumables[174862] = 118512 -- Cooked Ashran Piranha Fish (Savory Savage Delight)
+consumables[175021] = 118544 -- Test Flask
+consumables[175771] = 118698 -- Wings of the Outcasts
+consumables[175790] = 116266 -- Draenic Swiftness Potion
+consumables[175817] = 116276 -- Draenic Living Action Potion
+consumables[175833] = 116268 -- Invisibility (Draenic Invisibility Potion)
+consumables[175841] = 118711 -- Draenic Water Walking (Draenic Water Walking Elixir)
+consumables[175844] = 116271 -- Greater Water Breathing (Draenic Water Breathing Elixir)
+consumables[176049] = 118897 -- Miner's Coffee
+consumables[176057] = 118900 -- Grob's Fancy Brew (Hol'bruk's Brutal Brew)
+consumables[176059] = 118904 -- Unleashed Mania
+consumables[176061] = 118903 -- Preserved Mining Pick
+consumables[176107] = { -- Brawler's Draenic Agility Potion
+	118910, -- Brawler's Draenic Agility Potion
+	118913, -- Brawler's Bottomless Draenic Agility Potion
+}
+consumables[176108] = { -- Brawler's Draenic Intellect Potion
+	118911, -- Brawler's Draenic Intellect Potion
+	118914, -- Brawler's Bottomless Draenic Intellect Potion
+}
+consumables[176109] = { -- Brawler's Draenic Strength Potion
+	118912, -- Brawler's Draenic Strength Potion
+	118915, -- Brawler's Bottomless Draenic Strength Potion
+}
+consumables[176151] = 118922 -- Whispers of Insanity (Oralius' Whispering Crystal)
+consumables[176160] = 118935 -- Bloom (Ever-Blooming Frond)
+consumables[176179] = 118937 -- Gamon's Heroic Spirit (Gamon's Braid)
+consumables[176180] = 118938 -- Duplicate Millhouse (Manastorm's Duplicator)
+consumables[176438] = 119092 -- Moroes' Famous Polish
+consumables[176594] = 119144 -- Touch of the Naaru
+consumables[176759] = 119180 -- Goren "Log" Roller
+consumables[176762] = 119179 -- Iron Star Roller
+consumables[176785] = 119182 -- Soulsaver (Soul Evacuation Crystal)
 
 LibStub('LibItemBuffs-1.0'):__UpgradeDatabase(version, trinkets, consumables, enchantments)
