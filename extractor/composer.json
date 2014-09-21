@@ -8,7 +8,10 @@
         }
     ],
     "require": {
-        "symfony/dom-crawler": "2.4.*@dev",
-        "symfony/css-selector": "2.4.*@dev"
+        "chuyskywalker/rolling-curl": "3.1.*",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": { "": "classes/" }
     }
 }

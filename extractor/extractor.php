@@ -19,210 +19,211 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 require_once('vendor/autoload.php');
 
-use Symfony\Component\DomCrawler\Crawler;
-use Symfony\Component\CssSelector\CssSelector;
+use RollingCurl\Request;
+use RollingCurl\RollingCurl;
 
-define('SITE_ROOT', 'http://www.wowhead.com');
+define('BASEURL', 'http://www.wowhead.com');
 
-function fetchPage($path) {
-	$path = ltrim($path, '/');
-	$cacheFile = "cache/".preg_replace('/\W/', '_', $path);
-	if(file_exists($cacheFile)) {
-		return file_get_contents($cacheFile);
-	} else {
-		$ctx = stream_context_create(
-			['http' => ['header'=> "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0\r\n" ]]
-		);
-		$content = file_get_contents(SITE_ROOT.'/'.$path, false, $ctx);
-		if($content !== FALSE) {
-			if(!is_dir("cache")) mkdir("cache");
-			file_put_contents($cacheFile, $content);
-		}
-		return $content;
-	}
+$INPUT = [
+    'trinkets' => [
+        'trinket' => 'items=4.-4'
+    ],
+    'consumables' => [
+        "potion" => 'items=0.1',
+        "elixirs" => 'items=0.2',
+        "flask" => 'items=0.3',
+        "scroll" => 'items=0.4',
+        "food & drink" => 'items=0.5',
+        "other" => 'items=0.8',
+        "first aid" => 'items?filter=na=bandage;cr=86;crs=6;crv=0',
+        "miscellaneous" => 'items=15?filter=cr=161:62;crs=1:1;crv=0:2' // Filter out items without cooldown
+    ]
+];
+
+
+function getCachePath($url)
+{
+    $hash = sha1($url);
+    return __DIR__.'/cache/'.substr($hash, 0, 1).'/'.substr($hash, 1, 1).'/'.substr($hash, 2);
 }
 
-function fetchTooltip($uri) {
-	$js = fetchPage($uri.'&power');
-	$escapedJs = str_replace('\\\'', '%QUOTE%', $js);
-	$values = array();
-	if(preg_match_all('/(\w+):\s*\'(.+)\'/', $escapedJs, $matches, PREG_SET_ORDER)) {
-		foreach($matches as $groups) {
-			$values[$groups[1]] = str_replace('%QUOTE%', '\'', $groups[2]);
-		}
-	}
-	return $values;
+$rollingCurl = new RollingCurl();
+$rollingCurl
+    ->addOptions([
+        CURLOPT_HTTPHEADER     => ['User-Agent: LibItemBuffs-1.0 extractor'],
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_MAXREDIRS      => 5,
+    ])
+    ->setCallback(function(Request $request, RollingCurl $rollingCurl) {
+        $info = $request->getResponseInfo();
+        if($info['http_code'] !== 200) {
+            printf("ERROR: %s => %d\n", $request->getUrl(), $info['http_code']);
+            return;
+        }
+
+        $cacheFile = getCachePath($request->getUrl());
+        if(!is_dir(dirname($cacheFile))) {
+            mkdir($cacheFile, 0777, true);
+        }
+        file_put_contents($cacheFile, $request->getResponseText());
+                
+        list($callback, $args) = $request->getExtraInfo();
+        array_unshift($args, $request->getResponseText());
+        call_user_func_array($callback, $args);
+    });
+
+function fetch($path, callable $callback, array $args = [])
+{
+    $url = BASEURL.'/'.$path;
+
+    $cacheFile = getCachePath($url);
+    if(file_exists($cacheFile)) {
+        array_unshift($args, file_get_contents($cacheFile));
+        return call_user_func_array($callback, $args);
+    }
+    
+    $request = new Request($url);
+    $request->setExtraInfo([$callback, $args]);
+    global $rollingCurl;
+    $rollingCurl->add($request);
+    return $request;
 }
 
-
-echo "Fetching trinket list:\n";
-$crawler = new Crawler();
-$crawler->addContent(fetchPage('/items=4.-4'));
-$scripts = $crawler->filter('script[type="text/javascript"]')->extract('_text');
-$trinkets = array();
-foreach($scripts as $script) {
-	if(strpos($script, 'listviewitems') !== FALSE) {
-		if(preg_match_all('/"id":(\d+)/', $script, $matches, PREG_SET_ORDER)) {;
-			foreach($matches as $groups) {
-				$trinkets[intval($groups[1])] = 'trinkets';
-				echo '.';
-			}
-		} else {
-			echo 'x';
-		}
-	}
-}
-echo "\nDone\n".count($trinkets)." trinkets found\n\n";
-
-$categories = array(
-	"potion" => '=0.1',
-	"elixirs" => '=0.2',
-	"flask" => '=0.3',
-	"scroll" => '=0.4',
-	"food & drink" => '=0.5',
-	"other item" => '=0.8',
-	"first aid" => '?filter=na=bandage;cr=86;crs=6;crv=0',
-	"miscellaneous item" => '=15?filter=cr=161:62;crs=1:1;crv=0:2' // Filter out items without cooldown
-);
-$consumables = array();
-
-foreach($categories as $cat => $param) {
-	echo "Fetching $cat list:\n";
-	$crawler = new Crawler();
-	$crawler->addContent(fetchPage('/items'.$param));
-	$scripts = $crawler->filter('script[type="text/javascript"]')->extract('_text');
-	$n = 0;
-	foreach($scripts as $script) {
-		if(strpos($script, 'listviewitems ') !== FALSE) {
-			if(preg_match_all('/"id":(\d+)/', $script, $matches, PREG_SET_ORDER)) {;
-				foreach($matches as $groups) {
-					$consumables[intval($groups[1])] = 'consumables';
-					echo '.';
-					$n++;
-				}
-			} else {
-				echo 'x';
-			}
-		}
-	}
-	echo "\nDone\n$n ${cat}s found\n\n";
+function parseTooltip($content, callable $callback, array $args = [])
+{
+    $matches = [];
+    if(!preg_match('/\{.+\}/s', $content, $matches)) {
+        return;
+    }
+    $tooltip = json_decode(
+        preg_replace(
+            "/^\s*(\w+):/m",
+            '"\1":',
+            str_replace(
+                ['"', "'", '%QUOTE%'],
+                ['\\"', '"', "'"],
+                str_replace('\\\'', '%QUOTE%', $matches[0])
+            )
+        ),
+        true
+    );
+    array_unshift($args, $tooltip);
+    call_user_func_array($callback, $args);
 }
 
-$allItems = $trinkets;
-foreach($consumables as $id => $kind) {
-	$allItems[$id] = $kind;
+function getTooltip($path, callable $callback, array $args = [])
+{
+    return fetch($path.'&power', 'parseTooltip', [$callback, $args]);
 }
 
-$equipSpells = array();
-$spells = array();
-$itemNames = array();
-
-echo "Scanning ".count($allItems)." item tooltips:\n";
-foreach($allItems as $itemID => $kind) {
-	$attrs = fetchTooltip("/item=$itemID");
-	if(!empty($attrs['name_enus']) && !empty($attrs['tooltip_enus'])) {
-		$name =  $attrs['name_enus'];
-		if(preg_match('/\bCommendation\b/i', $name)) {
-			echo 'x';
-			continue;
-		}
-		$itemNames[$itemID] = $name;
-		if(preg_match_all('%(Use|Equip)\s*:\s*<a\s+href="/spell=(\d+)"%i', $attrs['tooltip_enus'], $matches, PREG_SET_ORDER)) {
-			foreach($matches as $match) {
-				list(, $type, $spellID) = $match;
-				$spellID = intval($match[2]);
-				if($match[1] == 'Use') {
-					$spells[$spellID][] = $itemID;
-				} else {
-					$equipSpells[$spellID][] = $itemID;
-				}
-				echo '.';
-			}
-		} else {
-			echo 'x';
-		}
-	} else {
-		echo 'E';
-	}
-}
-printf("\nDone\nFound %d equip effects and %d use effects.\n\n", count($equipSpells),  count($spells));
-
-echo "Scanning ".count($equipSpells)." equip effects:\n";
-$numBuffs = 0;
-foreach($equipSpells as $spellID => $itemIDs) {
-	$page = fetchPage("/spell=".$spellID);
-	if(preg_match_all('/g_spells\.createIcon\((\d+),/', $page, $matches)) {
-		foreach($matches[1] as $buffID) {
-			echo '.';
-			$spells[$buffID] = $itemIDs;
-			$numBuffs++;
-		}
-	} else {
-		echo 'x';
-	}
-}
-echo "\nDone\n$numBuffs more spells found.\n\n";
-
-$buffs = array(
-	'consumables' => array(),
-	'trinkets' => array(),
-);
-$spellNames = array();
-
-echo "Scanning ".count($spells)." spell tooltips:\n";
-foreach($spells as $spellID => $itemIDs) {
-	$tooltip = fetchTooltip("/spell=$spellID");
-	if(!empty($tooltip)) {
-		if(!empty($tooltip['buff_enus'])) {
-			$name = $tooltip['name_enus'];
-			// Ignore food and drink buffs
-			if(!preg_match('/^((Bountiful )?Food|Refresh|(Holiday )?Drink)/i', $name)) {
-				$spellNames[$spellID] = $name;
-				$kind = $allItems[$itemIDs[0]];
-				$buffs[$kind][$spellID] = $itemIDs;
-			} else {
-				echo '-';
-			}
-			echo '.';
-		} else {
-			echo '-';
-		}
-	} else {
-		echo 'x';
-	}
-}
-$allCount = count($buffs['consumables']) + count($buffs['trinkets']);
-echo "\n".$allCount." buffs found.\n\n";
-
-$code = array(
-	'--== CUT HERE ==--',
-	'version = '.date("YmdHis")
-);
-
-function sortInts($a, $b) {
-	return intval($a) - intval($b);
+foreach($INPUT as $itemType => $lists) {
+    foreach($lists as $what => $path) {
+        fetch($path, 'parseItemList', [$itemType, $what]);
+    }
 }
 
-foreach(array('trinkets', 'consumables') as $cat) {
-	$code[] = "-- ".ucfirst($cat);
-	uksort($buffs[$cat], "sortInts");
-	foreach($buffs[$cat] as $spell => $items) {
-		if(count($items) == 1) {
-			$item = $items[0];
-			$name = $spellNames[$spell];
-			if($itemNames[$item] != $name) {
-				$name .= " (".$itemNames[$item].")";
-			}
-			$code[] = sprintf("%s[%6d] = %6d -- %s", $cat, $spell, $item, $name);
-		} else {
-			$code[] = sprintf("%s[%6d] = { -- %s", $cat, $spell, $spellNames[$spell]);
-			usort($items, "sortInts");
-			foreach($items as $item) {
-				$code[] = sprintf("\t%6d, -- %s", $item, $itemNames[$item]);
-			}
-			$code[] = '}';
-		}
-	}
+function parseItemList($content, $itemType, $what)
+{
+    $matches = [];
+    if(!preg_match('/var listviewitems = (.*)/m', $content, $matches)) {
+        return;
+    }
+    $itemList = $matches[1];
+    if(!preg_match_all('/"id":(\d+)/', $itemList, $matches, PREG_SET_ORDER)) {
+        return;
+    }
+    printf("Found %d %s(s).\n", count($matches), $what);
+    foreach($matches as $groups) {
+        $itemId = intval($groups[1]);
+        getTooltip("item=$itemId", 'parseItemTooltip', [$itemType, $what, $itemId]);
+    }
+}
+
+function parseItemTooltip($tooltip, $itemType, $what, $itemId)
+{
+    if(!isset($tooltip['name_enus'], $tooltip['tooltip_enus'])) {
+        return;
+    }
+    $itemName = $tooltip['name_enus'];
+    if(preg_match('/\bCommendation\b/i', $itemName) || $itemName === "UNUSED") {
+        return;
+    }
+    $matches = [];
+    if(!preg_match_all('%(Use|Equip)\s*:\s*<a\s+href="/spell=(\d+)"%i', $tooltip['tooltip_enus'], $matches, PREG_SET_ORDER)) {
+        return;
+    }
+    printf("Analyzing %s #%d: %s\n", $what, $itemId, $itemName);
+    foreach($matches as $groups) {
+        $spellId = intval($groups[2]);
+        if($groups[1] == 'Use') {
+            getTooltip("spell=$spellId", 'parseSpellTooltip', [$itemType, $what, $itemId, $itemName, $spellId]);
+        } else {
+            fetch("spell=$spellId", 'parseOnEquip', [$itemType, $what, $itemId, $itemName]);
+        }
+    }
+}
+
+function parseOnEquip($content, $itemType, $what, $itemId, $itemName)
+{
+    $matches = [];
+    if(!preg_match_all('/g_spells\.createIcon\((\d+),/', $content, $matches)) {
+        return;
+    }
+    foreach($matches[1] as $buffId) {
+        $buffId = intval($buffId);
+        getTooltip("spell=$buffId", 'parseSpellTooltip', [$itemType, $what, $itemId, $itemName, $buffId]);
+    }
+}
+
+function parseSpellTooltip($tooltip, $itemType, $what, $itemId, $itemName, $spellId)
+{
+    if(!isset($tooltip['buff_enus'], $tooltip['name_enus'])) {
+        return;
+    }
+    $spellName = $tooltip['name_enus'];
+    if(preg_match('/^((Bountiful )?Food|Refresh|(Holiday )?Drink)/i', $spellName) || $spellName === "UNUSED") {
+        // Ignore food and drink buffs
+        return;
+    }
+    printf("Found buff %s (#%d) for %s %s (#%d).\n", $spellName, $spellId, $what, $itemName, $itemId);
+}
+
+$rollingCurl->execute();
+
+die(1);
+
+function intSort($a, $b) { return intval($a) - intval($b); }
+
+uksort($spellNames, 'intSort');
+
+$code = [ "--== CUT HERE ==--\nversion = ".date("YmdHis")."\n" ];
+
+foreach($spellNames as $spellId => $spellName) {
+    $items = $spellItems[$spellId];
+    $num = count($items);
+    if($num == 0) {
+        continue;
+    }
+    list($itemId, $itemName) = each($items);
+    $itemType = $itemTypes[$itemId];
+    $code[] = sprintf("%-11s[%6d] = ", $itemType, $spellId);
+    if($num == 1) {
+        if($spellName !== $itemName) {
+            $code[] = sprintf("%6d -- %s <= %s\n", $itemId, $spellName, $itemName);
+        } else {
+            $code[] = sprintf("%6d -- %s\n", $itemId, $spellName);
+        }
+        continue;
+    }
+    uksort($items, 'intSort');
+    $code[] = sprintf("{ -- %s\n", $spellName);
+    foreach($items as $itemId => $itemName) {
+        if($itemType != $itemTypes[$itemId]) {
+            $code[] = "-- Types mélangés ! ======================\n";
+        }
+        $code[] = sprintf("    %6d, -- %s\n", $itemId, $itemName);
+    }
+    $code[] = "}\n";
 }
 $code[] = "";
 $code[] = "LibStub('LibItemBuffs-1.0'):__UpgradeDatabase(version, trinkets, consumables, enchantments)";
