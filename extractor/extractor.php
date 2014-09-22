@@ -40,38 +40,23 @@ $INPUT = [
     ]
 ];
 
-$requested = $completed = 0;
+$output = [];
+
+$rollingCurl = new RollingCurl();
+$cache = new FileCache(__DIR__.'/cache');
+$queue = new TaskQueue();
 
 function refreshStatus()
 {
-    global $requested, $completed;
-    $ratio = $requested > 0 ? $completed / $requested : 0;
+    global $queue, $rollingCurl;
+    $completed = $queue->getCompleted() + $rollingCurl->countCompleted();
+    $pending = count($queue) + $rollingCurl->countActive() + $rollingCurl->countPending();
+    $total = $completed + $pending;
+    $ratio = $total > 0 ? $completed / $total : 0;
     $width = floor(60 * $ratio);
-    printf("\r%s%s %4d/%4d (%4d%%)", str_repeat('#', $width), str_repeat('.', 60-$width), $completed, $requested, floor(100 * $ratio));
+    printf("\r%s%s %4d/%4d (%3d%%)", str_repeat('#', $width), str_repeat('.', 60-$width), $completed, $total, floor(100 * $ratio));
 }
 
-function getCachePath($url)
-{
-    $hash = sha1($url);
-    return __DIR__.'/cache/'.substr($hash, 0, 1).'/'.substr($hash, 1, 1).'/'.substr($hash, 2);
-}
-
-function saveToCache($url, $content)
-{
-    $cacheFile = getCachePath($url);
-    if(!is_dir(dirname($cacheFile))) {
-        mkdir(dirname($cacheFile), 0777, true);
-    }
-    return file_put_contents($cacheFile, $content);
-}
-
-function fetchFromCache($url)
-{
-    $cacheFile = getCachePath($url);
-    return file_exists($cacheFile) ? file_get_contents($cacheFile) : null;
-}
-
-$rollingCurl = new RollingCurl();
 $rollingCurl
     ->addOptions([
         CURLOPT_HTTPHEADER     => ['User-Agent: LibItemBuffs-1.0 extractor'],
@@ -79,8 +64,6 @@ $rollingCurl
         CURLOPT_MAXREDIRS      => 5,
     ])
     ->setCallback(function(Request $request, RollingCurl $rollingCurl) {
-        global $completed;
-        $completed++;
         refreshStatus();
 
         $info = $request->getResponseInfo();
@@ -89,28 +72,30 @@ $rollingCurl
             return;
         }
 
-        saveToCache($request->getUrl(), $request->getResponseText());
+        global $cache;
+        $cache->store($request->getUrl(), $request->getResponseText());
 
         list($callback, $args) = $request->getExtraInfo();
         array_unshift($args, $request->getResponseText());
         call_user_func_array($callback, $args);
+    })
+    ->setIdleCallback(function(RollingCurl $rollingCurl) use($queue) {
+        $queue->process();
     });
 
 function fetch($path, callable $callback, array $args = [])
 {
-    global $requested, $completed;
-    $requested++;
-
+    global $cache;
     $url = BASEURL.'/'.$path;
 
-    if(null !== $content = fetchFromCache($url)) {
+    if(null !== $content = $cache->fetch($url)) {
+        global $queue;
         array_unshift($args, $content);
-        $completed++;
-        call_user_func_array($callback, $args);
+        $queue->enqueue($callback, $args);
     } else {
+        global $rollingCurl;
         $request = new Request($url);
         $request->setExtraInfo([$callback, $args]);
-        global $rollingCurl;
         $rollingCurl->add($request);
     }
 
@@ -214,27 +199,38 @@ function parseSpellTooltip($tooltip, $itemType, $what, $itemId, $itemName, $spel
         return;
     }
     //printf("Found buff %s (#%d) for %s %s (#%d).\n", $spellName, $spellId, $what, $itemName, $itemId);
+    global $output;
+    if(!isset($output[$spellId])) {
+        $output[$spellId] = [
+            'type' => $itemType,
+            'name' => $spellName,
+            'items' => []
+        ];
+    }
+    $output[$spellId]['items'][$itemId] = $itemName;
 }
 
-$rollingCurl->execute();
-
-die(1);
+do {
+    $queue->process();
+    $rollingCurl->execute();
+    refreshStatus();
+} while(count($queue) > 0);
 
 function intSort($a, $b) { return intval($a) - intval($b); }
 
-uksort($spellNames, 'intSort');
+uksort($output, 'intSort');
 
 $code = [ "--== CUT HERE ==--\nversion = ".date("YmdHis")."\n" ];
 
-foreach($spellNames as $spellId => $spellName) {
-    $items = $spellItems[$spellId];
+foreach($output as $spellId => $spellData) {
+    $spellName = $spellData['name'];
+    $items = $spellData['items'];
     $num = count($items);
     if($num == 0) {
         continue;
     }
     list($itemId, $itemName) = each($items);
-    $itemType = $itemTypes[$itemId];
-    $code[] = sprintf("%-11s[%6d] = ", $itemType, $spellId);
+    $code[] = sprintf("%-11s[%6d] = ", $spellData['type'], $spellId);
     if($num == 1) {
         if($spellName !== $itemName) {
             $code[] = sprintf("%6d -- %s <= %s\n", $itemId, $spellName, $itemName);
@@ -246,9 +242,6 @@ foreach($spellNames as $spellId => $spellName) {
     uksort($items, 'intSort');
     $code[] = sprintf("{ -- %s\n", $spellName);
     foreach($items as $itemId => $itemName) {
-        if($itemType != $itemTypes[$itemId]) {
-            $code[] = "-- Types mélangés ! ======================\n";
-        }
         $code[] = sprintf("    %6d, -- %s\n", $itemId, $itemName);
     }
     $code[] = "}\n";
