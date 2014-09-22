@@ -47,6 +47,21 @@ function getCachePath($url)
     return __DIR__.'/cache/'.substr($hash, 0, 1).'/'.substr($hash, 1, 1).'/'.substr($hash, 2);
 }
 
+function saveToCache($url, $content)
+{
+    $cacheFile = getCachePath($url);
+    if(!is_dir(dirname($cacheFile))) {
+        mkdir(dirname($cacheFile), 0777, true);
+    }
+    return file_put_contents($cacheFile, $content);
+}
+
+function fetchFromCache($url)
+{
+    $cacheFile = getCachePath($url);
+    return file_exists($cacheFile) ? file_get_contents($cacheFile) : null;
+}
+
 $rollingCurl = new RollingCurl();
 $rollingCurl
     ->addOptions([
@@ -61,12 +76,8 @@ $rollingCurl
             return;
         }
 
-        $cacheFile = getCachePath($request->getUrl());
-        if(!is_dir(dirname($cacheFile))) {
-            mkdir($cacheFile, 0777, true);
-        }
-        file_put_contents($cacheFile, $request->getResponseText());
-                
+        saveToCache($request->getUrl(), $request->getResponseText());
+
         list($callback, $args) = $request->getExtraInfo();
         array_unshift($args, $request->getResponseText());
         call_user_func_array($callback, $args);
@@ -76,17 +87,16 @@ function fetch($path, callable $callback, array $args = [])
 {
     $url = BASEURL.'/'.$path;
 
-    $cacheFile = getCachePath($url);
-    if(file_exists($cacheFile)) {
-        array_unshift($args, file_get_contents($cacheFile));
-        return call_user_func_array($callback, $args);
+    if(null !== $content = fetchFromCache($url)) {
+        array_unshift($args, $content);
+        call_user_func_array($callback, $args);
+    } else {
+        $request = new Request($url);
+        $request->setExtraInfo([$callback, $args]);
+        global $rollingCurl;
+        $rollingCurl->add($request);
     }
-    
-    $request = new Request($url);
-    $request->setExtraInfo([$callback, $args]);
-    global $rollingCurl;
-    $rollingCurl->add($request);
-    return $request;
+
 }
 
 function parseTooltip($content, callable $callback, array $args = [])
