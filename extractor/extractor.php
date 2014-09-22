@@ -40,6 +40,15 @@ $INPUT = [
     ]
 ];
 
+$requested = $completed = 0;
+
+function refreshStatus()
+{
+    global $requested, $completed;
+    $ratio = $requested > 0 ? $completed / $requested : 0;
+    $width = floor(60 * $ratio);
+    printf("\r%s%s %4d/%4d (%4d%%)", str_repeat('#', $width), str_repeat('.', 60-$width), $completed, $requested, floor(100 * $ratio));
+}
 
 function getCachePath($url)
 {
@@ -70,9 +79,13 @@ $rollingCurl
         CURLOPT_MAXREDIRS      => 5,
     ])
     ->setCallback(function(Request $request, RollingCurl $rollingCurl) {
+        global $completed;
+        $completed++;
+        refreshStatus();
+
         $info = $request->getResponseInfo();
         if($info['http_code'] !== 200) {
-            printf("ERROR: %s => %d\n", $request->getUrl(), $info['http_code']);
+            printf("\nHTTP ERROR: %s => %d\n", $request->getUrl(), $info['http_code']);
             return;
         }
 
@@ -85,10 +98,14 @@ $rollingCurl
 
 function fetch($path, callable $callback, array $args = [])
 {
+    global $requested, $completed;
+    $requested++;
+
     $url = BASEURL.'/'.$path;
 
     if(null !== $content = fetchFromCache($url)) {
         array_unshift($args, $content);
+        $completed++;
         call_user_func_array($callback, $args);
     } else {
         $request = new Request($url);
@@ -97,6 +114,7 @@ function fetch($path, callable $callback, array $args = [])
         $rollingCurl->add($request);
     }
 
+    refreshStatus();
 }
 
 function parseTooltip($content, callable $callback, array $args = [])
@@ -142,7 +160,7 @@ function parseItemList($content, $itemType, $what)
     if(!preg_match_all('/"id":(\d+)/', $itemList, $matches, PREG_SET_ORDER)) {
         return;
     }
-    printf("Found %d %s(s).\n", count($matches), $what);
+    //printf("Found %d %s(s).\n", count($matches), $what);
     foreach($matches as $groups) {
         $itemId = intval($groups[1]);
         getTooltip("item=$itemId", 'parseItemTooltip', [$itemType, $what, $itemId]);
@@ -162,7 +180,7 @@ function parseItemTooltip($tooltip, $itemType, $what, $itemId)
     if(!preg_match_all('%(Use|Equip)\s*:\s*<a\s+href="/spell=(\d+)"%i', $tooltip['tooltip_enus'], $matches, PREG_SET_ORDER)) {
         return;
     }
-    printf("Analyzing %s #%d: %s\n", $what, $itemId, $itemName);
+    //printf("Analyzing %s #%d: %s\n", $what, $itemId, $itemName);
     foreach($matches as $groups) {
         $spellId = intval($groups[2]);
         if($groups[1] == 'Use') {
@@ -195,7 +213,7 @@ function parseSpellTooltip($tooltip, $itemType, $what, $itemId, $itemName, $spel
         // Ignore food and drink buffs
         return;
     }
-    printf("Found buff %s (#%d) for %s %s (#%d).\n", $spellName, $spellId, $what, $itemName, $itemId);
+    //printf("Found buff %s (#%d) for %s %s (#%d).\n", $spellName, $spellId, $what, $itemName, $itemId);
 }
 
 $rollingCurl->execute();
