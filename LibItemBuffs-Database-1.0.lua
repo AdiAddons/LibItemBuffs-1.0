@@ -25,6 +25,22 @@ local consumables = {
 	[79638] = 75525,
 	[79639] = 75525,
 	[79640] = 75525,
+	-- Empowered Augment Runes
+	[175456] = { -- Hyper Augmentation
+		118630, -- Hyper Augment Rune
+		128475, -- Empowered Augment Rune (Horde)
+		128482, -- Empowered Augment Rune (Alliance)
+	},
+	[175439] = { -- Stout Augmentation
+		118631, -- Stout Augment Rune
+		128475, -- Empowered Augment Rune (Horde)
+		128482, -- Empowered Augment Rune (Alliance)
+	},
+	[175457] = { -- Focus Augmentation
+		118632, -- Focus Augment Rune
+		128475, -- Empowered Augment Rune (Horde)
+		128482, -- Empowered Augment Rune (Alliance)
+	},
 }
 
 local enchantments = {
@@ -65,7 +81,7 @@ local enchantments = {
 
 -- Anything below this line is generated with the extractor. Editing it is useless.
 --== CUT HERE ==--
-version = 20150807112104
+version = 20150807112936
 -- Trinkets
 trinkets[   408] =  32492 -- Kidney Shot (Ashtongue Talisman of Lethality)
 trinkets[   703] = 124520 -- Garrote (Bleeding Hollow Toxin Vessel)
@@ -2833,9 +2849,6 @@ consumables[174077] = 118274 -- Well Fed (Perfect Fuzzy Pear)
 consumables[174078] = 118277 -- Well Fed (Perfect Ironpeel Plantain)
 consumables[174079] = 118273 -- Well Fed (Perfect O'ruk Orange)
 consumables[174080] = 118276 -- Well Fed (Perfect Greenskin Apple)
-consumables[175439] = 118631 -- Stout Augmentation (Stout Augment Rune)
-consumables[175456] = 118630 -- Hyper Augmentation (Hyper Augment Rune)
-consumables[175457] = 118632 -- Focus Augmentation (Focus Augment Rune)
 consumables[175771] = 118698 -- Wings of the Outcasts
 consumables[175790] = { -- Draenic Swiftness Potion
 	116266, -- Draenic Swiftness Potion

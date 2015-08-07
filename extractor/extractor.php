@@ -82,7 +82,6 @@ $categories = array(
 	"food & drink" => '=0.5',
 	"other item" => '=0.8',
 	"first aid" => '?filter=na=bandage;cr=86;crs=6;crv=0',
-    "augment runes" => '=0.0?filter=na=augment+rune',
 	"miscellaneous item" => '=15?filter=cr=161:62;crs=1:1;crv=0:2' // Filter out items without cooldown
 );
 $consumables = array();
