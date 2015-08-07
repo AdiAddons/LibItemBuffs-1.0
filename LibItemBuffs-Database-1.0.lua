@@ -65,7 +65,7 @@ local enchantments = {
 
 -- Anything below this line is generated with the extractor. Editing it is useless.
 --== CUT HERE ==--
-version = 20141127224721
+version = 20150807104823
 -- Trinkets
 trinkets[   408] =  32492 -- Kidney Shot (Ashtongue Talisman of Lethality)
 trinkets[   835] =   1404 -- Tidal Charm
@@ -2633,6 +2633,9 @@ consumables[174078] = 118277 -- Well Fed (Perfect Ironpeel Plantain)
 consumables[174079] = 118273 -- Well Fed (Perfect O'ruk Orange)
 consumables[174080] = 118276 -- Well Fed (Perfect Greenskin Apple)
 consumables[174862] = 118512 -- Cooked Ashran Piranha Fish (Savory Savage Delight)
+consumables[175439] = 118631 -- Stout Augmentation (Stout Augment Rune)
+consumables[175456] = 118630 -- Hyper Augmentation (Hyper Augment Rune)
+consumables[175457] = 118632 -- Focus Augmentation (Focus Augment Rune)
 consumables[175771] = 118698 -- Wings of the Outcasts
 consumables[175790] = 116266 -- Draenic Swiftness Potion
 consumables[175817] = 116276 -- Draenic Living Action Potion
