@@ -1,4 +1,4 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: Lib: ItemBuffs-1.0
 ## Notes: Buff-to-item database.
 ## Author: Adirelle
