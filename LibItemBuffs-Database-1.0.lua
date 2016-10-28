@@ -81,7 +81,7 @@ local enchantments = {
 
 -- Anything below this line is generated with the extractor. Editing it is useless.
 --== CUT HERE ==--
-version = 20161005135000
+version = 20161028114345
 -- Trinkets
 trinkets[   408] =  32492 -- Kidney Shot (Ashtongue Talisman of Lethality)
 trinkets[   835] =   1404 -- Tidal Charm
