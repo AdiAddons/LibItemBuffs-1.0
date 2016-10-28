@@ -1,9 +1,7 @@
-language: c
 sudo: false
 
 env:
-    - LUA="lua5.1"
-    - LUAC="luac5.1"
+    - LUA="lua5.1" LUAC="luac5.1"
 
 addons:
     apt:
