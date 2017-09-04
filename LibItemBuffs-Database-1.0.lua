@@ -81,7 +81,7 @@ local enchantments = {
 
 -- Anything below this line is generated with the extractor. Editing it is useless.
 --== CUT HERE ==--
-version = 20170614082439
+version = 20170904232143
 -- Trinkets
 trinkets[   408] =  32492 -- Kidney Shot (Ashtongue Talisman of Lethality)
 trinkets[   835] =   1404 -- Tidal Charm
@@ -186,7 +186,6 @@ trinkets[ 26599] =  21769 -- Ruby Serpent (Figurine - Ruby Serpent)
 trinkets[ 26600] =  21777 -- Emerald Owl (Figurine - Emerald Owl)
 trinkets[ 26609] =  21784 -- Black Diamond Crab (Figurine - Black Diamond Crab)
 trinkets[ 26614] =  21789 -- Dark Iron Scorpid (Figurine - Dark Iron Scorpid)
-trinkets[ 26679] =  32492 -- Deadly Throw (Ashtongue Talisman of Lethality)
 trinkets[ 27615] =  32492 -- Kidney Shot (Ashtongue Talisman of Lethality)
 trinkets[ 27675] =  22268 -- Chromatic Infusion (Draconic Infused Emblem)
 trinkets[ 28200] =  22678 -- Ascendance (Talisman of Ascendance)
@@ -1155,7 +1154,6 @@ trinkets[126483] = { -- Windswept Pages
 }
 trinkets[126484] = { -- Flashing Steel
 	 81265, -- Flashing Steel Talisman
-	 88294, -- Flashing Steel Talisman
 	144158, -- Flashing Steel Talisman
 }
 trinkets[126489] = 144160 -- Relentlessness (Searing Words)
@@ -1166,7 +1164,6 @@ trinkets[126513] = { -- Poised to Strike
 }
 trinkets[126519] = { -- Lessons of the Darkmaster
 	 81268, -- Lessons of the Darkmaster
-	 88358, -- Lessons of the Darkmaster
 	144161, -- Lessons of the Darkmaster
 }
 trinkets[126533] = { -- Indomitable
@@ -1744,7 +1741,6 @@ trinkets[144130] =  39821 -- Spell Power (Spiritist's Focus)
 trinkets[144201] =  55266 -- Herald of Doom (Grace of the Herald)
 trinkets[144203] =  55237 -- Hardened Shell (Porcelain Crab)
 trinkets[144205] =  55251 -- Typhoon (Might of the Ocean)
-trinkets[145416] =  32492 -- Envenom (Ashtongue Talisman of Lethality)
 trinkets[145417] =  32492 -- Rupture (Ashtongue Talisman of Lethality)
 trinkets[145418] =  32492 -- Slice and Dice (Ashtongue Talisman of Lethality)
 trinkets[146046] = { -- Expanded Mind
@@ -2050,6 +2046,96 @@ trinkets[170397] = { -- Rapid Adaptation
 	143231, -- Fearless Gladiator's Badge of Dominance
 	143234, -- Fearless Gladiator's Badge of Victory
 	143237, -- Fearless Gladiator's Badge of Adaptation
+	144730, -- Cruel Gladiator's Badge of Conquest
+	144731, -- Cruel Gladiator's Badge of Conquest
+	144736, -- Cruel Gladiator's Badge of Dominance
+	144737, -- Cruel Gladiator's Badge of Dominance
+	144742, -- Cruel Gladiator's Badge of Victory
+	144743, -- Cruel Gladiator's Badge of Victory
+	144976, -- Cruel Gladiator's Badge of Conquest
+	144977, -- Cruel Gladiator's Badge of Conquest
+	144982, -- Cruel Gladiator's Badge of Dominance
+	144983, -- Cruel Gladiator's Badge of Dominance
+	144988, -- Cruel Gladiator's Badge of Victory
+	144989, -- Cruel Gladiator's Badge of Victory
+	145222, -- Cruel Combatant's Badge of Conquest
+	145223, -- Cruel Combatant's Badge of Conquest
+	145228, -- Cruel Combatant's Badge of Dominance
+	145229, -- Cruel Combatant's Badge of Dominance
+	145234, -- Cruel Combatant's Badge of Victory
+	145235, -- Cruel Combatant's Badge of Victory
+	145572, -- Ferocious Gladiator's Badge of Conquest
+	145573, -- Ferocious Gladiator's Badge of Conquest
+	145578, -- Ferocious Gladiator's Badge of Dominance
+	145579, -- Ferocious Gladiator's Badge of Dominance
+	145584, -- Ferocious Gladiator's Badge of Victory
+	145585, -- Ferocious Gladiator's Badge of Victory
+	145818, -- Ferocious Gladiator's Badge of Conquest
+	145819, -- Ferocious Gladiator's Badge of Conquest
+	145824, -- Ferocious Gladiator's Badge of Dominance
+	145825, -- Ferocious Gladiator's Badge of Dominance
+	145830, -- Ferocious Gladiator's Badge of Victory
+	145831, -- Ferocious Gladiator's Badge of Victory
+	146064, -- Ferocious Combatant's Badge of Conquest
+	146065, -- Ferocious Combatant's Badge of Conquest
+	146070, -- Ferocious Combatant's Badge of Dominance
+	146071, -- Ferocious Combatant's Badge of Dominance
+	146076, -- Ferocious Combatant's Badge of Victory
+	146077, -- Ferocious Combatant's Badge of Victory
+	148105, -- Fierce Gladiator's Badge of Conquest
+	148106, -- Fierce Gladiator's Badge of Conquest
+	148111, -- Fierce Gladiator's Badge of Dominance
+	148112, -- Fierce Gladiator's Badge of Dominance
+	148117, -- Fierce Gladiator's Badge of Victory
+	148118, -- Fierce Gladiator's Badge of Victory
+	148351, -- Fierce Gladiator's Badge of Conquest
+	148352, -- Fierce Gladiator's Badge of Conquest
+	148357, -- Fierce Gladiator's Badge of Dominance
+	148358, -- Fierce Gladiator's Badge of Dominance
+	148363, -- Fierce Gladiator's Badge of Victory
+	148364, -- Fierce Gladiator's Badge of Victory
+	148598, -- Dominating Gladiator's Badge of Conquest
+	148599, -- Dominating Gladiator's Badge of Conquest
+	148604, -- Dominating Gladiator's Badge of Dominance
+	148605, -- Dominating Gladiator's Badge of Dominance
+	148610, -- Dominating Gladiator's Badge of Victory
+	148611, -- Dominating Gladiator's Badge of Victory
+	148844, -- Dominating Gladiator's Badge of Conquest
+	148845, -- Dominating Gladiator's Badge of Conquest
+	148850, -- Dominating Gladiator's Badge of Dominance
+	148851, -- Dominating Gladiator's Badge of Dominance
+	148856, -- Dominating Gladiator's Badge of Victory
+	148857, -- Dominating Gladiator's Badge of Victory
+	149090, -- Demonic Gladiator's Badge of Conquest
+	149091, -- Demonic Gladiator's Badge of Conquest
+	149096, -- Demonic Gladiator's Badge of Dominance
+	149097, -- Demonic Gladiator's Badge of Dominance
+	149102, -- Demonic Gladiator's Badge of Victory
+	149103, -- Demonic Gladiator's Badge of Victory
+	149336, -- Demonic Gladiator's Badge of Conquest
+	149337, -- Demonic Gladiator's Badge of Conquest
+	149342, -- Demonic Gladiator's Badge of Dominance
+	149343, -- Demonic Gladiator's Badge of Dominance
+	149348, -- Demonic Gladiator's Badge of Victory
+	149349, -- Demonic Gladiator's Badge of Victory
+	149702, -- Fierce Combatant's Badge of Conquest
+	149703, -- Fierce Combatant's Badge of Conquest
+	149708, -- Fierce Combatant's Badge of Dominance
+	149709, -- Fierce Combatant's Badge of Dominance
+	149714, -- Fierce Combatant's Badge of Victory
+	149715, -- Fierce Combatant's Badge of Victory
+	149952, -- Dominating Combatant's Badge of Conquest
+	149953, -- Dominating Combatant's Badge of Conquest
+	149958, -- Dominating Combatant's Badge of Dominance
+	149959, -- Dominating Combatant's Badge of Dominance
+	149964, -- Dominating Combatant's Badge of Victory
+	149965, -- Dominating Combatant's Badge of Victory
+	150198, -- Demonic Combatant's Badge of Conquest
+	150199, -- Demonic Combatant's Badge of Conquest
+	150204, -- Demonic Combatant's Badge of Dominance
+	150205, -- Demonic Combatant's Badge of Dominance
+	150210, -- Demonic Combatant's Badge of Victory
+	150211, -- Demonic Combatant's Badge of Victory
 }
 trinkets[172691] = 117402 -- Shadow Reflector (Ultra-Electrified Reflector)
 trinkets[172693] = 117403 -- Frostfire Reflector (Gyro-Radiant Reflector)
@@ -2316,6 +2402,36 @@ trinkets[190025] = { -- Surge of Victory
 	143010, -- Fearless Combatant's Insignia of Victory
 	143123, -- Fearless Gladiator's Insignia of Victory
 	143236, -- Fearless Gladiator's Insignia of Victory
+	144746, -- Cruel Gladiator's Insignia of Victory
+	144747, -- Cruel Gladiator's Insignia of Victory
+	144992, -- Cruel Gladiator's Insignia of Victory
+	144993, -- Cruel Gladiator's Insignia of Victory
+	145238, -- Cruel Combatant's Insignia of Victory
+	145239, -- Cruel Combatant's Insignia of Victory
+	145588, -- Ferocious Gladiator's Insignia of Victory
+	145589, -- Ferocious Gladiator's Insignia of Victory
+	145834, -- Ferocious Gladiator's Insignia of Victory
+	145835, -- Ferocious Gladiator's Insignia of Victory
+	146080, -- Ferocious Combatant's Insignia of Victory
+	146081, -- Ferocious Combatant's Insignia of Victory
+	148121, -- Fierce Gladiator's Insignia of Victory
+	148122, -- Fierce Gladiator's Insignia of Victory
+	148367, -- Fierce Gladiator's Insignia of Victory
+	148368, -- Fierce Gladiator's Insignia of Victory
+	148614, -- Dominating Gladiator's Insignia of Victory
+	148615, -- Dominating Gladiator's Insignia of Victory
+	148860, -- Dominating Gladiator's Insignia of Victory
+	148861, -- Dominating Gladiator's Insignia of Victory
+	149106, -- Demonic Gladiator's Insignia of Victory
+	149107, -- Demonic Gladiator's Insignia of Victory
+	149352, -- Demonic Gladiator's Insignia of Victory
+	149353, -- Demonic Gladiator's Insignia of Victory
+	149718, -- Fierce Combatant's Insignia of Victory
+	149719, -- Fierce Combatant's Insignia of Victory
+	149968, -- Dominating Combatant's Insignia of Victory
+	149969, -- Dominating Combatant's Insignia of Victory
+	150214, -- Demonic Combatant's Insignia of Victory
+	150215, -- Demonic Combatant's Insignia of Victory
 }
 trinkets[190026] = { -- Surge of Conquest
 	135693, -- Vindictive Gladiator's Insignia of Conquest
@@ -2330,6 +2446,36 @@ trinkets[190026] = { -- Surge of Conquest
 	143001, -- Fearless Combatant's Insignia of Conquest
 	143114, -- Fearless Gladiator's Insignia of Conquest
 	143227, -- Fearless Gladiator's Insignia of Conquest
+	144734, -- Cruel Gladiator's Insignia of Conquest
+	144735, -- Cruel Gladiator's Insignia of Conquest
+	144980, -- Cruel Gladiator's Insignia of Conquest
+	144981, -- Cruel Gladiator's Insignia of Conquest
+	145226, -- Cruel Combatant's Insignia of Conquest
+	145227, -- Cruel Combatant's Insignia of Conquest
+	145576, -- Ferocious Gladiator's Insignia of Conquest
+	145577, -- Ferocious Gladiator's Insignia of Conquest
+	145822, -- Ferocious Gladiator's Insignia of Conquest
+	145823, -- Ferocious Gladiator's Insignia of Conquest
+	146068, -- Ferocious Combatant's Insignia of Conquest
+	146069, -- Ferocious Combatant's Insignia of Conquest
+	148109, -- Fierce Gladiator's Insignia of Conquest
+	148110, -- Fierce Gladiator's Insignia of Conquest
+	148355, -- Fierce Gladiator's Insignia of Conquest
+	148356, -- Fierce Gladiator's Insignia of Conquest
+	148602, -- Dominating Gladiator's Insignia of Conquest
+	148603, -- Dominating Gladiator's Insignia of Conquest
+	148848, -- Dominating Gladiator's Insignia of Conquest
+	148849, -- Dominating Gladiator's Insignia of Conquest
+	149094, -- Demonic Gladiator's Insignia of Conquest
+	149095, -- Demonic Gladiator's Insignia of Conquest
+	149340, -- Demonic Gladiator's Insignia of Conquest
+	149341, -- Demonic Gladiator's Insignia of Conquest
+	149706, -- Fierce Combatant's Insignia of Conquest
+	149707, -- Fierce Combatant's Insignia of Conquest
+	149956, -- Dominating Combatant's Insignia of Conquest
+	149957, -- Dominating Combatant's Insignia of Conquest
+	150202, -- Demonic Combatant's Insignia of Conquest
+	150203, -- Demonic Combatant's Insignia of Conquest
 }
 trinkets[190027] = { -- Surge of Dominance
 	135699, -- Vindictive Gladiator's Insignia of Dominance
@@ -2344,6 +2490,36 @@ trinkets[190027] = { -- Surge of Dominance
 	143007, -- Fearless Combatant's Insignia of Dominance
 	143120, -- Fearless Gladiator's Insignia of Dominance
 	143233, -- Fearless Gladiator's Insignia of Dominance
+	144740, -- Cruel Gladiator's Insignia of Dominance
+	144741, -- Cruel Gladiator's Insignia of Dominance
+	144986, -- Cruel Gladiator's Insignia of Dominance
+	144987, -- Cruel Gladiator's Insignia of Dominance
+	145232, -- Cruel Combatant's Insignia of Dominance
+	145233, -- Cruel Combatant's Insignia of Dominance
+	145582, -- Ferocious Gladiator's Insignia of Dominance
+	145583, -- Ferocious Gladiator's Insignia of Dominance
+	145828, -- Ferocious Gladiator's Insignia of Dominance
+	145829, -- Ferocious Gladiator's Insignia of Dominance
+	146074, -- Ferocious Combatant's Insignia of Dominance
+	146075, -- Ferocious Combatant's Insignia of Dominance
+	148115, -- Fierce Gladiator's Insignia of Dominance
+	148116, -- Fierce Gladiator's Insignia of Dominance
+	148361, -- Fierce Gladiator's Insignia of Dominance
+	148362, -- Fierce Gladiator's Insignia of Dominance
+	148608, -- Dominating Gladiator's Insignia of Dominance
+	148609, -- Dominating Gladiator's Insignia of Dominance
+	148854, -- Dominating Gladiator's Insignia of Dominance
+	148855, -- Dominating Gladiator's Insignia of Dominance
+	149100, -- Demonic Gladiator's Insignia of Dominance
+	149101, -- Demonic Gladiator's Insignia of Dominance
+	149346, -- Demonic Gladiator's Insignia of Dominance
+	149347, -- Demonic Gladiator's Insignia of Dominance
+	149712, -- Fierce Combatant's Insignia of Dominance
+	149713, -- Fierce Combatant's Insignia of Dominance
+	149962, -- Dominating Combatant's Insignia of Dominance
+	149963, -- Dominating Combatant's Insignia of Dominance
+	150208, -- Demonic Combatant's Insignia of Dominance
+	150209, -- Demonic Combatant's Insignia of Dominance
 }
 trinkets[190456] = 124523 -- Ignore Pain (Worldbreaker's Resolve)
 trinkets[193346] = 129163 -- Caber Toss (Lost Etin's Strength)
@@ -2387,7 +2563,6 @@ trinkets[202912] = 121649 -- Wrath of Elune (Vibrant Temple Masonry)
 trinkets[202917] = 121647 -- Wrath of Elune (Temple Priestess' Charm)
 trinkets[206444] = 124521 -- Flame Shock (Core of the Primal Elements)
 trinkets[207033] = 124515 -- Bestial Wrath (Talisman of the Master Tracker)
-trinkets[212799] =  30720 -- Displacement Beacon (Serpent-Coil Braid)
 trinkets[213888] = 136975 -- Scent of Blood (Hunger of the Pack)
 trinkets[214128] = 137419 -- Acceleration (Chrono Shard)
 trinkets[214142] = 133766 -- Nether Anti-Toxin
@@ -2478,6 +2653,44 @@ trinkets[235018] = 144122 -- Fermenting Furuncle (Carbonic Carbuncle)
 trinkets[235021] = 144113 -- Windswept (Windswept Pages)
 trinkets[235169] = 144249 -- Archimonde's Hatred Reborn
 trinkets[235966] = 144258 -- Velen's Future Sight
+trinkets[238523] = 144477 -- Fel Barbs (Splinters of Agronox)
+trinkets[238534] = 144482 -- Grease the Gears (Fel-Oiled Infernal Machine)
+trinkets[242209] = 147022 -- Infernal Skin (Feverish Carapace)
+trinkets[242458] = 147002 -- Rising Tides (Charm of the Rising Tide)
+trinkets[242497] = 147011 -- Ceaseless Toxin (Vial of Ceaseless Toxins)
+trinkets[242536] = 147023 -- Unending Hunger (Leviathan's Hunger)
+trinkets[242570] = 147017 -- Spectral Owl (Tarnished Sentinel Medallion)
+trinkets[242609] = 147024 -- Wailing Souls (Reliquary of the Damned)
+trinkets[242617] = 147025 -- Grace of the Creators (Recompiled Guardian Module)
+trinkets[242619] = 147006 -- Cleansing Matrix (Archive of Faith)
+trinkets[242622] = 147007 -- Guiding Hand (The Deceiver's Grand Design)
+trinkets[242630] = 147026 -- Cunning of the Deceiver (Shifting Cosmic Sliver)
+trinkets[242939] = 124522 -- Corruption (Fragment of the Dark Star)
+trinkets[242954] = 124522 -- Empowered Corruption (Fragment of the Dark Star)
+trinkets[243644] = 147018 -- Spear of Anguish (Spectral Thurible)
+trinkets[243877] = 150388 -- Wisdom of the Ages (Hibernation Crystal)
+trinkets[243941] = 147019 -- Insidious Corruption (Tome of Unraveling Sanity)
+trinkets[244067] = 150527 -- Madness of the Betrayer
+trinkets[244176] = 150522 -- Fel Infusion (The Skull of Gul'dan)
+trinkets[244189] = 150526 -- Protector's Vigor (Shadowmoon Insignia)
+trinkets[245998] =  88294 -- Flashing Steel (Flashing Steel Talisman)
+trinkets[246422] = 151351 -- The Perfect Gift (Glowing Gift)
+trinkets[248349] = 124522 -- Corruption (Fragment of the Dark Star)
+trinkets[250047] =  88358 -- Lessons of the Darkmaster
+trinkets[250076] =  88355 -- Relentlessness (Searing Words)
+trinkets[250768] = 151340 -- Whispers of L'ura (Echo of L'ura)
+trinkets[251940] = 151977 -- Chilling Nova (Diima's Glacial Aegis)
+trinkets[251946] = 151978 -- Bulwark of Flame (Foe-Breaker Titanguard)
+trinkets[251952] = 151975 -- Hammer-Forged (Apocalypse Drive)
+trinkets[252071] = 124514 -- Jungle Stalker (Seed of Creation)
+trinkets[253248] = 151969 -- Legion Bombardment (Terminus Signaling Beacon)
+trinkets[253258] = 151970 -- Essence Swap (Vitality Resonator)
+trinkets[253269] = 151956 -- Feedback Loop (Garothi Feedback Conduit)
+trinkets[253277] = 151957 -- Fel Shield (Ishkar's Felshield Emitter)
+trinkets[253287] = 152289 -- Aman'Thul's Presence (Highfather's Machination)
+trinkets[253307] = 151968 -- Corruption of Shatug (Shadow-Singed Fang)
+trinkets[253308] = 151968 -- Flames of F'harg (Shadow-Singed Fang)
+trinkets[253309] = 151967 -- Lightning Jolt (Electrostatic Lasso)
 -- Consumables
 consumables[   673] =   5997 -- Minor Defense (Elixir of Minor Defense)
 consumables[   700] =   3434 -- Sleep (Slumber Sand)
@@ -2512,7 +2725,6 @@ consumables[  5665] =   5206 -- Fury of the Bogling (Bogling Root)
 consumables[  5917] =   1191 -- Fumble (Bag of Marbles)
 consumables[  6114] =   5342 -- Raptor Punch
 consumables[  6196] =  83795 -- Far Sight (Scrying Roguestone)
-consumables[  6262] =   5512 -- Healthstone
 consumables[  6405] =  66888 -- Furbolg Form (Stave of Fur and Claw)
 consumables[  6512] = { -- Detect Lesser Invisibility
 	  3828, -- Elixir of Detect Lesser Invisibility
@@ -2599,6 +2811,7 @@ consumables[ 11007] = { -- Weak Alcohol
 	140188, -- Second Year Blue
 	140189, -- Third Year Blue
 	142324, -- Brawler's Lager
+	151121, -- Booty Bay Bilgewater
 }
 consumables[ 11008] = { -- Standard Alcohol
 	  2593, -- Flask of Stormwind Tawny
@@ -2629,6 +2842,8 @@ consumables[ 11008] = { -- Standard Alcohol
 	136565, -- Fermented Melon Juice
 	140271, -- Valarjar Java
 	142323, -- Puncher's Punch
+	147777, -- P.B.R.
+	151122, -- Stolen Coconut Rum
 }
 consumables[ 11009] = { -- Strong Alcohol
 	  2594, -- Flagon of Dwarven Mead
@@ -2683,6 +2898,9 @@ consumables[ 11009] = { -- Strong Alcohol
 	141210, -- Warm Nightpear Cider
 	141211, -- Arcfruit Sangree
 	142322, -- Knockout
+	147776, -- "Killer" Brew
+	151123, -- Smuggled Dalaran Red
+	151774, -- Distilled Voidblend
 }
 consumables[ 11319] =   8827 -- Water Walking (Elixir of Water Walking)
 consumables[ 11328] =   8949 -- Agility (Elixir of Agility)
@@ -2727,6 +2945,7 @@ consumables[ 11629] = { -- Potent Alcohol
 	133989, -- Homebrew Drog
 	136561, -- Inferno Punch
 	141209, -- Distilled Nightwine
+	151124, -- South Seas Moonshine
 }
 consumables[ 12174] =  10309 -- Agility (Scroll of Agility IV)
 consumables[ 12175] =  10305 -- Armor (Scroll of Protection IV)
@@ -3375,7 +3594,6 @@ consumables[128307] =  88530 -- Bubbling Beverage
 consumables[128308] =  88529 -- Sparkling Water
 consumables[128328] =  88580 -- Ken-Ken's Mask
 consumables[128797] =  88802 -- Summon Foxicopter (Foxicopter Controller)
-consumables[128849] = 138981 -- Guard (Skinny Milk)
 consumables[129023] =  88566 -- Surgical Alterations (Krastinov's Bag of Horrors)
 consumables[129498] =  89230 -- Restorative Amber
 consumables[129836] =  86586 -- Panflute Melody (Panflute of Pandaria)
@@ -3446,7 +3664,6 @@ consumables[147226] = 103642 -- Book of the Ages
 consumables[147412] = 104111 -- Elixir of Wandering Spirits
 consumables[147476] = 103643 -- Dew of Eternal Morning
 consumables[147643] = 134024 -- Cursed Swabby Helmet
-consumables[148238] = 104196 -- Consume Ogre Queasine (Delectable Ogre Queasine)
 consumables[148361] = 103683 -- Mask of Anger
 consumables[148365] = 103681 -- Mask of Doubt
 consumables[148366] = 103679 -- Mask of Fear
@@ -3668,6 +3885,7 @@ consumables[176438] = 119092 -- Moroes' Famous Polish
 consumables[176594] = 119144 -- Touch of the Naaru
 consumables[176759] = 119180 -- Goren "Log" Roller
 consumables[176785] = 119182 -- Soulsaver (Soul Evacuation Crystal)
+consumables[176889] = 119211 -- Golden Hearthstone Card: Lord Jaraxxus
 consumables[176898] = 119215 -- Gnomebulation (Robo-Gnomebulator)
 consumables[176899] = 119220 -- Gladiator's Banner (Alliance Gladiator's Banner)
 consumables[176900] = 119221 -- Gladiator's Banner (Horde Gladiator's Banner)
@@ -3695,6 +3913,9 @@ consumables[181642] = 122298 -- Bodyguard Miniaturization Device
 consumables[181943] = 122293 -- Pepe (Trans-Dimensional Bird Whistle)
 consumables[182226] = 122742 -- Bladebone Hook
 consumables[182346] =  13379 -- Piccolo of the Flaming Fire
+consumables[182665] = 123865 -- Aspect of Ursol (Relic of Ursol)
+consumables[182723] = 123868 -- Aspect of Shakama (Relic of Shakama)
+consumables[182724] = 123869 -- Aspect of Elune (Relic of Elune)
 consumables[182993] = 123956 -- Leystone Hoofplates
 consumables[183650] = 124072 -- Ward of Sargeras
 consumables[183666] = 124071 -- Into the Shadows (Shadowstone)
@@ -3702,6 +3923,7 @@ consumables[183918] = 124093 -- Challenging the Blackfang! (Minor Blackfang Chal
 consumables[183973] = 124094 -- Challenging the Blackfang! (Major Blackfang Challenge Totem)
 consumables[183975] = 124095 -- Challenging the Blackfang! (Prime Blackfang Challenge Totem)
 consumables[184727] = 124506 -- Vial of Fel Cleansing
+consumables[185394] = 124640 -- Inky Blackness (Inky Black Potion)
 consumables[185464] = 124642 -- Supremacy Draught (Darkmoon Draught of Supremacy)
 consumables[185470] = 124659 -- Supremacy Tincture (Darkmoon Tincture of Supremacy)
 consumables[185471] = 124646 -- Flexibility Draught (Darkmoon Draught of Flexibility)
@@ -3766,10 +3988,11 @@ consumables[192233] = 128805 -- Potion of Fel Protection
 consumables[192475] = 128875 -- Rotten Flank
 consumables[192999] = 129093 -- Ravenbear Disguise
 consumables[193287] = 129113 -- Visage of the Vrykul (Faintly Glowing Flagon of Mead)
-consumables[193333] = 129149 -- Hellheim Spirit Memory (Death's Door Charm)
+consumables[193333] = 129149 -- Helheim Spirit Memory (Death's Door Charm)
 consumables[193345] = 129165 -- Barnacle-Encrusted Gem
 consumables[193456] = 129192 -- Gaze of the Legion (Inquisitor's Menacing Eye)
 consumables[193547] = 129210 -- Fel Crystal Infusion (Fel Crystal Fragments)
+consumables[193679] = 129045 -- Whitewater Tsunami
 consumables[194076] = 129734 -- Potion of Cowardly Flight
 consumables[194286] = 129758 -- Toughness (Reinforced Kodo Hide)
 consumables[194481] = 129926 -- Mark of the Ashtongue
@@ -3859,7 +4082,10 @@ consumables[215757] = 138400 -- Petey
 consumables[215916] = 138414 -- Emergency Pirate Outfit
 consumables[216528] = 138490 -- Waterspeaker's Blessing (Waterspeaker's Totem)
 consumables[216876] = 138732 -- Empowering (History of the Blade)
-consumables[217024] = 138785 -- Empowering (Adventurer's Resounding Glory)
+consumables[217024] = { -- Empowering
+	138785, -- Adventurer's Resounding Glory
+	147579, -- Tome of the Legionfall Magi
+}
 consumables[217045] = 138781 -- Empowering (Brief History of the Aeons)
 consumables[217055] = 138782 -- Empowering (Brief History of the Ages)
 consumables[217299] = 138812 -- Empowering (Adventurer's Wisdom)
@@ -3901,7 +4127,10 @@ consumables[220356] = 139452 -- Essence of the Light
 consumables[220485] = 139500 -- Slow Fall (Hippogryph Feather)
 consumables[220510] = 139503 -- Bloodtotem Saddle Blanket
 consumables[220547] = 140322 -- Empowering (Trainer's Insight)
-consumables[220548] = 139609 -- Empowering (Depleted Cadet's Wand)
+consumables[220548] = { -- Empowering
+	139609, -- Depleted Cadet's Wand
+	146128, -- Nefarious Trophy Jar
+}
 consumables[220549] = 139510 -- Empowering (Black Rook Soldier's Insignia)
 consumables[220550] = 139613 -- Empowering (Tale-Teller's Staff)
 consumables[220551] = 141710 -- Empowering (Discontinued Suramar City Key)
@@ -3973,7 +4202,10 @@ consumables[223755] = 140454 -- Crest of Devastation
 consumables[223756] = 140455 -- Crest of Heroism
 consumables[223757] = 140456 -- Crest of Carnage
 consumables[223758] = 140457 -- Crest of Devastation
-consumables[224001] = 140587 -- Defiled Augmentation (Defiled Augment Rune)
+consumables[224001] = { -- Defiled Augmentation
+	140587, -- Defiled Augment Rune
+	153023, -- Lightforged Augment Rune
+}
 consumables[224992] = 140780 -- Projection of a future Fal'dorei (Fal'dorei Egg)
 consumables[225428] = 141013 -- Town Portal: Shala'nir (Scroll of Town Portal: Shala'nir)
 consumables[225434] = 141014 -- Town Portal: Sashj'tar (Scroll of Town Portal: Sashj'tar)
@@ -4008,6 +4240,7 @@ consumables[227941] = 139608 -- Empowering (Brittle Spelltome)
 consumables[227942] = { -- Empowering
 	141702, -- Spoiled Manawine Dregs
 	141956, -- Rotten Spellbook
+	152708, -- [PH] Lightly Roasted Artifact Power
 }
 consumables[227943] = 139610 -- Empowering (Musty Azsharan Grimoire)
 consumables[227944] = 141707 -- Empowering (Smuggled Magical Supplies)
@@ -4020,7 +4253,10 @@ consumables[227950] = 141711 -- Empowering (Ancient Druidic Carving)
 consumables[228067] = 140176 -- Empowering (Accolade of Victory)
 consumables[228069] = 141701 -- Empowering (Selfless Glory)
 consumables[228077] = 141699 -- Empowering (Boon of the Companion)
-consumables[228078] = 141852 -- Empowering (Accolade of Heroism)
+consumables[228078] = { -- Empowering
+	141852, -- Accolade of Heroism
+	147581, -- Depleted Azsharan Seal
+}
 consumables[228079] = 141853 -- Empowering (Accolade of Myth)
 consumables[228080] = 141854 -- Empowering (Accolade of Achievement)
 consumables[228106] = 139512 -- Empowering (Sigilstone of Tribute)
@@ -4028,8 +4264,14 @@ consumables[228107] = 139511 -- Empowering (Hallowed Runestone)
 consumables[228108] = 141704 -- Empowering (Forgotten Offering)
 consumables[228109] = 139507 -- Empowering (Cracked Vrykul Insignia)
 consumables[228110] = 141705 -- Empowering (Disorganized Ravings)
-consumables[228111] = 139509 -- Empowering (Worldtree Bloom)
-consumables[228112] = 139508 -- Empowering (Dried Worldtree Seeds)
+consumables[228111] = { -- Empowering
+	139509, -- Worldtree Bloom
+	147486, -- Legionfall Vanguard Battle Standard
+}
+consumables[228112] = { -- Empowering
+	139508, -- Dried Worldtree Seeds
+	147485, -- Wicked Wyrmtongue Fetish
+}
 consumables[228130] = 141855 -- Empowering (History of the Aeons)
 consumables[228131] = 141856 -- Empowering (History of the Ages)
 consumables[228135] = 141859 -- Empowering (Soldier's Splendor)
@@ -4048,6 +4290,7 @@ consumables[228352] = 141889 -- Empowering (Glory of the Melee)
 consumables[228422] = { -- Empowering
 	139614, -- Azsharan Manapearl
 	141930, -- Smolderhide Spirit Beads
+	147484, -- Sightless Tormentor's Tome
 }
 consumables[228423] = 139617 -- Empowering (Ancient Warden Manacles)
 consumables[228436] = 141921 -- Empowering (Dessicated Blue Dragonscale)
@@ -4066,7 +4309,23 @@ consumables[228442] = { -- Empowering
 	141931, -- Tattered Farondis Heraldry
 }
 consumables[228443] = 141927 -- Empowering (Burrowing Worm Mandible)
-consumables[228444] = 141932 -- Empowering (Shard of Compacted Energy)
+consumables[228444] = { -- Empowering
+	141932, -- Shard of Compacted Energy
+	147456, -- Frostbound Sinew
+	147459, -- Reclaimed Ashtongue Feltome
+	147460, -- Fang of Goldrinn
+	147463, -- Skyhorn Ritual Drum
+	147465, -- Mage-Guard Dueling Wand
+	147466, -- Chi-Ji Tailfeather
+	147468, -- Memoir of the Broken Temple
+	147470, -- Silver Hand Aspirant's Codex
+	147472, -- Blessed Brooch of the Conclave
+	147474, -- Uncrowned Poison Set
+	147476, -- Everburning Smolderon Ember
+	147478, -- Dreadscar Instigator's Broken Soul
+	147479, -- Helgar Forged Trophy Blade
+	147480, -- Valajar-Sanctified Weapon Polish
+}
 consumables[228483] = 141964 -- Flaming Demonheart
 consumables[228484] = 141965 -- Shadowy Demonheart
 consumables[228485] = 141966 -- Coercive Demonheart
@@ -4080,6 +4339,7 @@ consumables[228647] = { -- Empowering
 	142005, -- Vial of Diluted Nightwell Liquid
 	142006, -- Ceremonial Warden Glaive
 	142007, -- Omnibus: The Schools of Arcane Magic
+	147842, -- Unity of the Orders
 }
 consumables[228807] = 142049 -- Legacy of the Mountain King
 consumables[228849] = 142051 -- Torment of the Worgen
@@ -4332,6 +4592,7 @@ consumables[229859] = 141681 -- Empowering (Valewalker Talisman)
 consumables[229868] = 142263 -- Oil-Stained (Machine Fluid)
 consumables[230039] = 142326 -- Brawler's Potion of Prolonged Power
 consumables[230286] = 142359 -- Lava Skin (Lava Oil)
+consumables[230295] = 142360 -- Blazing Ember Bling (Blazing Ember Signet)
 consumables[230357] = 142361 -- Ivory Talon
 consumables[230396] = 142366 -- Regurgitated Leaf
 consumables[230398] = 142367 -- Ivory Feather
@@ -4341,6 +4602,7 @@ consumables[231035] = { -- Empowering
 	142450, -- Ley to Fel Power Converter
 	142451, -- Overcharged Ward Focus
 }
+consumables[231046] = 142452 -- Wyrmtongue Disguise (Lingering Wyrmtongue Essence)
 consumables[231047] = 142455 -- Empowering (Demonic Command Shards)
 consumables[231048] = 142454 -- Empowering (Viz'aduum's Eye)
 consumables[231129] = 142494 -- Purple Blossom
@@ -4381,6 +4643,10 @@ consumables[231669] = 143745 -- Empowering (Ley-Syphoner's Focus)
 consumables[231709] = 143746 -- Empowering (Fel-Dipped Blade)
 consumables[231727] = 143747 -- Empowering (Key to the Nighthold)
 consumables[231784] = 143542 -- Crown Co. "Kure-Everything" Tonic
+consumables[232491] = 143639 -- Time Ripple (Time Ripple Orb)
+consumables[232498] = 143640 -- Flame Absorption (Fire Prevention Orb)
+consumables[232499] = 143641 -- Frost Absorption (Frost Prevention Orb)
+consumables[232500] = 143642 -- Arcane Absorption (Arcane Prevention Orb)
 consumables[232592] = 143543 -- Twelve-String Guitar
 consumables[232613] = 143662 -- Wooden Pepe Bobber (Crate of Bobbers: Wooden Pepe)
 consumables[232755] = 143677 -- Empowering (Gladiator's Exultation)
@@ -4417,8 +4683,271 @@ consumables[235248] = 144269 -- Empowering (Vacant Soul Shard)
 consumables[235256] = 144270 -- Empowering (Fel-Scarred Tomb Stone)
 consumables[235257] = 144271 -- Empowering (Searing Hellion Claw)
 consumables[235258] = 144261 -- Sporeggium
+consumables[235264] = 144264 -- Pungent Truffle
 consumables[235266] = 144272 -- Empowering (Seal of Bravery)
 consumables[236284] = 144393 -- Portable Yak Wash
 consumables[236818] = 145272 -- Standard Alcohol (Sparkling Snowplum Brandy)
+consumables[237344] = 146122 -- Empowering (Warden's Lantern)
+consumables[237345] = 146123 -- Empowering (Enchanted Vault Cell Key)
+consumables[237876] = 144397 -- Valorous Potion of Armor
+consumables[238029] = { -- Empowering
+	146309, -- Expended Spell Reagents
+	146318, -- Imp's Femur
+	146323, -- Cracked Kobold Skull
+}
+consumables[238030] = { -- Empowering
+	146313, -- Highborne Pottery Shards
+	146319, -- Doom Dust
+	146324, -- Ossified Roc Feather
+}
+consumables[238031] = { -- Empowering
+	146314, -- Marble Arrowhead
+	146320, -- Faded Green Gem
+	146325, -- Worm-Eaten Grain Pouch
+}
+consumables[238032] = { -- Empowering
+	146315, -- Moon-Rune of Elune
+	146321, -- Fossilized Succubus Horn
+	146326, -- Scorched Pyrestone
+}
+consumables[238033] = { -- Empowering
+	146316, -- Ancient Suramar Silver
+	146322, -- Fel Toast
+	146327, -- Petrified Air Totem
+}
+consumables[239094] = 146126 -- Empowering ("Revised" Chronicles of Argus)
+consumables[239095] = 146127 -- Empowering (Shard of a Dead World)
+consumables[239096] = 146124 -- Empowering (Exhausted Portal Key)
+consumables[239097] = 146125 -- Empowering (Legion Mark of Command)
+consumables[239098] = 146129 -- Empowering (Demonic Whetstone)
+consumables[240165] = 147445 -- Mending Wounds (Ancient Draught of Regeneration)
+consumables[240331] = 147198 -- Empowering (Gladiator's Exultation)
+consumables[240332] = 147199 -- Empowering (Gladiator's Triumph)
+consumables[240333] = 147200 -- Empowering (Soldier's Glory)
+consumables[240335] = 147201 -- Empowering (Gladiator's Glory)
+consumables[240337] = 147202 -- Empowering (Gladiator's Revelry)
+consumables[240339] = 147203 -- Empowering (Soldier's Legacy)
+consumables[240800] = 147308 -- Enchanted Bobber
+consumables[240801] = 147312 -- Demon Noggin
+consumables[240802] = 147310 -- Floating Totem
+consumables[240803] = 147307 -- Carved Wooden Helm
+consumables[240804] = 147311 -- Replica Gondola
+consumables[240806] = 147309 -- Face of the Forest
+consumables[240888] = 146923 -- Petrification (Sentinax Beacon of Petrification)
+consumables[240924] = 146922 -- Fel Growth (Sentinax Beacon of Fel Growth)
+consumables[241156] = 147398 -- Empowering (Lesser Pathfinder's Symbol)
+consumables[241157] = 147399 -- Empowering (Lesser Adventurer's Symbol)
+consumables[241158] = 147400 -- Empowering (Lesser Hero's Symbol)
+consumables[241159] = 147401 -- Empowering (Lesser Champion's Symbol)
+consumables[241160] = 147402 -- Empowering (Pathfinder's Symbol)
+consumables[241161] = 147403 -- Empowering (Adventurer's Symbol)
+consumables[241162] = 147404 -- Empowering (Hero's Symbol)
+consumables[241163] = 147405 -- Empowering (Champion's Symbol)
+consumables[241164] = 147406 -- Empowering (Greater Pathfinder's Symbol)
+consumables[241165] = 147407 -- Empowering (Greater Adventurer's Symbol)
+consumables[241166] = 147408 -- Empowering (Greater Hero's Symbol)
+consumables[241167] = 147409 -- Empowering (Greater Champion's Symbol)
+consumables[241471] = { -- Empowering
+	147441, -- Sheaf of Royal Stationery
+	147442, -- Gilded Prayer Beads
+}
+consumables[241476] = 147444 -- Empowering (Ravaged Wristclamp Strap)
+consumables[241710] = 147455 -- Water Stone
+consumables[241752] = { -- Empowering
+	147457, -- Spurs of the Risen Horsemen
+	147458, -- Mardum Soulcrystal
+	147461, -- Unblemished Leaf of Shaladrassil
+	147462, -- Feather of Ohn'ahra
+	147464, -- Scroll of Tirisgarde Arcana
+	147467, -- Marble Niuzao Effigy
+	147469, -- Blessed Sculpture of Tyr
+	147471, -- Netherlight Reliquary
+	147473, -- Antique Ravenholdt Dagger
+	147475, -- Mark of the Aligned Elemental Lords
+	147477, -- Council-Empowered Riftcrystal
+	147481, -- Gilded Skyhold Greatshield
+}
+consumables[241753] = { -- Empowering
+	147482, -- Contorted Eredar Bangle
+	147483, -- Defiled Moonborn Statuette
+}
+consumables[241968] = 147708 -- Using Legion Invasion Simulator (Legion Invasion Simulator)
+consumables[242014] = 147537 -- Pepe (A Tiny Set of Warglaives)
+consumables[242116] = 147548 -- Empowering (Champion's Trophy)
+consumables[242117] = 147549 -- Empowering (Hero's Trophy)
+consumables[242118] = 147550 -- Empowering (Adventurer's Trophy)
+consumables[242119] = 147551 -- Empowering (Pathfinder's Trophy)
+consumables[242473] = 147669 -- Animal Biscuit (Half an Animal Biscuit)
+consumables[242551] = 147707 -- Fel Focus (Repurposed Fel Focuser)
+consumables[242564] = 147718 -- Empowering (Master's Symbol)
+consumables[242569] = 147717 -- Partial World Shift (Chipped Demonic Key Stone)
+consumables[242572] = 147719 -- Empowering (Lesser Master's Symbol)
+consumables[242573] = 147720 -- Empowering (Greater Master's Symbol)
+consumables[242575] = 147721 -- Empowering (Master's Trophy)
+consumables[242727] = 147697 -- Rescue Puppies (Pocket Portal of Felstalker Pups)
+consumables[242884] = 147812 -- Empowering (Greater Expert's Bounty)
+consumables[242886] = 147810 -- Empowering (Greater Adept's Spoils)
+consumables[242887] = 147809 -- Empowering (Adept's Spoils)
+consumables[242890] = 147808 -- Empowering (Lesser Adept's Spoils)
+consumables[242891] = 147811 -- Empowering (Expert's Bounty)
+consumables[242893] = 147814 -- Empowering (Lesser Expert's Bounty)
+consumables[242911] = 147818 -- Empowering (Expert's Crest)
+consumables[242912] = 147819 -- Empowering (Adept's Medal)
+consumables[242916] = { -- Deviate Spores
+	147545, -- Deviate Spores
+	150579, -- Cookie's Old Stew
+}
+consumables[242975] = 147832 -- Magical Saucer
+consumables[243139] = 147843 -- Warden Guise (Sira's Extra Cloak)
+consumables[243208] = 147865 -- Crescent Moonstone
+consumables[243227] = 147868 -- Elixir of Greatest Demonslaying
+consumables[243248] = 151877 -- Summon Barrel of Eyepatches (Barrel of Eyepatches)
+consumables[243305] = 147877 -- WoW's 13th Anniversary (Celebration Package)
+consumables[243317] = 147882 -- Trogg Costume (Celebration Wand - Trogg)
+consumables[243319] = 147883 -- Quilboar Costume (Celebration Wand - Quilboar)
+consumables[243321] = 147884 -- Tranquil Mechanical Yeti Costume
+consumables[243697] = 150366 -- Understand Moonkin (Moonkin Stone)
+consumables[243955] = 150547 -- A Mighty Pirate (Jolly Roger)
+consumables[244014] = 151257 -- Green Dance Sticks (Green Dance Stick)
+consumables[244015] = 151256 -- Purple Dance Sticks (Purple Dance Stick)
+consumables[244814] = 150931 -- Empowering (Seal of Authority)
+consumables[246098] = 151239 -- Felslate Anchor
+consumables[246165] = 153008 -- Empowering (Timeworn Amethyst Figurine)
+consumables[246167] = 151247 -- Empowering (Lightguard Battle Medal)
+consumables[246216] = 151265 -- Performance Echo (Blight Boar Microphone)
+consumables[246237] = 151268 -- Exquisite Xavius Costume (Exquisite Costume Set: "Xavius")
+consumables[246241] = 151270 -- Horse Tail Costume
+consumables[246242] = 151271 -- Horse Head Costume
+consumables[246351] = 151344 -- Hearthstation
+consumables[246479] = 151365 -- Music (Bringing Life to Death)
+consumables[246710] = 151431 -- Something Potent (Nearly Empty Bottle)
+consumables[246750] = 151463 -- Music (Death's Reign)
+consumables[246767] = 151472 -- Music (Blood Infusion)
+consumables[247040] = 151556 -- Empowering (Spoils of the Triumphant)
+consumables[247075] = 151561 -- Empowering (Bauble of the Triumphant)
+consumables[247219] = 151599 -- Blighthead Slack-Jaw Mask
+consumables[247220] = 151600 -- Blighthead Mohawk Mask
+consumables[247221] = 151601 -- Blighthead Romero Mask
+consumables[247222] = 151602 -- Blighthead Electric Beehive Mask
+consumables[247223] = 151603 -- Blighthead Grim Smile Mask
+consumables[247224] = 151604 -- Blighthead Bitter Wounds Mask
+consumables[247225] = 151605 -- Devlynn Styx Mask
+consumables[247316] = 151619 -- Empowering (Prize of the Triumphant)
+consumables[247319] = 151620 -- Empowering (Humming Shard)
+consumables[247625] = 151608 -- Lightblood Elixir
+consumables[247631] = { -- Empowering
+	151696, -- Crumbling Bust
+	151697, -- Chromie's Eighth Spare Pocketwatch
+	151698, -- Sinister Signet Ring
+}
+consumables[247633] = 151699 -- Empowering (Scrimshawed Dragonbone Paperweight)
+consumables[247634] = 151700 -- Empowering (Wayfinder's Sundial)
+consumables[247686] = 151609 -- Tears of the Naaru
+consumables[247732] = 151651 -- Gravitational Reduction Slippers
+consumables[248047] = 151789 -- Empowering (Defense Construct Identifier)
+consumables[248779] = 151912 -- Shroud of Arcane Echoes
+consumables[248841] = 151914 -- Empowering (Gladiator's Perseverance)
+consumables[248842] = 151915 -- Empowering (Gladiator's Perseverance)
+consumables[248843] = 151916 -- Empowering (Gladiator's Perseverance)
+consumables[248844] = 151917 -- Empowering (Gladiator's Perseverance)
+consumables[248845] = 151918 -- Empowering (Gladiator's Perseverance)
+consumables[248846] = 151919 -- Empowering (Gladiator's Perseverance)
+consumables[248847] = 151920 -- Empowering (Gladiator's Perseverance)
+consumables[248848] = 151921 -- Empowering (Gladiator's Perseverance)
+consumables[248849] = 151922 -- Empowering (Gladiator's Perseverance)
+consumables[251039] = 152504 -- Empowering (Shattered Seal of the Unrepentant Guardian)
+consumables[251315] = 152583 -- Underlight Emerald
+consumables[252078] = 152654 -- Empowering (Lesser Unity of the Orders)
+consumables[253784] = 152982 -- Wyrmtongue Collector Disguise (Vixx's Chest of Tricks)
+consumables[253833] = { -- Empowering
+	152937, -- Dendrite Flux
+	152938, -- Emblazoned Shadowguard Insignia
+}
+consumables[253834] = 152939 -- Empowering (Mark of the Triumvirate Warriors)
+consumables[253902] = { -- Empowering
+	152430, -- Krokul Enclave Chronicle
+	152431, -- Shadowguard Harvester
+	152432, -- Stasis Core Crystal
+	152433, -- Smoldering Infernal Stone
+	152434, -- Praetorium Edict
+	152435, -- Aranasi Mandible
+}
+consumables[253931] = 152962 -- Empowering (Voidcore Control Rod)
+consumables[254000] = 152984 -- Empowering (Blessing of the Pantheon)
+consumables[254174] = { -- Agent of the All-Seer
+	153069, -- All-Seer's Draught
+	153071, -- Gift of the All-Seer
+}
+consumables[254346] = 153114 -- Nathrezim Tome of Manipulation
+consumables[254365] = 153123 -- Cracked Radinax Control Gem
+consumables[254387] = { -- Empowering
+	152651, -- Crumbling Chronicles of Argus
+	152653, -- Virtue of the Light
+}
+consumables[254397] = 153126 -- Felburst Micro-Artillery (Micro-Artillery Controller)
+consumables[254405] = 153127 -- Cube of Discovery
+consumables[254481] = 153181 -- Red Rune of Power (Red Conservatory Scroll)
+consumables[254485] = 153179 -- Blue Rune of Power (Blue Conservatory Scroll)
+consumables[254486] = 153180 -- Yellow Rune of Power (Yellow Conservatory Scroll)
+consumables[254513] = 153183 -- Barrier Generator
+consumables[254533] = 153204 -- All-Seer's Vision (All-Seer's Eye)
+consumables[254535] = 153188 -- Greater Blessed Bandage
+consumables[254544] = 153192 -- Sunglow
+consumables[254545] = 153193 -- Turbo Talbuk (Baarut the Brisk)
+consumables[254568] = 153293 -- Sightless Eye
+consumables[254603] = 153200 -- Empowering (Shimmering Floatroot)
+consumables[254608] = 153201 -- Empowering (Glinting Aurinor Dewdrops)
+consumables[254609] = 153199 -- Empowering (Chillward Brazier)
+consumables[254610] = 153198 -- Empowering (Rimy Hailstone)
+consumables[254656] = 153217 -- Empowering (Emblazoned Fire Core)
+consumables[254658] = 153220 -- Empowering (Blood Drainer Globe)
+consumables[254659] = 153221 -- Empowering (Congealed Animus Plasma)
+consumables[254660] = 153223 -- Empowering (Shed Antlers of Elkeirnir)
+consumables[254661] = 153222 -- Empowering (Hallowed Glade Pinecone)
+consumables[254662] = 153224 -- Empowering (Luminescent Moonshroom)
+consumables[254663] = 153225 -- Empowering (Naigtal Shambler Eye)
+consumables[254699] = 153246 -- Empowering (Strangely-Flawed Gemstone)
+consumables[254752] = 153253 -- S.F.E. Interceptor
+consumables[254756] = 153194 -- Legion Communication Orb
+consumables[255161] = 152706 -- Empowering (Sanctified Warrior Memento)
+consumables[255162] = 152709 -- Empowering (Partially Charged Conduit)
+consumables[255163] = 152710 -- Empowering (Ruined Conservatory Emblem)
+consumables[255165] = 152707 -- Empowering (Lightforged Cannon Projectile)
+consumables[255166] = 152711 -- Empowering (Light-Smoted Skullplate)
+consumables[255167] = 152700 -- Empowering (Krokul Battle Horn)
+consumables[255168] = 152712 -- Empowering (Sanctified Prayer Effigy)
+consumables[255169] = 152713 -- Empowering (Discarded Remnant of the Void)
+consumables[255170] = 153048 -- Empowering (Phial of 'Sacred' Fel Liquid)
+consumables[255171] = 153046 -- Empowering (Duskcloak Dorsal Plate)
+consumables[255172] = 153047 -- Empowering (Talbuk Bridle)
+consumables[255173] = 153052 -- Empowering (Depleted Pylon Core)
+consumables[255175] = { -- Empowering
+	153259, -- Legion General's Medallion of Command
+	153266, -- Undulating Orb of Fel Inferno
+	153278, -- Vile Temptresses' Aphrodisiac
+}
+consumables[255176] = 153009 -- Empowering (Brazier of the Faithful)
+consumables[255177] = 151245 -- Empowering (Novitiate's Tarnished Arcanoscope)
+consumables[255178] = 153007 -- Empowering (Rite-Blessed Sheath)
+consumables[255179] = 151246 -- Empowering (Fel-Imbued Artillery Catalyst)
+consumables[255180] = 151244 -- Empowering (Legion Doom-Horn)
+consumables[255181] = 151243 -- Empowering (Soulgorged Felglobe)
+consumables[255182] = 151241 -- Empowering (Blistering Infernal Fragment)
+consumables[255183] = 153165 -- Empowering (Krokul Remembrance-Crystal)
+consumables[255184] = 151242 -- Empowering (Pious Anchorite's Breviary)
+consumables[255185] = 153218 -- Empowering (Primordial Giant's Heart)
+consumables[255186] = { -- Empowering
+	153160, -- Crude Effigy of Despair
+	153163, -- Gruesome Wind Chime
+}
+consumables[255187] = { -- Empowering
+	153159, -- Void-Swallowed Memento
+	153162, -- Unattuned Portal Stones
+}
+consumables[255188] = { -- Empowering
+	151240, -- Corroded Hologram Crystal
+	153161, -- Incomprehensible Scribbling
+	153164, -- Otherworldy Trophy
+}
 
 LibStub('LibItemBuffs-1.0'):__UpgradeDatabase(version, trinkets, consumables, enchantments)
