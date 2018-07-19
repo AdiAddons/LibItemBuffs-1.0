@@ -1,6 +1,6 @@
 --[[
 LibItemBuffs-1.0 - buff-to-item database.
-(c) 2013-2014 Adirelle (adirelle@gmail.com)
+(c) 2013-2018 Adirelle (adirelle@gmail.com)
 
 This file is part of LibItemBuffs-1.0.
 
@@ -15,7 +15,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with LibItemBuffs-1.0.  If not, see <http://www.gnu.org/licenses/>.
+along with LibItemBuffs-1.0. If not, see <http://www.gnu.org/licenses/>.
 --]]
 
 local MAJOR, MINOR, lib = "LibItemBuffs-1.0", 9
