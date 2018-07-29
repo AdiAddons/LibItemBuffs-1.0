@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with LibItemBuffs-1.0. If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-package.path = package.path .. ";./wowmock/?.lua"
+package.path = package.path .. ";./tests/wowmock/?.lua"
 local LuaUnit = require('luaunit')
 local mockagne = require('mockagne')
 local wowmock = require('wowmock')
@@ -34,7 +34,7 @@ LibStub = false
 
 local function setup()
 	G = mockagne:getMock()
-	lib = wowmock("../LibItemBuffs-1.0.lua", G)
+	lib = wowmock("./LibItemBuffs-1.0.lua", G)
 end
 
 testUpgradeDatabase = { setup = setup }
