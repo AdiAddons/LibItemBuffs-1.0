@@ -81,7 +81,7 @@ local enchantments = {
 
 -- Anything below this line is generated with the extractor. Editing it is useless.
 --== CUT HERE ==--
-version = 20180909065938
+version = 20180909081722
 -- Trinkets
 trinkets[   408] =  32492 -- Kidney Shot (Ashtongue Talisman of Lethality)
 trinkets[   835] =   1404 -- Tidal Charm
@@ -2712,8 +2712,10 @@ trinkets[281545] = 163935 -- Landoi's Scrutiny
 -- Consumables
 consumables[   673] =   5997 -- Minor Defense (Elixir of Minor Defense)
 consumables[   700] =   3434 -- Sleep (Slumber Sand)
+consumables[   746] =   1251 -- First Aid (Linen Bandage)
 consumables[   833] =   1401 -- Green Tea (Riverpaw Tea Leaf)
 consumables[  1090] =   2091 -- Sleep (Magic Dust)
+consumables[  1159] =   2581 -- First Aid (Heavy Linen Bandage)
 consumables[  2367] =   2454 -- Lion's Strength (Elixir of Lion's Strength)
 consumables[  2374] =   2457 -- Minor Agility (Elixir of Minor Agility)
 consumables[  2378] =   2458 -- Minor Fortitude (Elixir of Minor Fortitude)
@@ -2729,6 +2731,8 @@ consumables[  3219] =   3382 -- Weak Troll's Blood (Weak Troll's Blood Elixir)
 consumables[  3220] =   3389 -- Defense (Elixir of Defense)
 consumables[  3222] =   3388 -- Strong Troll's Blood Elixir
 consumables[  3223] =   3826 -- Major Troll's Blood Elixir
+consumables[  3267] =   3530 -- First Aid (Wool Bandage)
+consumables[  3268] =   3531 -- First Aid (Heavy Wool Bandage)
 consumables[  3593] =   3825 -- Elixir of Fortitude
 consumables[  3680] =   3823 -- Lesser Invisibility (Lesser Invisibility Potion)
 consumables[  4318] =   4546 -- Guile of the Raptor (Call of the Raptor)
@@ -2758,6 +2762,8 @@ consumables[  7254] =   6052 -- Nature Protection (Nature Protection Potion)
 consumables[  7396] =   1322 -- Fishliver Oil
 consumables[  7840] =   6372 -- Swim Speed (Swim Speed Potion)
 consumables[  7844] =   6373 -- Fire Power (Elixir of Firepower)
+consumables[  7926] =   6450 -- First Aid (Silk Bandage)
+consumables[  7927] =   6451 -- First Aid (Heavy Silk Bandage)
 consumables[  8063] =   6522 -- Deviate Fish
 consumables[  8070] =   1970 -- Rejuvenation (Restoring Balm)
 consumables[  8091] =   3013 -- Armor (Scroll of Protection)
@@ -2797,6 +2803,8 @@ consumables[ 10723] = { -- Touch of Zanzil Cure
 	  8095, -- Hinott's Oil
 	  8432, -- Eau de Mixilpixil
 }
+consumables[ 10838] =   8544 -- First Aid (Mageweave Bandage)
+consumables[ 10839] =   8545 -- First Aid (Heavy Mageweave Bandage)
 consumables[ 11007] = { -- Weak Alcohol
 	  2686, -- Thunder Ale
 	  2723, -- Bottle of Dalaran Noir
@@ -3068,6 +3076,8 @@ consumables[ 17639] =  13514 -- Wail of the Banshee
 consumables[ 18071] =  13724 -- Enriched Manna Biscuit
 consumables[ 18124] =  13810 -- Blessed Sunfruit
 consumables[ 18140] =  13813 -- Blessed Sunfruit Juice
+consumables[ 18608] =  14529 -- First Aid (Runecloth Bandage)
+consumables[ 18610] =  14530 -- First Aid (Heavy Runecloth Bandage)
 consumables[ 20707] =   5232 -- Soulstone
 consumables[ 20875] =  17048 -- Rumsey Rum
 consumables[ 21149] =  17198 -- Egg Nog (Winter Veil Egg Nog)
@@ -3080,7 +3090,11 @@ consumables[ 22807] = { -- Greater Water Breathing
 	 25539, -- Potion of Water Breathing
 }
 consumables[ 23540] =  19060 -- Warsong Gulch Enriched Ration
+consumables[ 23567] =  19066 -- First Aid (Warsong Gulch Runecloth Bandage)
+consumables[ 23568] =  19067 -- First Aid (Warsong Gulch Mageweave Bandage)
+consumables[ 23569] =  19068 -- First Aid (Warsong Gulch Silk Bandage)
 consumables[ 23692] =  19301 -- Alterac Manna Biscuit
+consumables[ 23696] =  19307 -- First Aid (Alterac Heavy Runecloth Bandage)
 consumables[ 23698] =  19318 -- Alterac Spring Water (Bottled Alterac Spring Water)
 consumables[ 24360] =  20002 -- Greater Dreamless Sleep (Greater Dreamless Sleep Potion)
 consumables[ 24361] =  20004 -- Mighty Troll's Blood Elixir
@@ -3098,6 +3112,21 @@ consumables[ 24411] = { -- Arathi Basin Enriched Ration
 	 20222, -- Defiler's Enriched Ration
 	 20225, -- Highlander's Enriched Ration
 }
+consumables[ 24412] = { -- First Aid
+	 20067, -- Arathi Basin Silk Bandage
+	 20235, -- Defiler's Silk Bandage
+	 20244, -- Highlander's Silk Bandage
+}
+consumables[ 24413] = { -- First Aid
+	 20065, -- Arathi Basin Mageweave Bandage
+	 20232, -- Defiler's Mageweave Bandage
+	 20237, -- Highlander's Mageweave Bandage
+}
+consumables[ 24414] = { -- First Aid
+	 20066, -- Arathi Basin Runecloth Bandage
+	 20234, -- Defiler's Runecloth Bandage
+	 20243, -- Highlander's Runecloth Bandage
+}
 consumables[ 24417] =  20080 -- Sheen of Zanza
 consumables[ 25037] =  20709 -- Rumsey Rum Light
 consumables[ 25690] =  21072 -- Brain Food (Smoked Sagefish)
@@ -3110,6 +3139,8 @@ consumables[ 26263] =  21537 -- Dim Sum (Festival Dumplings)
 consumables[ 26276] =  21546 -- Greater Firepower (Elixir of Greater Firepower)
 consumables[ 26389] =  21721 -- Moonglow Alcohol (Moonglow)
 consumables[ 26899] =  22259 -- Give Friendship Bracelet (Unbestowed Friendship Bracelet)
+consumables[ 27030] =  21990 -- First Aid (Netherweave Bandage)
+consumables[ 27031] =  21991 -- First Aid (Heavy Netherweave Bandage)
 consumables[ 27571] =  22218 -- Cascade of Roses (Handful of Rose Petals)
 consumables[ 27652] =  22193 -- Elixir of Resistance (Bloodkelp Elixir of Resistance)
 consumables[ 27653] =  22192 -- Elixir of Dodging (Bloodkelp Elixir of Dodging)
@@ -3326,6 +3357,8 @@ consumables[ 44467] =  34130 -- Recovery Diver's Potion
 consumables[ 44755] =  34191 -- Snowflakes (Handful of Snowflakes)
 consumables[ 45373] =  34537 -- Bloodberry (Bloodberry Elixir)
 consumables[ 45417] =  34684 -- Summer Flower Shower (Handful of Summer Petals)
+consumables[ 45543] =  34721 -- First Aid (Frostweave Bandage)
+consumables[ 45544] =  34722 -- First Aid (Heavy Frostweave Bandage)
 consumables[ 45694] =  34832 -- Captain Rumsey's Lager
 consumables[ 46168] = { -- Pet Biscuit
 	 35223, -- Papa Hummel's Old-Fashioned Pet Biscuit
@@ -3503,6 +3536,9 @@ consumables[ 73619] =  52490 -- Stardust
 consumables[ 73673] =  52505 -- Poison Extraction Totem
 consumables[ 73984] =  52828 -- Mental Training (Orb of Ascension)
 consumables[ 74359] =  52819 -- Extinguish Flames (Frostgale Crystal)
+consumables[ 74553] =  53049 -- First Aid (Embersilk Bandage)
+consumables[ 74554] =  53050 -- First Aid (Heavy Embersilk Bandage)
+consumables[ 74555] =  53051 -- First Aid (Dense Embersilk Bandage)
 consumables[ 74589] =  53057 -- Identity Crisis (Faded Wizard Hat)
 consumables[ 74797] =  54455 -- Paint Bomb
 consumables[ 74842] =  53476 -- Gnomeregan Overcloak
@@ -3547,6 +3583,10 @@ consumables[ 89344] =  63308 -- Armor (Scroll of Protection IX)
 consumables[ 89345] =  63306 -- Stamina (Scroll of Stamina IX)
 consumables[ 89346] =  63304 -- Strength (Scroll of Strength IX)
 consumables[ 89347] =  63305 -- Intellect (Scroll of Intellect IX)
+consumables[ 89595] = { -- Tol Barad Bandage
+	 63391, -- Baradin's Wardens Bandage
+	 64995, -- Hellscream's Reach Bandage
+}
 consumables[ 91722] =  64640 -- Puffer Breath (Infectis Puffer Sashimi)
 consumables[ 91754] =  64481 -- Receive the Blessing of the Old God (Blessing of the Old God)
 consumables[ 91760] =  64646 -- Endure the Transformation (Bones of Transformation)
@@ -3599,6 +3639,8 @@ consumables[101498] = { -- Throwing Starfish
 }
 consumables[102362] =  72159 -- Red Ogre Mage Costume (Magical Ogre Idol)
 consumables[102365] =  72161 -- Spurious Sarcophagus
+consumables[102694] =  72985 -- First Aid (Windwool Bandage)
+consumables[102695] =  72986 -- First Aid (Heavy Windwool Bandage)
 consumables[105681] =  76075 -- Mantid Elixir
 consumables[105682] =  76076 -- Mad Hozen Elixir
 consumables[105683] =  76077 -- Elixir of Weaponry
@@ -3810,6 +3852,7 @@ consumables[158533] = 110433 -- Ambush Dragonfly (Dragonfly Ambusher)
 consumables[158693] = 110508 -- Fish Pheromones ("Fragrant" Pheromone Fish)
 consumables[160688] = 108743 -- Smoldering Boots (Deceptia's Smoldering Boots)
 consumables[160748] = 111522 -- Exceptional Alcohol (Tikari & K.A.Y.T.)
+consumables[161255] = 111603 -- First Aid (Antiseptic Bandage)
 consumables[161495] = 111842 -- Star Root Tuber
 consumables[162313] = 112090 -- Transmorphed (Transmorphic Tincture)
 consumables[162402] = 108739 -- Shiny Pearl (Pretty Draenor Pearl)
@@ -3850,6 +3893,7 @@ consumables[170293] = 115468 -- Frosty (Permanent Frost Essence)
 consumables[170295] = 115470 -- Displaced (Lingering Time Bubble)
 consumables[170298] = 115472 -- Displaced (Permanent Time Bubble)
 consumables[170398] = 115501 -- Kowalski's Music Box
+consumables[170401] = 115497 -- First Aid (Ashran Bandage)
 consumables[170425] = 115506 -- Treessassin's Guise
 consumables[170493] = 115519 -- Honorbound (Flask of the Honorbound)
 consumables[170494] = 115520 -- Flask of Conquest (Spoiled Flask of Conquest)
@@ -4063,6 +4107,7 @@ consumables[192225] = 128807 -- Coin of Many Faces
 consumables[192233] = 128805 -- Potion of Fel Protection
 consumables[192475] = 128875 -- Rotten Flank
 consumables[192999] = 129093 -- Ravenbear Disguise
+consumables[193077] = 129096 -- Dressing Wounds (Battle-Mender's Dressing)
 consumables[193287] = 129113 -- Visage of the Vrykul (Faintly Glowing Flagon of Mead)
 consumables[193333] = 129149 -- Helheim Spirit Memory (Death's Door Charm)
 consumables[193345] = 129165 -- Barnacle-Encrusted Gem
@@ -4119,6 +4164,8 @@ consumables[201823] = 133722 -- Axefish Lure
 consumables[201976] = 138026 -- Reactivation (Empowered Charging Device)
 consumables[202131] = 133795 -- Ravenous Flyfishing (Ravenous Fly)
 consumables[202477] = 133984 -- Masquerade (Nightborne Disguise)
+consumables[202850] = 133940 -- First Aid (Silkweave Bandage)
+consumables[202852] = 133942 -- First Aid (Silkweave Splint)
 consumables[203441] = 133985 -- Heavy Drog
 consumables[203443] = 133983 -- Mammoth Milk
 consumables[203451] = 133987 -- Blue Drog
@@ -4224,6 +4271,7 @@ consumables[220732] = 139579 -- The Dragonslayers
 consumables[220734] = 139580 -- Burning Blood of the Worldbreaker (Burning Plate of the Worldbreaker)
 consumables[220856] = 139587 -- Suspicious Crate
 consumables[220931] = 139584 -- Sticky Bomb (Sticky Bombs)
+consumables[221409] = 136653 -- First Aid (Silvery Salve)
 consumables[221640] = 140253 -- Movement Speed Buff (Swiftpad Brew)
 consumables[221674] = 140256 -- Sky Damage Buff (Skysinger Brew)
 consumables[221679] = 140287 -- Health Buff (Stoutheart Brew)
@@ -4309,6 +4357,7 @@ consumables[231349] = 142532 -- Murloc Bobber (Crate of Bobbers: Murloc Head)
 consumables[231375] = 142536 -- Summon Memory Cube (Memory Cube)
 consumables[231784] = 143542 -- Crown Co. "Kure-Everything" Tonic
 consumables[232491] = 143639 -- Time Ripple (Time Ripple Orb)
+consumables[232495] = 143636 -- First Aid (Arcane Splint)
 consumables[232498] = 143640 -- Flame Absorption (Fire Prevention Orb)
 consumables[232499] = 143641 -- Frost Absorption (Frost Prevention Orb)
 consumables[232500] = 143642 -- Arcane Absorption (Arcane Prevention Orb)
@@ -4326,7 +4375,10 @@ consumables[235264] = 144264 -- Pungent Truffle
 consumables[236284] = 144393 -- Portable Yak Wash
 consumables[236818] = 145272 -- Standard Alcohol (Sparkling Snowplum Brandy)
 consumables[237876] = 144397 -- Valorous Potion of Armor
-consumables[240165] = 147445 -- Mending Wounds (Ancient Draught of Regeneration)
+consumables[240165] = { -- Mending Wounds
+	146971, -- Yseralline Poultice
+	147445, -- Ancient Draught of Regeneration
+}
 consumables[240800] = 147308 -- Enchanted Bobber (Crate of Bobbers: Enchanted Bobber)
 consumables[240801] = 147312 -- Demon Noggin (Crate of Bobbers: Demon Noggin)
 consumables[240802] = 147310 -- Floating Totem (Crate of Bobbers: Floating Totem)
@@ -4453,6 +4505,8 @@ consumables[264760] = 158201 -- War-Scroll of Intellect
 consumables[264761] = 158202 -- War-Scroll of Battle Shout
 consumables[264764] = 158204 -- War-Scroll of Fortitude
 consumables[266229] = 158922 -- Zany Zombified Raptor
+consumables[267198] = 158381 -- First Aid (Tidespray Linen Bandage)
+consumables[267199] = 158382 -- First Aid (Deep Sea Bandage)
 consumables[267558] = 152812 -- Monel-Hardened Hoofplates
 consumables[267560] = 152813 -- Monel-Hardened Stirrups
 consumables[267948] = { -- Well Fed

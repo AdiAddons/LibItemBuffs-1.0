@@ -82,6 +82,7 @@ $categories = array(
 	"scrolls" => '/scrolls',
 	"food & drinks" => '/food-and-drinks',
 	"other consumables" => '/other-consumables',
+	"bandages" => '/bandages',
 	"miscellaneous items" => '/miscellaneous-items?filter=161:62;1:1;0:2', // available to players and with CD > 2 secs
 );
 $consumables = array();
@@ -121,7 +122,7 @@ echo "Scanning ".count($allItems)." item tooltips:\n";
 foreach($allItems as $itemID => $kind) {
 	$attrs = fetchTooltip("/item=$itemID");
 	if(!empty($attrs['name_enus']) && !empty($attrs['tooltip_enus'])) {
-		$itemNames[$itemID] = $attrs['name_enus'];
+		$itemNames[$itemID] = str_replace('\"', '"', $attrs['name_enus']);
 		if(preg_match_all('/(Use|Equip):.+spell=(\d+)/', $attrs['tooltip_enus'], $matches, PREG_SET_ORDER)) {
 			foreach($matches as $match) {
 				list(, $type, $spellID) = $match;
@@ -169,7 +170,7 @@ foreach($spells as $spellID => $itemIDs) {
 	$tooltip = fetchTooltip("/spell=$spellID");
 	if(!empty($tooltip)) {
 		if(!empty($tooltip['buff_enus'])) {
-			$name = $tooltip['name_enus'];
+			$name = str_replace('\"', '"', $tooltip['name_enus']);
 			// Ignore food and drink buffs
 			if(!preg_match('/^((Bountiful )?Food|Refresh|(Holiday )?Drink)/i', $name)) {
 				$spellNames[$spellID] = $name;
