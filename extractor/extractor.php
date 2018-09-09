@@ -22,7 +22,7 @@ require_once('vendor/autoload.php');
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\CssSelector\CssSelector;
 
-define('SITE_ROOT', 'http://www.wowhead.com');
+define('SITE_ROOT', 'https://www.wowhead.com');
 
 function fetchPage($path) {
 	$path = ltrim($path, '/');
@@ -38,26 +38,27 @@ function fetchPage($path) {
 			if(!is_dir("cache")) mkdir("cache");
 			file_put_contents($cacheFile, $content);
 		}
+
 		return $content;
 	}
 }
 
 function fetchTooltip($uri) {
 	$js = fetchPage($uri.'&power');
-	$escapedJs = str_replace('\\\'', '%QUOTE%', $js);
+	$escapedJs = str_replace('\"', '%QUOTE%', $js);
 	$values = array();
-	if(preg_match_all('/(\w+):\s*\'(.+)\'/', $escapedJs, $matches, PREG_SET_ORDER)) {
+	if(preg_match_all('/"(\w+)":\s*"(.*)"/U', $escapedJs, $matches, PREG_SET_ORDER)) {
 		foreach($matches as $groups) {
-			$values[$groups[1]] = str_replace('%QUOTE%', '\'', $groups[2]);
+			$values[$groups[1]] = str_replace('%QUOTE%', '\"', $groups[2]);
 		}
 	}
+
 	return $values;
 }
 
-
 echo "Fetching trinket list:\n";
 $crawler = new Crawler();
-$crawler->addContent(fetchPage('/items=4.-4'));
+$crawler->addContent(fetchPage('/trinkets'));
 $scripts = $crawler->filter('script[type="text/javascript"]')->extract('_text');
 $trinkets = array();
 foreach($scripts as $script) {
@@ -75,21 +76,20 @@ foreach($scripts as $script) {
 echo "\nDone\n".count($trinkets)." trinkets found\n\n";
 
 $categories = array(
-	"potion" => '=0.1',
-	"elixirs" => '=0.2',
-	"flask" => '=0.3',
-	"scroll" => '=0.4',
-	"food & drink" => '=0.5',
-	"other item" => '=0.8',
-	"first aid" => '?filter=na=bandage;cr=86;crs=6;crv=0',
-	"miscellaneous item" => '=15?filter=cr=161:62;crs=1:1;crv=0:2' // Filter out items without cooldown
+	"potions" => '/potions',
+	"elixirs" => '/elixirs',
+	"flasks" => '/flasks',
+	"scrolls" => '/scrolls',
+	"food & drinks" => '/food-and-drinks',
+	"other consumables" => '/other-consumables',
+	"miscellaneous items" => '/miscellaneous-items?filter=161:62;1:1;0:2', // available to players and with CD > 2 secs
 );
 $consumables = array();
 
 foreach($categories as $cat => $param) {
 	echo "Fetching $cat list:\n";
 	$crawler = new Crawler();
-	$crawler->addContent(fetchPage('/items'.$param));
+	$crawler->addContent(fetchPage($param));
 	$scripts = $crawler->filter('script[type="text/javascript"]')->extract('_text');
 	$n = 0;
 	foreach($scripts as $script) {
@@ -105,7 +105,7 @@ foreach($categories as $cat => $param) {
 			}
 		}
 	}
-	echo "\nDone\n$n ${cat}s found\n\n";
+	echo "\nDone\n$n ${cat} found\n\n";
 }
 
 $allItems = $trinkets;
@@ -121,13 +121,8 @@ echo "Scanning ".count($allItems)." item tooltips:\n";
 foreach($allItems as $itemID => $kind) {
 	$attrs = fetchTooltip("/item=$itemID");
 	if(!empty($attrs['name_enus']) && !empty($attrs['tooltip_enus'])) {
-		$name =  $attrs['name_enus'];
-		if(preg_match('/\bCommendation\b/i', $name)) {
-			echo 'x';
-			continue;
-		}
-		$itemNames[$itemID] = $name;
-		if(preg_match_all('%(Use|Equip)\s*:\s*<a\s+href="/spell=(\d+)"%i', $attrs['tooltip_enus'], $matches, PREG_SET_ORDER)) {
+		$itemNames[$itemID] = $attrs['name_enus'];
+		if(preg_match_all('/(Use|Equip):.+spell=(\d+)/', $attrs['tooltip_enus'], $matches, PREG_SET_ORDER)) {
 			foreach($matches as $match) {
 				list(, $type, $spellID) = $match;
 				$spellID = intval($match[2]);
