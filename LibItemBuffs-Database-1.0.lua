@@ -41,6 +41,11 @@ local consumables = {
 		128475, -- Empowered Augment Rune (Horde)
 		128482, -- Empowered Augment Rune (Alliance)
 	},
+    -- Defiled Augment Runes
+    [224001] = { -- Defiled Augmentation
+        140587, -- Defiled Augment Rune
+        153023, -- Lightforged Augment Rune
+    },
 }
 
 local enchantments = {
